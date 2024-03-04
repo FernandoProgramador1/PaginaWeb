@@ -1,0 +1,252 @@
+.productos-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.productos-filter-bar,
+.productos-search-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 20px 25px;
+    border-radius: 12px;
+    align-items: center;
+}
+
+.productos-search-bar {
+    background-color: #e0e0e0;
+}
+
+.productos-filter-bar {
+    background-color: #b50b09;
+    color: #f9f9f9;
+}
+
+.productos-content {
+    display: flex;
+}
+
+.productos-filters {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.productos-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.productos-item {
+    background-color: #f9f9f9;
+    border: none;
+    padding: 25px;
+    border-radius: 12px;
+    transition: box-shadow .2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    width: 250px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productos-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.productos-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.producto-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.producto-description {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+
+.producto-price {
+    font-weight: 600;
+    color: #003366;
+    text-align: center;
+}
+
+.productos-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.productos-pagination a {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #fff;
+    border: 1px solid #003366;
+    text-decoration: none;
+    color: #003366;
+    border-radius: 25px;
+    transition: background-color 0.2s ease;
+}
+
+.productos-pagination a:hover {
+    background-color: #003366;
+    color: #f9f9f9;
+}
+
+select,
+.productos-search-bar input,
+.productos-filters input[type="range"] {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow .2s ease;
+}
+
+select:hover,
+.productos-search-bar input:hover,
+.productos-filters input[type="range"]:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+select:focus,
+.productos-search-bar input:focus,
+.productos-filters input[type="range"]:focus {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.productos-search-bar button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #b50b09;
+    color: #f9f9f9;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+
+.productos-search-bar button:hover {
+    background-color: #8a0605;
+}
+
+.productos-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.producto-input {
+    padding: 10px 20px 10px 40px;
+    width: 250px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.producto-input:focus {
+    transform: translateY(-2px);
+}
+
+.producto-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #b50b09;
+    color: #f9f9f9;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color .2s ease, transform 0.2s ease;
+}
+
+.producto-button:hover {
+    background-color: #8a0605;
+    transform: translateY(-2px);
+}
+
+.productos-search-container::before {
+    content: "🔍";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #b50b09;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* Estilos para la imagen del producto en el modal */
+#modalProductImage {
+    max-width: 100%;
+    max-height: 300px;
+    /* Ajusta la altura máxima según tus necesidades */
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los detalles del producto en el modal */
+.product-details {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Estilos para el botón de cierre del modal */
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}

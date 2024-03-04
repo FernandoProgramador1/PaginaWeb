@@ -1,0 +1,137 @@
+/* Define colors and fonts from previous styles */
+:root {
+    --nosotros-bg-color: #f9f9f9;
+    --nosotros-text-color: #333;
+    --nosotros-header-color: #00345e;
+    --nosotros-secondary-color: #007BFF;
+    --nosotros-shadow-light: rgba(0, 0, 0, 0.1);
+    --nosotros-shadow-dark: rgba(0, 0, 0, 0.2);
+    --nosotros-font-primary: 'Open Sans', sans-serif;
+}
+
+body {
+    font-family: var(--nosotros-font-primary);
+    background-color: var(--nosotros-bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--nosotros-text-color);
+}
+
+.nosotros-header {
+    background-color: var(--nosotros-header-color);
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--nosotros-shadow-light);
+}
+
+.mvv-heading {
+    text-align: center;
+}
+
+.nosotros-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--nosotros-header-color);
+    border-radius: 12px;
+}
+
+.nosotros-title {
+    font-size: 42px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nosotros-subtitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--nosotros-header-color);
+    text-align: center;
+}
+
+.nosotros-text {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0 0 40px;
+    text-align: justify;
+}
+
+/* Estilos para secciones de Misión, Visión y Valores */
+.nosotros-mission-vision-values {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nosotros-section {
+    flex: 1;
+    padding: 30px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    border: 2px solid var(--nosotros-header-color);
+    box-shadow: 0 4px 15px var(--nosotros-shadow-light);
+    transition: box-shadow 0.3s ease;
+}
+
+.nosotros-section:hover {
+    box-shadow: 0 6px 18px var(--nosotros-shadow-dark);
+}
+
+.nosotros-section h3 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--nosotros-header-color);
+}
+
+.nosotros-section p {
+    text-align: justify;
+}
+
+#quienes-somos {
+    margin-bottom: 40px;
+    border: 2px solid var(--nosotros-header-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries para responsividad */
+/* Tablets */
+@media (max-width: 992px) {
+    .nosotros-mission-vision-values {
+        flex-direction: column;
+    }
+
+    .nosotros-section {
+        margin-bottom: 20px;
+    }
+}
+
+/* Teléfonos en posición landscape y tablets pequeñas */
+@media (max-width: 768px) {
+    .nosotros-container {
+        padding: 20px;
+    }
+}
+
+/* Teléfonos en posición portrait */
+@media (max-width: 576px) {
+    .nosotros-title {
+        font-size: 32px;
+    }
+
+    .nosotros-subtitle {
+        font-size: 22px;
+    }
+
+    .nosotros-section h3 {
+        font-size: 20px;
+    }
+}
