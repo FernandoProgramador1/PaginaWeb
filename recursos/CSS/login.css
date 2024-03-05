@@ -6,7 +6,7 @@
     --login-highlight-color: #c92626;
     --login-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
     --login-shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.25);
-    --login-container-background: #081A4C;
+    --login-container-background: #081F7C;
 }
 
 .login-container {
@@ -46,8 +46,7 @@
 .login-icon {
     position: absolute;
     left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(100%);
     color: var(--login-background-color);
     width: 20px;
     height: 20px;
@@ -56,22 +55,26 @@
 .login-input[type="text"],
 .login-input[type="password"] {
     width: 100%;
-    padding: 17px 50px;
+    padding: 15px 50px;
     border: 2px solid var(--login-secondary-color);
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: var(--login-background-color);
-    color: var(--login-secondary-color);
     transition: border-color 0.3s;
 }
 
 .login-input[type="text"]:focus,
 .login-input[type="password"]:focus {
-    border-color: var(--login-accent-color);
+    outline: none;
+}
+
+#showPassLabel {
+    margin-top: 5px;
+    color: #fff;
 }
 
 .login-button {
     width: 100%;
-    padding: 17px;
+    padding: 15px;
     background-color: var(--login-primary-color);
     border: none;
     border-radius: 20px;
