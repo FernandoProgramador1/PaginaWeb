@@ -21,68 +21,52 @@ require_once("modelos/model_marcas.php");
     <link rel="stylesheet" href="recursos/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="recursos/CSS/login.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="recursos/CSS/productos.css" type="text/css">
     <link rel="stylesheet" href="recursos/CSS/nav.css" type="text/css">
     <link rel="stylesheet" href="recursos/CSS/home.css" type="text/css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="recursos/CSS/nosotros.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="recursos/css/footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="recursos/img/LOGO-SSETCO.jpeg" alt="Logo" style="max-height:100px !important; max-width:150px !important;" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php?page=">INICIO</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- <a class="nav-link" href="#">MI CUENTA</a> -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="index.php?page=Productos" id="navbarDropdown" role="button" aria-expanded="false">
-                            PRODUCTOS
-                        </a>
-                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Producto 1</a></li>
-                            <li><a class="dropdown-item" href="#">Producto 2</a></li>
-                        </ul> -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=Nosotros">NOSOTROS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Contacto">CONTACTO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="recursos/Archivos/Catalogo Equipo de Seguridad 2023.pdf" download>CATALOGO</a>
-                    </li>
-
-                </ul>
-                <!-- <form class="d-flex me-2">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar">
-                    <button class="btn btn-outline-light" type="submit">Buscar</button>
-                </form> -->
-
-                <?php
-                if ($_SESSION != null) {
-                    if ($_SESSION['loggedin'] == true) {
-                ?>
-
-                        <!-- Boton para el menu de admin -->
-                        <butt!on class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark">Menu Admin</button>
-                            <!-- Boton para el menu de admin -->
-                    <?php
-                    }
-                }
-                    ?>
-            </div>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector">
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+                <li class="nav-item <?php echo (!isset($_GET['page']) || $_GET['page'] == '' ? 'active' : ''); ?>">
+                    <a class="nav-link" href="index.php?page="><i class="fa fa-home"></i>Inicio</a>
+                </li>
+                <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Productos') echo 'active'; ?>">
+                    <a class="nav-link" href="index.php?page=Productos"><i class="fa fa-tag"></i>Productos</a>
+                </li>
+                <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Contacto') echo 'active'; ?>">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-envelope"></i>Contacto</a>
+                </li>
+                <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Nosotros') echo 'active'; ?>">
+                    <a class="nav-link" href="index.php?page=Nosotros"><i class="fa fa-users"></i>Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-cogs"></i>Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-desktop"></i>Sistemas</a>
+                </li>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
+                    <!-- Boton para el menu de admin -->
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark">Menu Admin</button>
+                    <!-- Fin del boton para el menu de admin -->
+                <?php endif; ?>
+            </ul>
         </div>
     </nav>
 
