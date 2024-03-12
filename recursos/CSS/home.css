@@ -51,7 +51,6 @@ header {
 .slick-next,
 .slick-next::before {
     color: #000 !important;
-    /* Color de los botones del carrusel */
 }
 
 /* Publicidad */
@@ -64,13 +63,9 @@ header {
 
 .advertisement img {
     width: 300px;
-    /* Tamaño preestablecido para las imágenes */
     height: 200px;
-    /* Tamaño preestablecido para las imágenes */
     margin: 20px;
-    /* Espacio entre las imágenes */
     cursor: pointer;
-    /* Agregar cursor de puntero para indicar que se puede hacer clic en las imágenes */
 }
 
 /* Estilos para el modal */
@@ -116,6 +111,4 @@ header {
     .service {
         margin: 0.5rem 0;
     }
-
-    /* Puedes agregar más reglas para estilos receptivos según tus necesidades */
 }
