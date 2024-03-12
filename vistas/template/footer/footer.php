@@ -47,9 +47,9 @@ require_once('modelos/model_contactos.php');
             </div>
         </div>
     </div>
-    <div class="text-center bg-dark text-white mt-4 p-1">
+    <!-- <div class="text-center bg-dark text-white mt-4 p-1">
         <p class="mb-0 fw-bold">2023 © Gaurav Rana, All Rights Reserved</p>
-    </div>
+    </div> -->
 </footer>
 
 <script src="recursos/lib/jquery/dist/jquery.js"></script>
