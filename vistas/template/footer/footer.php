@@ -9,10 +9,10 @@ require_once('modelos/model_contactos.php');
                 <div class="information">
                     <h6 class="footer-heading text-uppercase fw-bold">Información</h6>
                     <ul class="list-unstyled footer-link mt-4">
-                        <li class="mb-1"><a href="#" class="fw-semibold">Events</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Our Team</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Upcoming Sale</a></li>
-                        <li class=""><a href="#" class="fw-semibold">New Launches</a></li>
+                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 1</a></li>
+                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 2</a></li>
+                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 3</a></li>
+                        <li class=""><a href="#" class="fw-semibold">Ejemplo 4</a></li>
                     </ul>
                 </div>
             </div>
@@ -20,10 +20,10 @@ require_once('modelos/model_contactos.php');
                 <div class="resources">
                     <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
                     <ul class="list-unstyled footer-link mt-4">
-                        <li class="mb-1"><a href="#" class="fw-semibold">Lorem ipsum dolor</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Website Tutorials</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Third Party</a></li>
-                        <li class=""><a href="#" class="fw-semibold">Video Lectures</a></li>
+                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 1</a></li>
+                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 2</a></li>
+                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 3</a></li>
+                        <li class=""><a href="#" class="fw-semibold">Ejemplo 4</a></li>
                     </ul>
                 </div>
             </div>
