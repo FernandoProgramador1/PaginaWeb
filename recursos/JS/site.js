@@ -11,7 +11,7 @@ function disabledSelect(w) {
 
 function valSel(x) {
     const select = document.getElementById(x);
-    if(select != null){
+    if (select != null) {
         const valor = select.value;
         const selectnew = select.children;
 
