@@ -9,129 +9,135 @@
     --nosotros-font-primary: 'Open Sans', sans-serif;
 }
 
-body {
-    font-family: var(--nosotros-font-primary);
+@font-face {
+    font-family: MontserratCustom;
+    src: url(../fonts/Montserrat/static/Montserrat-Regular.ttf);
+}
+
+#nosotros {
+    text-align: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#nosotros-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
     background-color: var(--nosotros-bg-color);
-    margin: 0;
-    padding: 0;
     color: var(--nosotros-text-color);
-}
-
-.nosotros-header {
-    background-color: var(--nosotros-header-color);
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-    box-shadow: 0 4px 15px var(--nosotros-shadow-light);
-}
-
-.mvv-heading {
-    text-align: center;
-}
-
-.nosotros-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 40px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid var(--nosotros-header-color);
-    border-radius: 12px;
-}
-
-.nosotros-title {
-    font-size: 42px;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.nosotros-subtitle {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: var(--nosotros-header-color);
-    text-align: center;
-}
-
-.nosotros-text {
-    font-size: 18px;
-    line-height: 1.8;
-    margin: 0 0 40px;
+    box-shadow: 0 0 10px var(--nosotros-shadow-light);
+    border-radius: 15px;
     text-align: justify;
 }
 
-/* Estilos para secciones de Misión, Visión y Valores */
-.nosotros-mission-vision-values {
+#nosotros-info p {
+    margin: 0;
+}
+
+#nosotros-info .columna {
+    position: relative;
+    padding: 0 20px;
+}
+
+#nosotros-info .columna:first-child::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--nosotros-secondary-color);
+}
+
+#vmv {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    border-radius: 15px;
+}
+
+.vmv-header {
+    grid-column: 1 / -1;
+    background-color: #333;
+    color: white;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
-.nosotros-section {
-    flex: 1;
-    padding: 30px;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    border: 2px solid var(--nosotros-header-color);
-    box-shadow: 0 4px 15px var(--nosotros-shadow-light);
-    transition: box-shadow 0.3s ease;
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.nosotros-section:hover {
-    box-shadow: 0 6px 18px var(--nosotros-shadow-dark);
+.header-content span {
+    font-size: 1.5em;
 }
 
-.nosotros-section h3 {
+.header-title {
     font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--nosotros-header-color);
 }
 
-.nosotros-section p {
-    text-align: justify;
-}
-
-#quienes-somos {
-    margin-bottom: 40px;
-    border: 2px solid var(--nosotros-header-color);
+.vmv-section {
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Media Queries para responsividad */
-/* Tablets */
-@media (max-width: 992px) {
-    .nosotros-mission-vision-values {
-        flex-direction: column;
-    }
-
-    .nosotros-section {
-        margin-bottom: 20px;
-    }
+.vmv-section h2 {
+    margin-bottom: 20px;
 }
 
-/* Teléfonos en posición landscape y tablets pequeñas */
+#vmv h2 {
+    font-family: MontserratCustom;
+    font-weight: bold;
+}
+
+.vision {
+    background-color: #081F7C;
+    border-bottom-left-radius: 15px;
+}
+
+.mision {
+    background-color: gray;
+    justify-content: justify;
+}
+
+.valores {
+    background-color: #3498DB;
+    border-bottom-right-radius: 15px;
+}
+
+.icon-container img {
+    width: 50px;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Estilos Responsive */
 @media (max-width: 768px) {
-    .nosotros-container {
-        padding: 20px;
-    }
-}
-
-/* Teléfonos en posición portrait */
-@media (max-width: 576px) {
-    .nosotros-title {
-        font-size: 32px;
+    #vmv {
+        grid-template-columns: 1fr;
     }
 
-    .nosotros-subtitle {
-        font-size: 22px;
+    .vmv-header {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .nosotros-section h3 {
-        font-size: 20px;
+    .header-content span {
+        margin: 5px 0;
     }
 }
