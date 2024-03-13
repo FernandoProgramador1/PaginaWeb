@@ -27,6 +27,7 @@ require_once("modelos/model_marcas.php");
     <link rel="stylesheet" href="recursos/CSS/home.css" type="text/css">
     <link rel="stylesheet" href="recursos/CSS/nosotros.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="recursos/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/contacto.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -50,7 +51,7 @@ require_once("modelos/model_marcas.php");
                     <a class="nav-link" href="index.php?page=Productos"><i class="fa fa-tag"></i>Productos</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Contacto') echo 'active'; ?>">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-envelope"></i>Contacto</a>
+                    <a class="nav-link" href="index.php?page=Contacto"><i class="fa fa-envelope"></i>Contacto</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Nosotros') echo 'active'; ?>">
                     <a class="nav-link" href="index.php?page=Nosotros"><i class="fa fa-users"></i>Nosotros</a>
