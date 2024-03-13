@@ -71,6 +71,9 @@ switch ($page) {
     case "Login":
         include_once("vistas/template/login/login.php");
         break;
+    case "Contacto":
+        include_once("vistas/users/client/Contacto.php");
+        break;
     default:
         include_once('vistas/home/Home.php');
         break;
