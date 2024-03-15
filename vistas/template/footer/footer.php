@@ -58,6 +58,7 @@ require_once('modelos/model_contactos.php');
 <script src="recursos/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 <script src="recursos/JS/site.js"></script>
 <script src="recursos/JS/nav.js"></script>
+<script src="recursos/JS/faq.js"></script>
 
 <script src="recursos/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
