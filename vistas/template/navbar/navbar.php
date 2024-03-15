@@ -28,6 +28,7 @@ require_once("modelos/model_marcas.php");
     <link rel="stylesheet" href="recursos/CSS/nosotros.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="recursos/css/footer.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/contacto.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/sistemas.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -59,8 +60,11 @@ require_once("modelos/model_marcas.php");
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);"><i class="fa fa-cogs"></i>Servicios</a>
                 </li>
+                <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Sistemas') echo 'active'; ?>">
+                    <a class="nav-link" href="index.php?page=Sistemas"><i class="fa fa-desktop"></i>Sistemas</a>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-desktop"></i>Sistemas</a>
+                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Preguntas Frecuentes</a>
                 </li>
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
                     <!-- Boton para el menu de admin -->
