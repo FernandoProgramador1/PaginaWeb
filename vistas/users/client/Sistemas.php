@@ -18,7 +18,7 @@
         </div>
         <div id="sistemasContainer" class="container">
             <div class="sistema">
-                <a href="#">
+                <a href="index.php?page=DetalleSistema">
                     <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
                 </a>
                 <p>Sistema Ejemplo</p>
