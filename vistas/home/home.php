@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSETCO - Consultoría en Higiene y Seguridad Industrial</title>
+    <title>Pagina Web</title>
 </head>
 
 <body>
