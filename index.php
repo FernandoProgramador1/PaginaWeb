@@ -77,6 +77,9 @@ switch ($page) {
     case "Sistemas":
         include_once("vistas/users/client/Sistemas.php");
         break;
+    case "DetalleSistema":
+        include_once("vistas/users/client/DetalleSistema.php");
+        break;
     case "PreguntasFrecuentes":
         include_once("vistas/users/client/PreguntasFrecuentes.php");
         break;
