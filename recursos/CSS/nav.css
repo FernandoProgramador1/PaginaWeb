@@ -142,6 +142,34 @@ i {
     color: #081F7C;
 }
 
+.admin-link {
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    /* Permite la transformación */
+    margin: 0 5px;
+    /* Asegura algún espacio alrededor para la transformación */
+    padding: 10px;
+    /* Espaciado interno */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+    /* Inicialmente sin sombra */
+    border-radius: 5px;
+    /* Bordes redondeados para un look más suave */
+}
+
+.admin-link:hover {
+    color: #081F7C;
+    /* Cambio de color */
+    background-color: #ffffff;
+    transform: scale(1.05);
+    /* Ligeramente más grande */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Sutil sombra */
+    font-weight: bold;
+}
+
+.admin-logout {
+    display: inline-block;
+}
+
 @media(min-width: 992px) {
     .navbar-expand-custom {
         -ms-flex-flow: row nowrap;
@@ -166,7 +194,6 @@ i {
         flex-basis: auto;
     }
 }
-
 
 @media (max-width: 991px) {
     #navbarSupportedContent ul li a {
