@@ -129,6 +129,18 @@ i {
     left: -25px;
 }
 
+.admin-btn {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.admin-btn:hover {
+    color: #fff;
+}
+
+.admin-btn.admin-active {
+    background-color: #ffffff;
+    color: #081F7C;
+}
 
 @media(min-width: 992px) {
     .navbar-expand-custom {
