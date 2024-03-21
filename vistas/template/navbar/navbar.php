@@ -47,10 +47,10 @@ require_once("modelos/model_marcas.php");
                     <div class="left"></div>
                     <div class="right"></div>
                 </div>
-                <li class="nav-item <?php echo (!isset($_GET['page']) || $_GET['page'] == '' ? 'active' : ''); ?>">
+                <li class="nav-item <?= !isset($_GET['page']) || $_GET['page'] == '' || !in_array($_GET['page'], ['Productos', 'Contacto', 'Nosotros', 'Sistemas', 'DetalleSistema', 'PreguntasFrecuentes']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="index.php?page="><i class="fa fa-home"></i>Inicio</a>
                 </li>
-                <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Productos') echo 'active'; ?>">
+                <li class="nav-item <?= isset($_GET['page']) && $_GET['page'] == 'Productos' ? 'active' : ''; ?>">
                     <a class="nav-link" href="index.php?page=Productos"><i class="fa fa-tag"></i>Productos</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Contacto') echo 'active'; ?>">
@@ -70,7 +70,7 @@ require_once("modelos/model_marcas.php");
                 </li>
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
                     <!-- Boton para el menu de admin -->
-                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark">Menu Admin</button>
+                    <button class="btn nav-item admin-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog"></i> Menú Admin</button>
                     <!-- Fin del boton para el menu de admin -->
                 <?php endif; ?>
             </ul>
@@ -91,15 +91,15 @@ require_once("modelos/model_marcas.php");
                     foreach ($dtcontactos as $contac) :
                         if ($cc == 0) {
                             if ((!empty($contac['IdContacto'])) && (isset($contac['IdContacto']))) {
-                                echo '<li class="nav-item"><a class="nav-link" href="index.php?page=InfoContacto&IdC=' . $contac["IdContacto"] . '">Información de contacto</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=InfoContacto&IdC=' . $contac["IdContacto"] . '">Información de contacto</a></li>';
                             } else {
-                                echo '<li class="nav-item"><a class="nav-link" href="index.php?page=InfoContacto">Información de contacto</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=InfoContacto">Información de contacto</a></li>';
                             }
                         }
                         $cc++;
                     endforeach;
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="index.php?page=InfoContacto">Información de contacto</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=InfoContacto">Información de contacto</a></li>';
                 }
                 ?>
                 <?php
@@ -114,7 +114,7 @@ require_once("modelos/model_marcas.php");
                         $cc++;
                     endforeach;
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="index.php?page=EdicionMision">Edicion de Mision</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionMision">Edicion de Mision</a></li>';
                 }
                 ?>
                 <?php
@@ -129,7 +129,7 @@ require_once("modelos/model_marcas.php");
                         $cc++;
                     endforeach;
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="index.php?page=EdicionVision">Edicion de Vision</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionVision">Edicion de Vision</a></li>';
                 }
                 ?>
 
@@ -145,7 +145,7 @@ require_once("modelos/model_marcas.php");
                         $cc++;
                     endforeach;
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="index.php?page=EdicionValores">Edicion de Valores</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionValores">Edicion de Valores</a></li>';
                 }
                 ?>
 
@@ -161,28 +161,28 @@ require_once("modelos/model_marcas.php");
                         $cc++;
                     endforeach;
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="index.php?page=EdicionQuienesSomos">Edicion de ¿Quienes Somos?</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionQuienesSomos">Edicion de ¿Quienes Somos?</a></li>';
                 }
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=ImgCarrusel">Edicion Imagenes del carrusel</a>
+                    <a class="nav-link admin-link" href="index.php?page=ImgCarrusel">Edicion Imagenes del carrusel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=Publicidades">Edicion Imagenes de publicidad</a>
+                    <a class="nav-link admin-link" href="index.php?page=Publicidades">Edicion Imagenes de publicidad</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=ProductosAdmin">Edicion de Productos</a>
+                    <a class="nav-link admin-link" href="index.php?page=ProductosAdmin">Edicion de Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=MarcasAdmin">Edicion de Marcas</a>
+                    <a class="nav-link admin-link" href="index.php?page=MarcasAdmin">Edicion de Marcas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=TiposProductos">Edicion de tipos de productos</a>
+                    <a class="nav-link admin-link" href="index.php?page=TiposProductos">Edicion de tipos de productos</a>
                 </li>
                 <?php
                 if ($_SESSION != null) {
                     if ($_SESSION['loggedin'] == true) {
-                        echo '<li class="nav-item mt-5"><a class="nav-link" href="cerrar.php">Cerrar Sesión</a></li>';
+                        echo '<li class="nav-item mt-5"><a class="nav-link admin-link" href="cerrar.php">Cerrar Sesión</a></li>';
                     }
                 }
                 ?>
@@ -193,8 +193,19 @@ require_once("modelos/model_marcas.php");
         </div>
     </div>
     <!-- Menu de admin -->
-
-
 </body>
+
+<script>
+    var adminButton = document.querySelector('.admin-btn');
+    var offcanvas = document.getElementById('offcanvasDark');
+
+    adminButton.addEventListener('click', function() {
+        adminButton.classList.add('admin-active');
+    });
+
+    offcanvas.addEventListener('hidden.bs.offcanvas', function() {
+        adminButton.classList.remove('admin-active');
+    });
+</script>
 
 </html>
