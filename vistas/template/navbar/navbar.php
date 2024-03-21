@@ -182,7 +182,7 @@ require_once("modelos/model_marcas.php");
                 <?php
                 if ($_SESSION != null) {
                     if ($_SESSION['loggedin'] == true) {
-                        echo '<li class="nav-item mt-5"><a class="nav-link admin-link" href="cerrar.php">Cerrar Sesión</a></li>';
+                        echo '<li class="nav-item mt-5"><a class="nav-link admin-link admin-logout" href="cerrar.php">Cerrar Sesión</a></li>';
                     }
                 }
                 ?>
