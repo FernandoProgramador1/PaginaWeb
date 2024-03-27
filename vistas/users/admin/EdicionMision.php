@@ -4,7 +4,7 @@
 require_once("modelos/model_mision.php");
 
 ?>
-<title>SSETCO | Editar Misión</title>
+<title>Editar Misión</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div class="container p-5 justify-content-center bg-dark-subtle">
