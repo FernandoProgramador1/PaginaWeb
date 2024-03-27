@@ -186,9 +186,6 @@ require_once("modelos/model_marcas.php");
                     }
                 }
                 ?>
-                <li class="nav-item">
-                    <!-- <a class="nav-link" href="#">CONTACTO</a> -->
-                </li>
             </ul>
         </div>
     </div>
@@ -199,13 +196,17 @@ require_once("modelos/model_marcas.php");
     var adminButton = document.querySelector('.admin-btn');
     var offcanvas = document.getElementById('offcanvasDark');
 
-    adminButton.addEventListener('click', function() {
-        adminButton.classList.add('admin-active');
-    });
+    if (adminButton) {
+        adminButton.addEventListener('click', function() {
+            adminButton.classList.add('admin-active');
+        });
+    }
 
-    offcanvas.addEventListener('hidden.bs.offcanvas', function() {
-        adminButton.classList.remove('admin-active');
-    });
+    if (offcanvas) {
+        offcanvas.addEventListener('hidden.bs.offcanvas', function() {
+            adminButton.classList.remove('admin-active');
+        });
+    }
 </script>
 
 </html>
