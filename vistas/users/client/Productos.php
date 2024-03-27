@@ -165,32 +165,4 @@ $endIndex = $startIndex + $productsPerPage;
     </div>
 </body>
 
-<!-- Modal para mostrar la información del producto -->
-<div id="productModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h2 id="modalProductName"></h2>
-        <p id="modalProductDescription"></p>
-        <p id="modalProductPrice"></p>
-        <!-- Aquí puedes agregar más detalles del producto si es necesario -->
-    </div>
-</div>
-
-<script>
-    // Función para abrir el modal y mostrar la información del producto
-    function openProductModal(product) {
-        document.getElementById("modalProductName").innerText = product.name;
-        document.getElementById("modalProductDescription").innerText = product.description;
-        document.getElementById("modalProductPrice").innerText = "Precio: " + product.price;
-
-        // Muestra el modal
-        document.getElementById("productModal").style.display = "block";
-    }
-
-    // Función para cerrar el modal
-    document.getElementById("closeModal").addEventListener("click", function() {
-        document.getElementById("productModal").style.display = "none";
-    });
-</script>
-
 </html>
