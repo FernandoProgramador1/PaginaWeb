@@ -47,9 +47,6 @@ require_once('modelos/model_contactos.php');
             </div>
         </div>
     </div>
-    <!-- <div class="text-center bg-dark text-white mt-4 p-1">
-        <p class="mb-0 fw-bold">2023 © Gaurav Rana, All Rights Reserved</p>
-    </div> -->
 </footer>
 
 <script src="recursos/lib/jquery/dist/jquery.js"></script>
@@ -61,4 +58,3 @@ require_once('modelos/model_contactos.php');
 <script src="recursos/JS/faq.js"></script>
 
 <script src="recursos/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
