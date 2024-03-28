@@ -31,6 +31,7 @@ require_once("modelos/model_marcas.php");
     <link rel="stylesheet" type="text/css" href="recursos/css/sistemas.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/faq.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/detalleSistema.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/contactoFooter.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
