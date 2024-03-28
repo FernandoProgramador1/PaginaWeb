@@ -70,7 +70,7 @@ require_once("modelos/model_marcas.php");
                 </li>
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
                     <!-- Boton para el menu de admin -->
-                    <button class="btn nav-item admin-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog"></i> Menú Admin</button>
+                    <button class="btn nav-item admin-btn" style="position: relative; margin-left: 30px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog"></i> Menú Admin</button>
                     <!-- Fin del boton para el menu de admin -->
                 <?php endif; ?>
             </ul>
@@ -182,7 +182,7 @@ require_once("modelos/model_marcas.php");
                 <?php
                 if ($_SESSION != null) {
                     if ($_SESSION['loggedin'] == true) {
-                        echo '<li class="nav-item mt-5"><a class="nav-link admin-link admin-logout" href="cerrar.php">Cerrar Sesión</a></li>';
+                        echo '<li class="nav-item mt-3"><a class="nav-link admin-link admin-logout" href="cerrar.php">Cerrar Sesión</a></li>';
                     }
                 }
                 ?>
