@@ -10,7 +10,7 @@ require_once("modelos/model_valores.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Misión</title>
+    <title>Editar Valores</title>
 </head>
 
 <body class="mision-body">
