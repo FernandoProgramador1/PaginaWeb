@@ -1,155 +1,67 @@
-.sistemaDetalle-details,
-.sistemaDetalle-functions {
-    margin: 20px;
+/* Importación de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@300;700&display=swap');
+
+.detalleSis-body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f9;
+}
+
+.custom-container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background: linear-gradient(to bottom, #fff, #e6e9f0);
+    margin-top: 20px;
+}
+
+.custom-section {
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-.sistemaDetalle-details h2,
-.sistemaDetalle-functions h2 {
-    margin-bottom: 15px;
-    color: #333;
-    text-shadow: 1px 1px 0px #fff;
+.custom-section:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.sistemaDetalle-functions ul {
-    list-style-type: none;
+.detallesHeading {
+    font-family: 'Montserrat', sans-serif;
+    color: #123572;
+    margin-bottom: 10px;
+}
+
+.detalleList {
+    list-style: none;
     padding: 0;
 }
 
-.sistemaDetalle-functions ul li {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+.detalleList li {
     margin-bottom: 10px;
     padding: 10px;
+    background-color: #e9ecef;
     border-radius: 5px;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
 }
 
-.sistemaDetalle-functions ul li:last-child {
-    margin-bottom: 0;
+.detalleList li:hover {
+    background-color: #dde1e6;
 }
 
 @media (max-width: 768px) {
-    .sistemaDetalle-container {
-        width: 95%;
-        margin: 10px auto;
+    .custom-container {
         padding: 10px;
     }
 
-    .sistemaDetalle-details,
-    .sistemaDetalle-functions {
-        padding: 15px;
-    }
-
-    .sistemaDetalle-header {
-        padding: 20px 10px;
-    }
-}
-
-.sistemaDetalle-details,
-.sistemaDetalle-functions {
-    margin: 20px;
-    padding: 20px;
-    background: linear-gradient(to bottom, #fff, #e6e9f0);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.sistemaDetalle-details h2,
-.sistemaDetalle-functions h2 {
-    margin-bottom: 15px;
-    color: #333;
-    text-shadow: 1px 1px 0px #fff;
-}
-
-.sistemaDetalle-functions ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sistemaDetalle-functions ul li {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.sistemaDetalle-functions ul li:last-child {
-    margin-bottom: 0;
-}
-
-.sistemaDetalle-requirements,
-.sistemaDetalle-versionHistory,
-.sistemaDetalle-faq,
-.sistemaDetalle-testimonials,
-.sistemaDetalle-support,
-.sistemaDetalle-gallery {
-    margin: 20px;
-    padding: 20px;
-    background: linear-gradient(to bottom, #fff, #e9eff3);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.sistemaDetalle-requirements h2,
-.sistemaDetalle-versionHistory h2,
-.sistemaDetalle-faq h2,
-.sistemaDetalle-testimonials h2,
-.sistemaDetalle-support h2,
-.sistemaDetalle-gallery h2 {
-    margin-bottom: 15px;
-    color: #333;
-    text-shadow: 1px 1px 0px #fff;
-}
-
-.sistemaDetalle-faq ul,
-.sistemaDetalle-testimonials ul,
-.sistemaDetalle-gallery ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sistemaDetalle-faq ul li,
-.sistemaDetalle-testimonials ul li,
-.sistemaDetalle-gallery ul li {
-    background: #f4f4f4;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.sistemaDetalle-faq ul li:last-child,
-.sistemaDetalle-testimonials ul li:last-child,
-.sistemaDetalle-gallery ul li:last-child {
-    margin-bottom: 0;
-}
-
-@media (max-width: 768px) {
-    .sistemaDetalle-container {
-        width: 95%;
-        margin: 10px auto;
+    .custom-section {
         padding: 10px;
     }
 
-    .sistemaDetalle-details,
-    .sistemaDetalle-functions,
-    .sistemaDetalle-requirements,
-    .sistemaDetalle-versionHistory,
-    .sistemaDetalle-faq,
-    .sistemaDetalle-testimonials,
-    .sistemaDetalle-support,
-    .sistemaDetalle-gallery {
-        padding: 15px;
-    }
-
-    .sistemaDetalle-header {
-        padding: 20px 10px;
+    .detallesHeading {
+        font-size: 18px;
     }
 }
