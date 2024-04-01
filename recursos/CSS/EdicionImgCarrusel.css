@@ -46,12 +46,18 @@
     cursor: pointer;
     border-radius: 5px;
     font-size: 18px;
-    display: block;
-    width: 200px;
-    margin: 20px auto;
     text-align: center;
+    width: 100%;
+    max-width: 150px;
+    margin-top: 50px;
 }
 
 .btn-success-custom:hover {
     background: #36103B;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
