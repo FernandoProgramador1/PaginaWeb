@@ -23,7 +23,11 @@ require_once("modelos/model_carrusel.php");
             <div class="card edicionCarr-card">
                 <img id="muestra" src="" alt="Aqui se muestra la imagen seleccionada" class="img-thumbnail" style="max-width:400px; max-height:300px;" />
             </div>
-            <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
+            <div class="button-container">
+                <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
+                <a href="index.php?page=ImgCarrusel" class="btn btn-success btn-success-custom">Volver</a>
+            </div>
+
         </form>
     </div>
     <script>
