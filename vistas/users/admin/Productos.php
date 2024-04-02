@@ -17,67 +17,83 @@ if (isset($_GET['ins'])) {
     }
 }
 ?>
-<title>SSETCO | Agregar productos</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Productos</title>
+</head>
 
 
-<div class="container shadow p-5 justify-content-center bg-dark-subtle mt-4">
-
-    <!-- Titulo de la vista -->
-    <h1 class="text-center">Productos</h1>
-    <!-- Titulo de la vista -->
-    <!-- Boton del navbar lateral -->
-    <a class="btn btn-primary btn-lg d-relative m-4" href="index.php?page=EdicionProductos">
-        Agregar producto
-    </a>
-    <!-- Boton del navbar lateral -->
-
-    <div class="container mt-3 p-3 bg-white overflow-auto table-scroll rounded" style="max-height:600px;">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <?php
-            foreach ($dtproducto as $rows) :
-            ?>
+<body class="carrusel-body">
+    <div class="carruselImg-container container shadow justify-content-center bg-dark-subtle mt-4">
+        <h1 class="text-center carruselImg-heading">Productos</h1>
+        <a class="btn btn-primary btn-carruselImg btn-lg d-relative" href="index.php?page=EdicionProductos">Agregar Producto</a>
+        <div class="container mt-3 p-3 bg-white overflow-auto table-scroll rounded" style="max-height:600px;">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- Tarjeta 1 -->
                 <div class="col">
-                    <div class="card h-100">
-                        <img src="data:<?php echo $rows['MimeType'] ?>;base64,<?php echo (base64_encode($rows['Archivo'])) ?>" alt="" class="card-img-top" />
-                        <div class="card-body overflow-auto shadow">
-                            <h6><?php echo $rows['NombreProducto'] ?></h6>
-                            <p class="mt-2"><?php echo $rows['DetallesProducto'] ?></p>
-                            <p class="">Precio: <?php echo $rows['CantidadMedida'] ?></p>
-                            <?php
-                            foreach ($dtmarca as $marc) :
-                                if ($marc["IdMarca"] === $rows["IdMarca"]) {
-                            ?>
-                                    <p class="">Marca:<span class="text-muted"><?php echo $marc['Nombre'] ?></span></p>
-                            <?php
-                                }
-                            endforeach;
-                            ?>
-                            <?php
-                            foreach ($dttipoproducto as $tp) :
-                                if ($tp["IdTipoProducto"] === $rows["IdTipoProducto"]) {
-                            ?>
-                                    <p class="">Tipo de producto: <span class="text-muted"><?php echo $tp['DescripcionTipoProducto'] ?></span></p>
-                            <?php
-                                }
-                            endforeach;
-                            ?>
+                    <div class="card carruselImg-card h-100">
+                        <img src="https://via.placeholder.com/400x300" alt="Imagen Carrusel" class="card-img-top" />
+                        <div class="card-body card-body-bg">
                             <div class="d-inline-flex">
-                                <a href="index.php?page=EdicionProductos&IdProd=<?php echo $rows['IdProducto'] ?>" class="btn btn-success btn-sm">
+                                <a href="#" class="btn btn-success btn-success-bg btn-sm">
                                     Actualizar
                                 </a>
                             </div>
                             <div class="d-inline-flex">
-                                <a href="index.php?page=ProductosAdmin&IdProd=<?php echo $rows['IdProducto'] ?>&actionprod=delete" class="btn btn-danger btn-sm">
+                                <a href="#" class="btn btn-danger btn-danger-bg btn-sm">
                                     Eliminar
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php
-            endforeach;
-            ?>
+
+                <!-- Tarjeta 2 -->
+                <div class="col">
+                    <div class="card carruselImg-card h-100">
+                        <img src="https://via.placeholder.com/400x300" alt="Imagen Carrusel" class="card-img-top" />
+                        <div class="card-body card-body-bg">
+                            <div class="d-inline-flex">
+                                <a href="#" class="btn btn-success btn-success-bg btn-sm">
+                                    Actualizar
+                                </a>
+                            </div>
+                            <div class="d-inline-flex">
+                                <a href="#" class="btn btn-danger btn-danger-bg btn-sm">
+                                    Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="col">
+                    <div class="card carruselImg-card h-100">
+                        <img src="https://via.placeholder.com/400x300" alt="Imagen Carrusel" class="card-img-top" />
+                        <div class="card-body card-body-bg">
+                            <div class="d-inline-flex">
+                                <a href="#" class="btn btn-success btn-success-bg btn-sm">
+                                    Actualizar
+                                </a>
+                            </div>
+                            <div class="d-inline-flex">
+                                <a href="#" class="btn btn-danger btn-danger-bg btn-sm">
+                                    Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+</body>
+
+</html>
