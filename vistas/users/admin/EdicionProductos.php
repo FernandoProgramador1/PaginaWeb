@@ -4,143 +4,67 @@ require_once("modelos/model_marcas.php");
 require_once("modelos/model_tipoproducto.php");
 ?>
 
-<title>SSETCO | Edición de Productos</title>
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="container p-5 justify-content-center bg-dark-subtle mt-4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSETCO | Edición de Productos</title>
+</head>
 
-    <!-- Titulo de la vista -->
-    <h1 class="text-center">Edicion de productos</h1>
-    <!-- Titulo de la vista -->
-
-    <?php
-    if ((!empty($dtproductowhere)) && (isset($dtproductowhere))) {
-    ?>
+<body class="body-prod">
+    <div class="edicionProd-container container">
+        <h1 class="text-center edicionProd-heading">Edición de productos</h1>
         <form method="post" action="index.php?page=EdicionProductos&actionprod=update&IdProd=<?php echo $IdProd ?>" enctype="multipart/form-data">
-        <?php
-    } else {
-        ?>
-            <form method="post" action="index.php?page=EdicionProductos&actionprod=insert" enctype="multipart/form-data">
-                <?php
+            <div class="form-group form-group-custom">
+                <label for="Archivo">Imagen del Producto:</label>
+                <input id="Archivo" name="Archivo" class="form-control form-control-custom form-control-lg" type="file" onchange="myimg()" />
+                <img id="muestra" src="" alt="Imagen seleccionada" class="img-thumbnail img-thumbnailProd" />
+            </div>
+            <div class="form-group form-group-custom">
+                <label for="NombreProducto">Nombre del Producto:</label>
+                <input id="NombreProducto" name="NombreProducto" class="form-control form-control-custom" type="text" placeholder="Nombre del producto" required />
+            </div>
+            <div class="form-group form-group-custom">
+                <label for="DetallesProducto">Detalles del Producto:</label>
+                <input id="DetallesProducto" name="DetallesProducto" class="form-control form-control-custom" type="text" placeholder="Detalles del producto" required />
+            </div>
+            <div class="form-group form-group-custom">
+                <label for="CantidadMedida">Precio del Producto:</label>
+                <input id="CantidadMedida" name="CantidadMedida" class="form-control form-control-custom" type="text" placeholder="Precio del producto" required />
+            </div>
+            <div class="form-group form-group-custom">
+                <label for="IdMarca">Marca del Producto:</label>
+                <select id="IdMarca" name="IdMarca" class="form-select form-select-custom" required>
+                    <option selected disabled hidden>Seleccione una marca</option>
+                    <!-- Opciones de marca -->
+                </select>
+            </div>
+            <div class="form-group form-group-custom">
+                <label for="IdTipoProducto">Tipo de Producto:</label>
+                <select id="IdTipoProducto" name="IdTipoProducto" class="form-select form-select-custom" required>
+                    <option selected disabled hidden>Seleccione un tipo de producto</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
+                <a href="index.php?page=ProductosAdmin" class="btn btn-success btn-success-custom">Volver</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function myimg() {
+            var input = document.getElementById('Archivo');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('muestra').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
             }
+        }
+    </script>
+</body>
 
-            if (isset($dtproductowhere)) {
-                foreach ($dtproductowhere as $rows) :
-                ?>
-                    <div class="container-sm justify-content-center rounded-1 ms-auto me-auto p-2 bg-white">
-                        <div class="form form-group m-3">
-                            <input id="Archivo" name="Archivo" class="form-control form-control-lg" type="file" placeholder="Inserte una imagen de producto" onchange="myimg()" />
-                        </div>
-                        <div class="form-floating m-3">
-                            <input id="NombreProducto" name="NombreProducto" class="form-control" value="<?php echo $rows['NombreProducto'] ?>" type="text" placeholder="NombreProducto del producto" required />
-                            <label for="NombreProducto">Nombre del producto</label>
-                        </div>
-                        <div class="form-floating m-3">
-                            <input id="DetallesProducto" name="DetallesProducto" class="form-control" value="<?php echo $rows['DetallesProducto'] ?>" type="text" placeholder="DetallesProducto del producto" required />
-                            <label for="DetallesProducto">Detalles del producto</label>
-                        </div>
-                        <div class="form-floating m-3">
-                            <input id="CantidadMedida" name="CantidadMedida" class="form-control" value="<?php echo $rows['CantidadMedida'] ?>" type="text" placeholder="CantidadMedida del producto" required />
-                            <label for="CantidadMedida">Precio del producto</label>
-                        </div>
-                        <div class="form-floating m-3">
-                            <select id="IdMarca" name="IdMarca" class="form-select" value="<?php echo $rows['IdMarca'] ?>" type="text" placeholder="Marca del producto" required>
-                                <option selected disabled hidden>Seleccione una marca</option>
-                                <?php
-                                if (isset($dtmarca)) {
-                                    foreach ($dtmarca as $rowmarca) :
-                                ?>
-                                        <option value="<?php echo $rowmarca['IdMarca'] ?>"><?php echo $rowmarca['Nombre'] ?></option>
-                                <?php
-                                    endforeach;
-                                }
-                                ?>
-                            </select>
-                            <label for="IdMarca">Marca del producto</label>
-                        </div>
-                        <div class="form-floating m-3">
-                            <select id="IdTipoProducto" name="IdTipoProducto" class="form-select" value="<?php echo $rows['IdTipoProducto'] ?>" type="text" placeholder="Tipo de herramienta" required>
-                                <option selected disabled hidden>Seleccione un tipo de producto</option>
-                                <?php
-                                if (isset($dttipoproducto)) {
-                                    foreach ($dttipoproducto as $rowher) :
-                                ?>
-                                        <option value="<?php echo $rowher['IdTipoProducto'] ?>"><?php echo $rowher['DescripcionTipoProducto'] ?></option>
-                                <?php
-                                    endforeach;
-                                }
-                                ?>
-                            </select>
-                            <label for="IdTipoProducto">Tipo de producto</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 justify-content-center m-5 rounded-1 ms-1 me-4 bg-white">
-                        <div class=" img-thumbnail rounded ms-auto me-auto mt-auto mb-auto">
-                            <img id="muestra" src="" alt="Aqui se muestra la imagen seleccionada" style="max-width:400px;max-height:300px;" />
-                        </div>
-                    </div>
-                    <div class="container ms-auto me-auto mt-4">
-                        <button type="submit" class="btn btn-success btn-lg">Enviar</button>
-                    </div>
-                <?php
-                endforeach;
-            } else {
-                ?>
-                <div class="container-sm justify-content-center rounded-1 ms-auto me-auto p-2 bg-white">
-                    <div class="form form-group m-3">
-                        <input id="Archivo" name="Archivo" class="form-control form-control-lg" type="file" placeholder="Inserte una imagen de producto" onchange="myimg()" required />
-                    </div>
-                    <div class="form-floating m-3">
-                        <input id="NombreProducto" name="NombreProducto" class="form-control" type="text" placeholder="NombreProducto del producto" required />
-                        <label for="NombreProducto">Nombre del producto</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        <input id="DetallesProducto" name="DetallesProducto" class="form-control" type="text" placeholder="DetallesProducto del producto" required />
-                        <label for="DetallesProducto">Detalles del producto</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        <input id="CantidadMedida" name="CantidadMedida" class="form-control" type="text" placeholder="CantidadMedida del producto" />
-                        <label for="CantidadMedida">Precio del producto</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        <select id="IdMarca" name="IdMarca" class="form-select" type="text" placeholder="Marca del producto" required>
-                            <option selected disabled hidden>Seleccione una marca</option>
-                            <?php
-                            if (isset($dtmarca)) {
-                                foreach ($dtmarca as $rowmarca) :
-                            ?>
-                                    <option value="<?php echo $rowmarca['IdMarca'] ?>"><?php echo $rowmarca['Nombre'] ?></option>
-                            <?php
-                                endforeach;
-                            }
-                            ?>
-                        </select>
-                        <label for="IdMarca">Marca del producto</label>
-                    </div>
-                    <div class="form-floating m-3">
-                        <select id="IdTipoProducto" name="IdTipoProducto" class="form-select" type="text" placeholder="Tipo de herramienta" required>
-                            <option selected disabled hidden>Seleccione un tipo de producto</option>
-                            <?php
-                            if (isset($dttipoproducto)) {
-                                foreach ($dttipoproducto as $rowher) :
-                            ?>
-                                    <option value="<?php echo $rowher['IdTipoProducto'] ?>"><?php echo $rowher['DescripcionTipoProducto'] ?></option>
-                            <?php
-                                endforeach;
-                            }
-                            ?>
-                        </select>
-                        <label for="IdMarca">Tipo de producto</label>
-                    </div>
-                </div>
-                <div class="card border-0 justify-content-center m-5 rounded-1 ms-1 me-4 bg-white">
-                    <div class=" img-thumbnail rounded ms-auto me-auto mt-auto mb-auto">
-                        <img id="muestra" src="" alt="Aqui se muestra la imagen seleccionada" style="max-width:400px;max-height:300px;" />
-                    </div>
-                </div>
-                <div class="container ms-auto me-auto mt-4">
-                    <button type="submit" class="btn btn-success btn-lg">Enviar</button>
-                </div>
-            <?php
-            }
-            ?>
-</div>
+</html>
