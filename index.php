@@ -13,7 +13,7 @@ if ((!empty($_GET['page']))  ||  (isset($_GET['page']))) {
 if (!empty($_GET['p']) && is_numeric($_GET['p'])) {
     $currentPage = intval($_GET['p']);
 } else {
-    $currentPage = 1; // Página predeterminada
+    $currentPage = 1;
 }
 
 switch ($page) {
