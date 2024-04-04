@@ -36,6 +36,7 @@ require_once("modelos/model_marcas.php");
     <link rel="stylesheet" type="text/css" href="recursos/css/EdicionImgCarrusel.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/vmv.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/EdicionProd.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/TiposProductos.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
