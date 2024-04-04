@@ -2,72 +2,106 @@
 require_once("modelos/model_marcas.php");
 ?>
 
-<title>SSETCO | Editar Marcas</title>
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="container p-5 justify-content-center bg-dark-subtle mt-4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSETCO | Editar Marcas</title>
+    <style>
+        .EdicionMarcas-body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+        }
 
-    <!-- Titulo de la vista -->
-    <h1 class="text-center">Edicion de marcas</h1>
-    <!-- Titulo de la vista -->
+        .EdicionMarcas-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            width: 100%;
+            max-width: 850px;
+            margin-top: 50px;
+        }
 
-    <?php
-    if ((!empty($dtmarcawhere)) && (isset($dtmarcawhere))) {
-    ?>
+        .EdicionMarcas-heading {
+            color: #4A154B;
+            margin-bottom: 30px;
+        }
+
+        .form-group-EdicionMarcas {
+            margin: 20px 0;
+        }
+
+        .form-control-EdicionMarcas {
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #D3BCC0;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .btn-EdicionMarcas {
+            background: #4A154B;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            width: 200px;
+        }
+
+        .btn-EdicionMarcas:hover {
+            background: #36103B;
+        }
+
+        .img-thumbnail {
+            border: 2px solid #D3BCC0;
+            border-radius: 5px;
+            max-width: 400px;
+            max-height: 300px;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body class="EdicionMarcas-body">
+    <div class="container EdicionMarcas-container">
+        <h1 class="text-center EdicionMarcas-heading">Edición de marcas</h1>
+        <!-- Aquí comienza el formulario -->
         <form method="post" action="index.php?page=EdicionMarcas&actionmarc=update&IdM=<?php echo $IdM ?>" enctype="multipart/form-data">
-        <?php
-    } else {
-        ?>
-            <form method="post" action="index.php?page=EdicionMarcas&actionmarc=insert" enctype="multipart/form-data">
-                <?php
-            }
-
-            if (isset($dtmarcawhere)) {
-                foreach ($dtmarcawhere as $rows) :
-                ?>
-                    <div class="container-sm justify-content-center rounded-1 ms-auto me-auto p-2 bg-white">
-                        <!-- <h3 class="text-center"></h3> -->
-                        <div class="form form-group m-3">
-                            <input id="Archivo" name="Archivo" class="form-control form-control-lg" type="file" placeholder="Inserte el logo una marca" onchange="myimg()" />
-                        </div>
-                        <div class="form-floating m-3">
-                            <input id="Nombre" name="Nombre" class="form-control" value="<?php echo $rows['Nombre'] ?>" type="text" placeholder="Nombre de la marca" required />
-                            <label for="Nombre">Nombre de la marca</label>
-                        </div>
-                    </div>
-                    <div class="card border-0 justify-content-center m-5 rounded-1 ms-1 me-4 bg-white">
-                        <div class=" img-thumbnail rounded ms-auto me-auto mt-auto mb-auto">
-                            <img id="muestra" src="" alt="Aqui se muestra la imagen seleccionada" style="max-width:400px;max-height:300px;" />
-                        </div>
-                    </div>
-                    <div class="container ms-auto me-auto mt-4">
-                        <button type="submit" class="btn btn-success btn-lg">Enviar Marca/button>
-                    </div>
-                <?php
-                endforeach;
-            } else {
-                ?>
-                <div class="container-sm justify-content-center rounded-1 ms-auto me-auto p-2 bg-white">
-                    <!-- <h3 class="text-center"></h3> -->
-                    <div class="form form-group m-3">
-                        <input id="Archivo" name="Archivo" class="form-control form-control-lg" type="file" placeholder="Inserte el logo una marca" onchange="myimg()" required />
-                    </div>
-                    <div class="form-floating m-3">
-                        <input id="Nombre" name="Nombre" class="form-control" type="text" placeholder="Nombre de la marca" required />
-                        <label for="Nombre">Nombre de la marca</label>
-                    </div>
-                </div>
-                <div class="card border-0 justify-content-center m-5 rounded-1 ms-1 me-4 bg-white">
-                    <div class=" img-thumbnail rounded ms-auto me-auto mt-auto mb-auto">
-                        <img id="muestra" src="" alt="Aqui se muestra la imagen seleccionada" style="max-width:400px;max-height:300px;" />
-                    </div>
-                </div>
-
-                <div class="container ms-auto me-auto mt-4">
-                    <button type="submit" class="btn btn-success btn-lg">Enviar Marca</button>
-                </div>
-            <?php
-            }
-            ?>
-            </form>
+            <div class="form-group form-group-EdicionMarcas">
+                <input id="Archivo" name="Archivo" class="form-control form-control-EdicionMarcas form-control-lg" type="file" onchange="myimg()" required />
+                <img id="muestra" src="" alt="Imagen seleccionada" class="img-thumbnail" />
+            </div>
+            <div class="form-floating m-3">
+                <input id="Nombre" name="Nombre" class="form-control form-control-EdicionMarcas" type="text" placeholder="Nombre de la marca" required />
+                <label for="Nombre">Nombre de la marca</label>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
+                <a href="index.php?page=MarcasAdmin" class="btn btn-success btn-success-custom">Volver</a>
+            </div>
         </form>
-</div>
+    </div>
+    <script>
+        function myimg() {
+            var input = document.getElementById('Archivo');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('muestra').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>
