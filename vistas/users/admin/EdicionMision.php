@@ -1,6 +1,4 @@
-﻿<!-- Navbar lateral start-->
-
-<?php
+﻿<?php
 require_once("modelos/model_mision.php");
 
 ?>
