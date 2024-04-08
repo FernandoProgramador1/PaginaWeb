@@ -57,12 +57,17 @@
 .logoSistema-container {
     position: absolute;
     top: 20px;
-    right: 80px;
+    right: 20px;
 }
 
 .logoSistema {
     max-width: 100px;
     height: auto;
+}
+
+.texto-container {
+    margin-right: 120px;
+    /* Espacio a la derecha del contenedor del texto */
 }
 
 @media (max-width: 440px) {
@@ -79,5 +84,10 @@
 
     .custom-section p {
         text-align: center;
+    }
+
+    .texto-container {
+        margin-right: 0;
+        /* Eliminamos el margen derecho en dispositivos móviles */
     }
 }

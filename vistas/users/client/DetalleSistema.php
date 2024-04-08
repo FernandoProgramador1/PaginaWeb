@@ -15,11 +15,14 @@
 
     <div class="container custom-container">
         <section class="sistemaDetalle-details custom-section">
-            <h2 class="detallesHeading">Detalles</h2>
+
+            <div class="texto-container">
+                <h2 class="detallesHeading">Detalles</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, ex, aut autem earum quos laborum asperiores obcaecati qui ut incidunt, nulla iure odit. Reiciendis nobis modi animi aspernatur itaque ducimus!</p>
+            </div>
             <div class="logoSistema-container">
                 <img src="recursos\img\ASPEL-ICONO-VERT_COI-1.webp" alt="Logo del sistema" class="logoSistema">
             </div>
-            <p>Descripción del sistema...</p>
         </section>
 
         <section class="sistemaDetalle-functions custom-section">
