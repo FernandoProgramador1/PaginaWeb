@@ -14,6 +14,7 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 20px;
+    position: relative;
 }
 
 .custom-section {
@@ -23,6 +24,7 @@
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s ease-in-out;
+    position: relative;
 }
 
 .custom-section:hover {
@@ -52,16 +54,30 @@
     background-color: #dde1e6;
 }
 
-@media (max-width: 768px) {
-    .custom-container {
-        padding: 10px;
-    }
+.logoSistema-container {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+}
 
-    .custom-section {
-        padding: 10px;
+.logoSistema {
+    max-width: 100px;
+    height: auto;
+}
+
+@media (max-width: 440px) {
+    .logoSistema-container {
+        position: static;
+        margin-top: 10px;
+        justify-content: center;
+        display: flex;
     }
 
     .detallesHeading {
-        font-size: 18px;
+        text-align: center;
+    }
+
+    .custom-section p {
+        text-align: center;
     }
 }
