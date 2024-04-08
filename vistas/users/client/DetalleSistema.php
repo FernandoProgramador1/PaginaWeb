@@ -16,6 +16,9 @@
     <div class="container custom-container">
         <section class="sistemaDetalle-details custom-section">
             <h2 class="detallesHeading">Detalles</h2>
+            <div class="logoSistema-container">
+                <img src="recursos\img\ASPEL-ICONO-VERT_COI-1.webp" alt="Logo del sistema" class="logoSistema">
+            </div>
             <p>Descripción del sistema...</p>
         </section>
 
@@ -33,10 +36,10 @@
             <p>Detalles sobre los requisitos de hardware y software.</p>
         </section>
 
-        <section class="sistemaDetalle-versionHistory custom-section">
+        <!-- <section class="sistemaDetalle-versionHistory custom-section">
             <h2 class="detallesHeading">Historial de Versiones</h2>
             <p>Información sobre las actualizaciones y cambios recientes.</p>
-        </section>
+        </section> -->
 
         <section class="sistemaDetalle-faq custom-section">
             <h2 class="detallesHeading">Preguntas Frecuentes</h2>
@@ -47,7 +50,7 @@
             </ul>
         </section>
         <section class="sistemaDetalle-gallery custom-section">
-            <h2>Galería</h2>
+            <h2 class="detallesHeading">Galería</h2>
             <p>Capturas de pantalla y otras imágenes del software.</p>
         </section>
     </div>
