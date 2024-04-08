@@ -30,13 +30,14 @@ require_once("modelos/model_marcas.php");
     <link rel="stylesheet" type="text/css" href="recursos/css/contacto.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/sistemas.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/faq.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/detalleSistema.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/DetalleSistema.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/contactoFooter.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/ImgCarrusel.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/EdicionImgCarrusel.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/vmv.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/EdicionProd.css">
     <link rel="stylesheet" type="text/css" href="recursos/css/TiposProductos.css">
+    <link rel="stylesheet" type="text/css" href="recursos/css/EdicionMarcas.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
