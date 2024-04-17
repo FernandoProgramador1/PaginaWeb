@@ -10,7 +10,7 @@
 }
 
 @font-face {
-    font-family: MontserratCustom;
+    font-family: 'Montserrat Regular';
     src: url(../fonts/Montserrat/static/Montserrat-Regular.ttf);
 }
 
@@ -102,7 +102,7 @@
 }
 
 #vmv h2 {
-    font-family: MontserratCustom;
+    font-family: 'Montserrat Regular';
     font-weight: bold;
 }
 

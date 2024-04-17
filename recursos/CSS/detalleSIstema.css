@@ -1,9 +1,7 @@
 /* Importación de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@300;700&display=swap');
-
-.detalleSis-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f6f9;
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url(/recursos/fonts/Roboto/Roboto-Regular.ttf);
 }
 
 .custom-container {
@@ -32,7 +30,7 @@
 }
 
 .detallesHeading {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Regular', sans-serif;
     color: #123572;
     margin-bottom: 10px;
 }

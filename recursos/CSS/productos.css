@@ -1,9 +1,3 @@
-/* Estilos base */
-.prod-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-}
-
 /* Contenedor principal de productos */
 .productos-container {
     max-width: 1200px;
