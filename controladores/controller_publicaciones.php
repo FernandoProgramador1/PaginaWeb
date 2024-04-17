@@ -94,35 +94,6 @@ class Publicacion extends Conectar
         // return $row;
     }
 
-    public function getViewClave($Clave)
-    {
-        $sql = "SELECT * FROM {$this->view} WHERE Clave = '$Clave' ";
-        // echo $sql;
-        $result = $this->db->query($sql);
-        $this->field = array();
-        while ($row = $result->fetch_assoc()) {
-            $this->field[] = $row;
-        }
-        return $this->field;
-        // return $result;
-        // return $row;
-    }
-
-    public function getViewCount($Clave)
-    {
-        $sql = "SELECT COUNT(Clave) FROM {$this->view} WHERE Clave = '$Clave' ";
-        // echo $sql;
-        $result = $this->db->query($sql);
-        $count = mysqli_num_rows($result);
-        return ''.$count.'';
-        // while ($row = $result->fetch_assoc()) {
-        //     $this->field[] = $row;
-        // }
-        // return $this->field;
-        // return $result;
-        // return $row;
-    }
-
     public function getWhereview($value)
     {
         $this->id = $value;

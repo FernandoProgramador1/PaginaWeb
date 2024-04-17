@@ -198,12 +198,12 @@ class Conectar
 
         $tablas[] = [0 => "view_productos",
         1 => "Create View view_productos as
-            SELECT p.IdProducto, p.NombreProducto, p.Descripcion, p.IdArchivo, a1.Archivo, a1.MimeType
+            SELECT  p.IdProducto, p.NombreProducto, p.Descripcion, p.IdArchivo, a1.Archivo, a1.MimeType as Tipo
             FROM Productos as p
             LEFT JOIN
             Archivos as a1
             ON p.IdArchivo = a1.IdArchivo;"
-        ];
+            ];
 
         return $tablas;
     }

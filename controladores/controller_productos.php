@@ -46,6 +46,7 @@ class Productos extends Conectar
         $sql = "SELECT * FROM {$this->table}";
         //echo $sql;
         $result = $this->db->query($sql);
+        $this->field = array();
         while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
@@ -58,6 +59,7 @@ class Productos extends Conectar
         $sql = "SELECT * FROM {$this->table} WHERE {$this->pkey}={$this->id}";
         // echo $sql;
         $result = $this->db->query($sql);
+        $this->field = array();
         while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
@@ -69,6 +71,7 @@ class Productos extends Conectar
         $sql = "SELECT * FROM {$this->view}";
         // echo $sql;
         $result = $this->db->query($sql);
+        $this->field = array();
         while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
@@ -81,35 +84,41 @@ class Productos extends Conectar
         $sql = "SELECT * FROM {$this->view} WHERE {$this->pkey}={$this->id}";
 
         $result = $this->db->query($sql);
+        $this->field = array();
         while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
         return $this->field;
     }
 
-    public function insertProducto($name, $details, $cant, $file, $type, $marca, $tp)
+    public function insertProducto()
     {
         try {
             $this->col = implode(",", $this->column);
+            $this->val = implode(",", $this->values);
 
             // echo $this->col;
             // echo $this->val;
-            $sql = "INSERT INTO {$this->table} ({$this->pkey},{$this->col}) VALUE (NULL,'$name','$details','$cant','$file','$type','$marca','$tp')";
+            $sql = "INSERT INTO {$this->table} ({$this->pkey},{$this->col}) VALUE (NULL,{$this->val})";
             // echo $sql;
             $this->db->query($sql);
         } catch (Exception $e) {
             echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
         } finally {
-            echo '<script>location.replace("index.php?page=' . $_GET['page'] . '");</script>';
+            echo '<script>location.replace("index.php?page=ProductosAdmin");</script>';
         }
 
     }
 
-    public function updateProducto($value, $name, $details, $cant, $file, $type, $marca, $tp)
+    public function updateProducto($value)
     {
         try {
             $this->id = $value;     //ATRAPA EL ID QUE SE USARA PARA IDENTIFICAR CUAL SE CAMBIARA
-            $this->col = implode(",", $this->columsn);
+            
+            for ($i = 0; $i < count($this->column); $i++) {
+                if($this->values[$i] !== "NULL") $this->values[$i] = $this->column[$i] . "='" . $this->values[$i] . "'";
+                else unset($this->values[$i]);
+            }
 
             $this->val = implode(",", $this->values);
 
@@ -119,7 +128,7 @@ class Productos extends Conectar
         } catch (Exception $e) {
             echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
         } finally {
-            echo '<script>location.replace("index.php?page=' . $_GET['page'] . '");</script>';
+            echo '<script>location.replace("index.php?page=ProductosAdmin");</script>';
         }
     }
 
@@ -129,63 +138,6 @@ class Productos extends Conectar
         $this->id = $value;
         $sql = "DELETE FROM {$this->table} WHERE {$this->pkey}={$this->id}";
         $this->db->query($sql);
-    }
-}
-
-class ProductoModel extends Productos
-{
-
-    private $conArc;
-    public $lastidupd;
-    public $fidUpd;
-
-    public function __construct()
-    {
-        $conArc = new Publicidades();
-        $this->lstid = $conArc->lastId();
-    }
-
-    public function uploadFile($fname, $ftype, $fsize, $file)
-    {
-        // SUBIR ARCHIVOS
-        $dir_doc = "recursos/Archivos/";
-        $uploadOk = 1;
-
-        $dir_file = $dir_doc . basename($fname);   //  ATRAPA EL ARCHIVO
-        $typefile = strtolower(pathinfo($dir_file, PATHINFO_EXTENSION)); //  OBTIENE LA INFORMACION DEL ARCHIVO COMO: RUTA, NOMBRE Y EXTENSION
-
-        //  VERIFICA EL TAMAÑO DEL ARCHIVO
-        if ($fsize > 5000000) {
-            $uploadOk = 0;
-        }
-
-        //  MUEVE EL ARCHIVO AL SERVIDOR SOLO CUANDO TODOS LOS FILTROS ANTERIORES SEAN CORRECTOS
-        if ($uploadOk == 0) {
-            // $errorfile = 'Error en el tipo de archivo, deben ser "PNG, JPG ó JPEG"';
-            $errorfile = 0;
-            return $errorfile;
-        } else {
-
-            // $fch_r = date('Y-m-d');     //OBTIENE LA FECHA ACTUAL
-
-            $gestor = fopen($file, "r");
-            $content = fread($gestor, $fsize);
-            $dtarchivo = addslashes($content);
-            fclose($gestor);
-
-            return $dtarchivo;
-        }
-    }
-
-    public function comprobarType($type)
-    {
-        if ($type == 'image/jpg') {
-            $typeresult = ".jpg";
-            return $typeresult;
-        } else {
-            $typeresult = ".jpeg";
-            return $typeresult;
-        }
     }
 }
 

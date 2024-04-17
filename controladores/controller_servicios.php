@@ -114,7 +114,6 @@ class Servicios extends Conectar
     {
         try {
             $this->id = $value;     //ATRAPA EL ID QUE SE USARA PARA IDENTIFICAR CUAL SE CAMBIARA
-            // $this->col = implode(",",$this->columsn);
             for ($i = 0; $i < count($this->column); $i++) {
                 if($this->values[$i] !== "NULL") $this->values[$i] = $this->column[$i] . "='" . $this->values[$i] . "'";
                 else unset($this->values[$i]);

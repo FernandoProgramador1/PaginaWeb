@@ -57,7 +57,7 @@ if ((!empty($_GET['actionpub'])) && (isset($_GET['actionpub']))) {
         $publicacion->values[] = "'" . $_POST['IdServicio'] . "'";
         $publicacion->values[] = "'" . $_POST['IdSistema'] . "'";
  
-        if ($Idfile !== 0) {
+        if ($Idfile !== "NULL") {
             $servicio->values[] = $Idfile;
         } else {
             $publicacion->values[] = $IdArchivoPub;

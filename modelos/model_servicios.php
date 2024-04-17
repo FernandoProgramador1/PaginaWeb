@@ -55,7 +55,7 @@ if ((!empty($_GET['actionserv'])) && (isset($_GET['actionserv']))) {
         $servicio->values[] = "" . $_POST['Nombre'] . "";
         $servicio->values[] = "" . $_POST['Descripcion'] . "";
 
-        if($Idfile !== 0){
+        if($Idfile !== "NULL"){
             $servicio->values[] = $Idfile;
         }else{
             $servicio->values[] = $IdArchivoServ;
