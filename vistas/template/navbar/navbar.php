@@ -12,29 +12,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="recursos/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="recursos/CSS/login.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bootstrap -->
+
+    <!-- Referencia Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="recursos/CSS/productos.css" type="text/css">
-    <link rel="stylesheet" href="recursos/CSS/nav.css" type="text/css">
-    <link rel="stylesheet" href="recursos/CSS/home.css" type="text/css">
-    <link rel="stylesheet" href="recursos/CSS/nosotros.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/footer.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/contacto.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/sistemas.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/faq.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/DetalleSistema.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/contactoFooter.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/ImgCarrusel.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/EdicionImgCarrusel.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/vmv.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/EdicionProd.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/TiposProductos.css">
-    <link rel="stylesheet" type="text/css" href="recursos/css/EdicionMarcas.css">
+    <!-- Referencia Font Awesome -->
 
+    <!-- Hojas de Estilos CSS -->
+    <link rel="stylesheet" href="/recursos/CSS/General.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Contacto.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/ContactoFooter.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/DetalleSistema.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/EdicionImgCarrusel.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/EdicionMarcas.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/EdicionProd.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/FAQ.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Footer.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Home.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/ImgCarrusel.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Login.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Nav.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Nosotros.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Productos.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Servicios.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Sistemas.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/TiposProductos.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Vision-Mision-Valores.css">
+    <!-- Hojas de Estilos CSS -->
+
+    <!-- Referencia Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <!-- Referencia Sweet Alert -->
 </head>
 
 <body>
@@ -50,29 +61,29 @@
                     <div class="right"></div>
                 </div>
                 <li class="nav-item <?= !isset($_GET['page']) || $_GET['page'] == '' || !in_array($_GET['page'], ['Productos', 'Contacto', 'Nosotros', 'Sistemas', 'DetalleSistema', 'PreguntasFrecuentes']) ? 'active' : ''; ?>">
-                    <a class="nav-link" href="index.php?page="><i class="fa fa-home"></i>Inicio</a>
+                    <a class="nav-link" href="index.php?page="><i class="fa fa-home nav-icon"></i>Inicio</a>
                 </li>
                 <li class="nav-item <?= isset($_GET['page']) && $_GET['page'] == 'Productos' ? 'active' : ''; ?>">
-                    <a class="nav-link" href="index.php?page=Productos"><i class="fa fa-tag"></i>Productos</a>
+                    <a class="nav-link" href="index.php?page=Productos"><i class="fa fa-tag nav-icon"></i>Productos</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Contacto') echo 'active'; ?>">
-                    <a class="nav-link" href="index.php?page=Contacto"><i class="fa fa-envelope"></i>Contacto</a>
+                    <a class="nav-link" href="index.php?page=Contacto"><i class="fa fa-envelope nav-icon"></i>Contacto</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Nosotros') echo 'active'; ?>">
-                    <a class="nav-link" href="index.php?page=Nosotros"><i class="fa fa-users"></i>Nosotros</a>
+                    <a class="nav-link" href="index.php?page=Nosotros"><i class="fa fa-users nav-icon"></i>Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-cogs"></i>Servicios</a>
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-cogs nav-icon"></i>Servicios</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'Sistemas' || $_GET['page'] == 'DetalleSistema')) echo 'active'; ?>">
-                    <a class="nav-link" href="index.php?page=Sistemas"><i class="fa fa-desktop"></i>Sistemas</a>
+                    <a class="nav-link" href="index.php?page=Sistemas"><i class="fa fa-desktop nav-icon"></i>Sistemas</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'PreguntasFrecuentes') echo 'active'; ?>">
-                    <a class="nav-link" href="index.php?page=PreguntasFrecuentes"><i class="fas fa-question-circle"></i>Preguntas Frecuentes</a>
+                    <a class="nav-link" href="index.php?page=PreguntasFrecuentes"><i class="fas fa-question-circle nav-icon"></i>Preguntas Frecuentes</a>
                 </li>
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
                     <!-- Boton para el menu de admin -->
-                    <button class="btn nav-item admin-btn" style="position: relative; margin-left: 30px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog"></i> Menú Admin</button>
+                    <button id="navbarSupportedContent" class="btn nav-item admin-btn" style="margin-left: 30px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog nav-icon"></i> Menú Admin</button>
                     <!-- Fin del boton para el menu de admin -->
                 <?php endif; ?>
             </ul>
@@ -88,13 +99,13 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=InfoContacto">Edicion de contacto</a>
+                    <a class="nav-link admin-link" href="index.php?page=InfoContacto">Edicion de Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=ImgCarrusel">Edicion Imagenes del carrusel</a>
+                    <a class="nav-link admin-link" href="index.php?page=ImgCarrusel">Edicion de Imágenes del Carrusel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=Publicidades">Edicion Imagenes de publicidad</a>
+                    <a class="nav-link admin-link" href="index.php?page=Publicidades">Edicion de Imágenes de Publicidad</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=ProductosAdmin">Edicion de Productos</a>
@@ -106,11 +117,8 @@
                     <a class="nav-link admin-link" href="index.php?page=SistemasAdmin">Edicion de Sistemas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=TiposProductos">Edicion de tipos de productos</a>
+                    <a class="nav-link admin-link" href="index.php?page=TiposProductos">Edicion de Tipos de Productos</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=ContactosAdmin">Edicion de Contacto</a>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=NosotrosAdmin">Edicion de Nosotros</a>
                 </li>
