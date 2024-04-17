@@ -1,104 +1,140 @@
 <?php
 
-class Servicios extends Conectar {
+class Servicios extends Conectar
+{
     private $table;
     private $view;
     private $id;
     private $lastid;
     public $values = array();
 
-    public function __construct(){
+    public function __construct()
+    {
         $con = new Conectar();
         $this->db = $con->conexionBD();
         $this->field = array();
     }
 
-    public function lastId() {
+    public function lastId()
+    {
         $this->lastid = $this->db->insert_id;
         return $this->lastid;
     }
 
-    public function setView($v) {
+    public function setView($v)
+    {
         $this->view = $v;
     }
 
-    public function setTable($t)    {
+    public function setTable($t)
+    {
         $this->table = $t;
     }
 
-    public function setColumns($c)  {
+    public function setColumns($c)
+    {
         $this->column[] = $c;
     }
 
-    public function setKey($k)  {
+    public function setKey($k)
+    {
         $this->pkey = $k;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $sql = "SELECT * FROM {$this->table}";
 
         $result = $this->db->query($sql);
-        while($row = $result->fetch_assoc()) {
+        $this->field = array();
+        while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
         return $this->field;
     }
 
-    public function getWhere($value)  {
+    public function getWhere($value)
+    {
         $this->id = $value;
         $sql = "SELECT * FROM {$this->table} WHERE {$this->pkey}={$this->id}";
         // echo $sql;
         $result = $this->db->query($sql);
-        while($row = $result->fetch_assoc())   {
+        $this->field = array();
+        while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
         return $this->field;
     }
 
-    public function getView() {
+    public function getView()
+    {
         $sql = "SELECT * FROM {$this->view}";
 
         $result = $this->db->query($sql);
-        while($row = $result->fetch_assoc()) {
+        $this->field = array();
+        while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
         return $this->field;
     }
 
-    public function getWhereview($value)  {
+    public function getWhereview($value)
+    {
         $this->id = $value;
         $sql = "SELECT * FROM {$this->view} WHERE {$this->pkey}={$this->id}";
 
         $result = $this->db->query($sql);
-        while($row = $result->fetch_assoc())   {
+        $this->field = array();
+        while ($row = $result->fetch_assoc()) {
             $this->field[] = $row;
         }
         return $this->field;
     }
 
-    public function insertServicio($name,$desc) {
-        $this->col = implode(",",$this->column);
+    public function insertServicio()
+    {
+        try {
+            $this->col = implode(",", $this->column);
+            $this->val = implode(",", $this->values);
 
-        // echo $this->col;
-        // echo $this->val;
-        $sql = "INSERT INTO {$this->table} ({$this->pkey},{$this->col}) VALUE (NULL,'$name','$desc')";
-        // echo $sql;
-        $this->db->query($sql);
+            // echo $this->col;
+            // echo $this->val;
+            $sql = "INSERT INTO {$this->table} ({$this->pkey},{$this->col}) VALUE (NULL,{$this->val})";
+            // echo $sql;
+            $this->db->query($sql);
+        } catch (Exception $e) {
+            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
+        } finally {
+            echo '<script>location.replace("index.php?page=ServiciosAdmin");</script>';
+        }
+
     }
 
-    public function updateServicio($value,$name,$desc)  {
-        $this->id = $value;     //ATRAPA EL ID QUE SE USARA PARA IDENTIFICAR CUAL SE CAMBIARA
-        // $this->col = implode(",",$this->columsn);
-        $this->values[] = $this->column[0] ."='". $name ."'";
-        $this->values[] = $this->column[1] ."='". $desc ."'";
-        $this->val = implode(",",$this->values);
+    public function updateServicio($value)
+    {
+        try {
+            $this->id = $value;     //ATRAPA EL ID QUE SE USARA PARA IDENTIFICAR CUAL SE CAMBIARA
+            // $this->col = implode(",",$this->columsn);
+            for ($i = 0; $i < count($this->column); $i++) {
+                if($this->values[$i] !== "NULL") $this->values[$i] = $this->column[$i] . "='" . $this->values[$i] . "'";
+                else unset($this->values[$i]);
+            }
 
-        $sql = "UPDATE {$this->table} SET {$this->val} WHERE {$this->pkey}='{$this->id}'";
-        $this->db->query($sql);
+            $this->val = implode(",", $this->values);
+
+            $sql = "UPDATE {$this->table} SET {$this->val} WHERE {$this->pkey}='{$this->id}'";
+            $this->db->query($sql);
+        } catch (Exception $e) {
+            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
+        } finally {
+            echo '<script>location.replace("index.php?page=ServiciosAdmin");</script>';
+        }
+
     }
 
 
-    public function deleteServicio($value)  {
+    public function deleteServicio($value)
+    {
         $this->id = $value;
         $sql = "DELETE FROM {$this->table} WHERE {$this->pkey}={$this->id}";
         $this->db->query($sql);

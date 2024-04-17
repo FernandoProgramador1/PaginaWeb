@@ -2,53 +2,71 @@
 
 require_once("recursos/config/db.php");
 require_once("controladores/controller_servicios.php");
-require_once("modelos/model_evidencias.php");
+require_once("modelos/model_archivos.php");
 
 
 $servicio = new Servicios();
 $servicio->setTable("Servicios");
-$servicio->setView('');
+$servicio->setView('view_servicios');
 
 $servicio->setKey('IdServicio');
 
-$servicio->setColumns('Servicio');
+$servicio->setColumns('Nombre');
 $servicio->setColumns('Descripcion');
+$servicio->setColumns('IdArchivo');
 
-if ((!empty($_GET['IdS'])) && (isset($_GET['IdS']))) {
-    $IdS = $_GET['IdS'];
-    $dtserviciowhere = $servicio->getWhere($IdS);
+if ((!empty($_GET['IdServicio'])) && (isset($_GET['IdServicio']))) {
+    $IdServicio = $_GET['IdServicio'];
+    $dtserviciowhere = $servicio->getWhere($IdServicio);
+    $dtviewservicio = $servicio->getWhereview($IdServicio);
+} else if ((!empty($_POST['IdServicio'])) && (isset($_POST['IdServicio']))) {
+    $IdServicio = $_POST['IdServicio'];
+    $dtserviciowhere = $servicio->getWhere($IdServicio);
+    $dtviewservicio = $servicio->getWhereview($IdServicio);
 } else {
-    $IdS = null;
+    $IdServicio = null;
     $dtserviciowhere = null;
+    $dtviewservicio = null;
+    $dtservicio = $servicio->getAll();
+    $dtservview = $servicio->getView();
 }
 
-$dtservicio = $servicio->getAll();
 
 // DEFINE LA ACCION A REALIZAR: INSERT, UPDATE Y DELETE
 if ((!empty($_GET['actionserv'])) && (isset($_GET['actionserv']))) {
-    $action = $_GET['actionserv'];
+    $actionserv = $_GET['actionserv'];
 
-    if ($action === 'insert') {
+    if ($actionserv === 'insert') {
 
-        $service = "" . $_POST['Servicio'] . "";
-        $descript = "" . $_POST['Descripcion'] . "";
+        $servicio->values[] = "'" . $_POST['Nombre'] . "'";
+        $servicio->values[] = "'" . $_POST['Descripcion'] . "'";
+        $servicio->values[] = $Idfile;
 
-        $servicio->insertServicio($service, $descript);
+        $servicio->insertServicio();
 
         echo '<script>location.replace("index.php?page=ServiciosAdmin&ins=Ok");</script>';
 
-    } elseif ($action === 'update') {
+    } elseif ($actionserv === 'update') {
 
-        $service = "" . $_POST['Servicio'] . "";
-        $descript = "" . $_POST['Descripcion'] . "";
+        foreach ($dtserviciowhere as $rowid):
+            $IdArchivoServ = $rowid['IdArchivo'];
+        endforeach;
 
-        $servicio->updateServicio($IdS, $service, $descript);
+        $servicio->values[] = "" . $_POST['Nombre'] . "";
+        $servicio->values[] = "" . $_POST['Descripcion'] . "";
+
+        if($Idfile !== 0){
+            $servicio->values[] = $Idfile;
+        }else{
+            $servicio->values[] = $IdArchivoServ;
+        }
+
+        $servicio->updateServicio($IdServicio);
 
         echo '<script>location.replace("index.php?page=ServiciosAdmin&upd=Ok");</script>';
-    } elseif ($action === 'delete') {
-        $evidencia->deleteEvidenciaWhere($IdS);
-        $servicio->deleteServicio($IdS);
 
+    } elseif ($actionserv === 'delete') {
+        $servicio->deleteServicio($IdServicio);
         echo '<script>location.replace("index.php?page=ServiciosAdmin&del=Ok");</script>';
     }
 }

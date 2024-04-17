@@ -1,12 +1,6 @@
 <?php
-require_once('modelos/model_contactos.php');
-require_once("modelos/model_mision.php");
-require_once("modelos/model_vision.php");
-require_once("modelos/model_valores.php");
-require_once("modelos/model_quienessomos.php");
-require_once("modelos/model_carrusel.php");
-require_once("modelos/model_publicidad.php");
-require_once("modelos/model_marcas.php");
+// require_once('modelos/model_configuraciones.php');
+// require_once("modelos/model_sistemas.php");
 
 // require_once('modelos/model_publicaciones.php');
 ?>
@@ -93,85 +87,9 @@ require_once("modelos/model_marcas.php");
         </div>
         <div class="offcanvas-body">
             <ul class="navbar-nav me-auto">
-                <?php
-                if ((!empty($dtcontactos)) && (isset($dtcontactos))) {
-                    $cc = 0;
-                    foreach ($dtcontactos as $contac) :
-                        if ($cc == 0) {
-                            if ((!empty($contac['IdContacto'])) && (isset($contac['IdContacto']))) {
-                                echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=InfoContacto&IdC=' . $contac["IdContacto"] . '">Información de contacto</a></li>';
-                            } else {
-                                echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=InfoContacto">Información de contacto</a></li>';
-                            }
-                        }
-                        $cc++;
-                    endforeach;
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=InfoContacto">Información de contacto</a></li>';
-                }
-                ?>
-                <?php
-                if ((!empty($dtmision)) && (isset($dtmision))) {
-                    $cc = 0;
-                    foreach ($dtmision as $mis) :
-                        if ($cc == 0) {
-                ?>
-                            <li class="nav-item"><a class="nav-link" href="index.php?page=EdicionMision&IdMi=<?php echo $mis["IdMision"] ?>">Edicion de Mision</a></li>
-                <?php
-                        }
-                        $cc++;
-                    endforeach;
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionMision">Edicion de Mision</a></li>';
-                }
-                ?>
-                <?php
-                if ((!empty($dtvision)) && (isset($dtvision))) {
-                    $cc = 0;
-                    foreach ($dtvision as $vis) :
-                        if ($cc == 0) {
-                ?>
-                            <li class="nav-item"><a class="nav-link" href="index.php?page=EdicionVision&IdVi=<?php echo $vis["IdVision"] ?>">Edicion de Vision</a></li>
-                <?php
-                        }
-                        $cc++;
-                    endforeach;
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionVision">Edicion de Vision</a></li>';
-                }
-                ?>
-
-                <?php
-                if ((!empty($dtvalores)) && (isset($dtvalores))) {
-                    $cc = 0;
-                    foreach ($dtvalores as $val) :
-                        if ($cc == 0) {
-                ?>
-                            <li class="nav-item"><a class="nav-link" href="index.php?page=EdicionValores&IdVa=<?php echo $val["IdValores"] ?>">Edicion de Valores</a></li>
-                <?php
-                        }
-                        $cc++;
-                    endforeach;
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionValores">Edicion de Valores</a></li>';
-                }
-                ?>
-
-                <?php
-                if ((!empty($dtqsomos)) && (isset($dtqsomos))) {
-                    $cc = 0;
-                    foreach ($dtqsomos as $qs) :
-                        if ($cc == 0) {
-                ?>
-                            <li class="nav-item"><a class="nav-link" href="index.php?page=EdicionQuienesSomos&IdQ=<?php echo $qs["IdQuienes"] ?>">Edicion de ¿Quienes Somos?</a></li>
-                <?php
-                        }
-                        $cc++;
-                    endforeach;
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link admin-link" href="index.php?page=EdicionQuienesSomos">Edicion de ¿Quienes Somos?</a></li>';
-                }
-                ?>
+                <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=InfoContacto">Edicion de contacto</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=ImgCarrusel">Edicion Imagenes del carrusel</a>
                 </li>
@@ -182,11 +100,21 @@ require_once("modelos/model_marcas.php");
                     <a class="nav-link admin-link" href="index.php?page=ProductosAdmin">Edicion de Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=MarcasAdmin">Edicion de Marcas</a>
+                    <a class="nav-link admin-link" href="index.php?page=ServiciosAdmin">Edicion de Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=SistemasAdmin">Edicion de Sistemas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=TiposProductos">Edicion de tipos de productos</a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=ContactosAdmin">Edicion de Contacto</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=NosotrosAdmin">Edicion de Nosotros</a>
+                </li>
+
                 <?php
                 if ($_SESSION != null) {
                     if ($_SESSION['loggedin'] == true) {

@@ -1,7 +1,7 @@
 <?php
-require_once("modelos/model_productos.php");
-require_once("modelos/model_tipoproducto.php");
-require_once("modelos/model_marcas.php");
+require_once("modelos/model_servicios.php");
+// require_once("modelos/model_tipoproducto.php");
+// require_once("modelos/model_marcas.php");
 
 $productsPerPage = 12; // Número de productos por página
 

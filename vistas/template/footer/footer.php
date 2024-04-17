@@ -1,5 +1,5 @@
 <?php
-require_once('modelos/model_contactos.php');
+require_once('modelos/model_configuraciones.php');
 ?>
 
 <footer class="footer footer-fondo">

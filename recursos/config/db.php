@@ -1,16 +1,23 @@
 <?php
 
-class Conectar {
+class Conectar
+{
 
-    public  $conexion;
+    public $conexion;
     private $host = "localhost";    //------    ESTA LINEA DEINE EL SERVIDOR  -------//
     private $user = "root";         //------    ESTA LINEA DEINE EL USUARIO  -------//
     private $pass = "";             //------    ESTA LINEA DEINE LA CONTRASEÑA  -------//
-    private $dbname   = "SSetco";   //------    ESTA LINEA DEINE LA BASE DATOS  -------//
+    private $dbname = "PaginaWeb";   //------    ESTA LINEA DEINE LA BASE DATOS  -------//
 
-    public function conexionBD() {
+    public function conexionBD()
+    {
+        $this->comprobarBD();
 
         $conexion = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+
+        $tablas = $this->obtenerTablas($conexion);
+        $this->comprobarTablas($tablas, $conexion);
+        $this->comprobarAdmin($conexion);
         // if($conexion->connect_error){
         //     echo "Error en la conexion:" . $conexion->connect_errno . ":" . $conexion->connect_error;
         // } else {
@@ -18,6 +25,187 @@ class Conectar {
         // }
 
         return $conexion;
+    }
+
+    public function cerrarConexion(){
+        $this->conexion->close();
+    }
+
+    public function comprobarBD()
+    {
+        $Test = new mysqli($this->host, $this->user, $this->pass, "information_schema");
+        $Existe = $Test->query(
+            "SELECT SCHEMA_NAME
+                FROM INFORMATION_SCHEMA.SCHEMATA
+            WHERE SCHEMA_NAME = '" . $this->dbname . "'"
+        );
+
+        if ($Existe->num_rows == 0) {
+            $Test->query("SET GLOBAL  max_allowed_packet=100*1024*1024;");
+            $Test->query("Create Database If Not Exists " . $this->dbname . ";");
+        }
+        // $Test->query("use " . $this->dbname . ";");
+    }
+
+    public function obtenerTablas($conection)
+    {
+        $result = $conection->query("show tables");
+        $this->field = array();
+        while($row = $result->fetch_assoc()) {
+            $this->field[] = $row;
+        }
+        return $this->field;
+    }
+
+    public function comprobarTablas($tExistentes, $conection)
+    {
+        $Tablas = $this->Tablas();
+        $exist = array();
+        for($j = 0; $j < count($tExistentes); $j++){
+            $exist[] = $tExistentes[$j]["Tables_in_paginaweb"];
+        }
+
+        for($i = 0; $i < count($Tablas); $i++){
+            $tab = strtolower($Tablas[$i][0]);
+            $exs = in_array(strtolower($Tablas[$i][0]),$exist);
+            if(!in_array(strtolower($Tablas[$i][0]),$exist)){
+                $conection->query($Tablas[$i][1]);
+            }
+        }
+        $exist = array();
+    }
+
+    public function comprobarAdmin($conection){
+        $Perfil = $conection->query("SELECT * FROM Roles WHERE Rol = 'Admin';");
+        $Usuario = $conection->query("SELECT * FROM Usuarios WHERE Nombre = 'AdminWeb' AND Contra = 'AdminWeb2024';");
+
+        if($Perfil->num_rows == 0) $conection->query("INSERT INTO Roles(IdRol,Rol) VALUES(NULL,'Admin');");
+        if($Usuario->num_rows == 0) $conection->query("INSERT INTO Usuarios(IdUsuario,Nombre,Correo,Contra,IdRol) VALUES(NULL,'AdminWeb', '','AdminWeb2024', '1');");
+    }
+    public function Tablas(){
+        $tablas = array();
+        $tablas[] = [0 => "Archivos",
+            1 => "Create Table Archivos (
+            IdArchivo    int(10) NOT NULL AUTO_INCREMENT,
+            Archivo longblob NOT NULL,
+            MimeType varchar(50) NOT NULL,
+            PRIMARY KEY (IdArchivo)
+        );"];
+
+        $tablas[] = [0 => "Servicios",
+            1 => "Create Table Servicios (
+            IdServicio     int(10) NOT NULL AUTO_INCREMENT, 
+            Nombre      varchar(250) NOT NULL,
+            Descripcion varchar(500) NOT NULL,
+            IdArchivo int(10),
+            PRIMARY KEY (IdServicio),
+            CONSTRAINT fk_Servicios_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
+        );"];
+
+        $tablas[] = [0 => "Sistemas",
+            1 => "Create Table Sistemas(
+            IdSistema int(10) NOT NULL AUTO_INCREMENT,
+            Nombre varchar(150) NOT NULL,
+            Descripcion varchar(350) NOT NULL,
+            IdArchivo int(10),
+            PRIMARY KEY (IdSistema),
+            CONSTRAINT fk_Sistemas_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
+        );"];
+
+        $tablas[] = [0 => "Publicaciones",
+        1 => "Create Table Publicaciones (
+            IdPublicacion    int(10) NOT NULL AUTO_INCREMENT,
+            CampoKey    varchar(100) NOT NULL,
+            Titulo      varchar(300),
+            Descripcion LONGTEXT,
+            IdServicio int(10),
+            IdSistema int(10),
+            IdArchivo int(10),
+            PRIMARY KEY (IdPublicacion),
+            CONSTRAINT fk_Publicaciones_Sistemas FOREIGN KEY (IdSistema) REFERENCES Sistemas(IdSistema),
+            CONSTRAINT fk_Publicaciones_Servicios FOREIGN KEY (IdServicio) REFERENCES Servicios(IdServicio),
+            CONSTRAINT fk_Publicaciones_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
+        );"];
+
+        $tablas[] = [0 => "Roles",
+        1 => "Create Table Roles(
+            IdRol   int(10) NOT NULL AUTO_INCREMENT,
+            Rol     varchar(50) NOT NULL,
+            PRIMARY KEY (IdRol)
+        );"];
+
+        $tablas[] = [0 => "Configuraciones",
+        1 => "Create Table Configuraciones(
+            CampoKey  varchar(100) NOT NULL,
+            Descripcion LONGTEXT NOT NULL
+        );"];
+
+        $tablas[] = [0 => "Usuarios",
+        1 => "Create Table Usuarios(
+            IdUsuario   int(10) NOT NULL AUTO_INCREMENT,
+            Nombre      varchar(50) NOT NULL,
+            Correo      varchar(150) NOT NULL,
+            Contra      varchar(20) NOT NULL,
+            IdRol       int(10) NOT NULL,
+            PRIMARY KEY (IdUsuario),
+            CONSTRAINT fk_Usuarios_Roles FOREIGN KEY (IdRol) REFERENCES Roles(IdRol)
+        );"];
+
+        $tablas[] = [0 => "Preguntas",
+        1 => "Create Table Preguntas(
+            IdPregunta  int(10) NOT NULL AUTO_INCREMENT,
+            Pregunta    varchar(150) NOT NULL,
+            Respuesta   LONGTEXT NOT NULL,
+            IdRelacion  int(10),
+            IdTipoRelacion  int(10),
+            PRIMARY KEY (IdPregunta)
+        );"];
+
+        $tablas[] = [0 => "Productos",
+        1 => "Create Table Productos(
+            IdProducto  int(10) NOT NULL AUTO_INCREMENT,
+            NombreProducto  varchar(150) NOT NULL,
+            Descripcion     LONGTEXT NOT NULL,
+            IdArchivo int(10),
+            PRIMARY KEY (IdProducto),
+            CONSTRAINT fk_Productos_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
+        );"];
+
+        $tablas[] = [0 => "view_servicios",
+        1 => "Create View view_servicios as
+            SELECT s.IdServicio, s.Nombre as NombreServicio, s.Descripcion, s.IdArchivo, a.Archivo, a.MimeType as Tipo
+            FROM Servicios as s
+            LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;"];
+
+        $tablas[] = [0 => "view_sistemas",
+        1 => "Create View view_sistemas as
+            SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, a.Archivo, a.MimeType as Tipo
+            FROM Sistemas as s
+            LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;"];
+
+        $tablas[] = [0 => "view_Publicaciones",
+        1 => "Create View view_Publicaciones as
+            SELECT p.IdPublicacion, p.CampoKey as Clave, p.Descripcion as DescripcionPublicacion, 
+            a.MimeType as TipoArchivoPub, a.Archivo as ArchivoPub, p.IdArchivo, P.Titulo,
+            s1.Nombre as NombreServicio, a1.Archivo as ArchivoServicio, a1.MimeType as TipoArchivoServicio,
+            s2.Nombre as NombreSistema, a2.Archivo as ArchivoSistema, a2.MimeType as TipoArchivoSistema
+            FROM Publicaciones as p
+            LEFT JOIN Servicios as s1 ON p.IdServicio = s1.IdServicio
+            LEFT JOIN Archivos as a1 ON s1.IdArchivo = a1.IdArchivo
+            LEFT JOIN Sistemas as s2 ON p.IdSistema = s2.IdSistema
+            LEFT JOIN Archivos as a2 ON s2.IdArchivo = a2.IdArchivo
+            LEFT JOIN Archivos as a ON p.IdArchivo = a.IdArchivo;"];
+
+        $tablas[] = [0 => "view_productos",
+        1 => "Create View view_productos as
+            SELECT p.IdProducto, p.NombreProducto, p.Descripcion, p.IdArchivo, a1.Archivo, a1.MimeType
+            FROM Productos as p
+            LEFT JOIN
+            Archivos as a1
+            ON p.IdArchivo = a1.IdArchivo;"
+        ];
+
+        return $tablas;
     }
 }
 

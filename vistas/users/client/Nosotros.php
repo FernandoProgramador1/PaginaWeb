@@ -1,8 +1,8 @@
 <?php
-require_once("modelos/model_mision.php");
-require_once("modelos/model_vision.php");
-require_once("modelos/model_valores.php");
-require_once("modelos/model_quienessomos.php");
+// require_once("modelos/model_mision.php");
+// require_once("modelos/model_vision.php");
+// require_once("modelos/model_valores.php");
+// require_once("modelos/model_quienessomos.php");
 ?>
 
 
