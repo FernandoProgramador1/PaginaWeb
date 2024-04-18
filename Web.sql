@@ -108,7 +108,7 @@ LEFT JOIN Archivos as a2 ON s2.IdArchivo = a2.IdArchivo
 LEFT JOIN Archivos as a ON p.IdArchivo = a.IdArchivo;
 
 Create View view_productos as
-SELECT  p.IdProducto, p.NombreProducto, p.Descripcion, p.IdArchivo, a1.Archivo, a1.MimeType
+SELECT  p.IdProducto, p.NombreProducto, p.Descripcion, p.IdArchivo, a1.Archivo, a1.MimeType as Tipo
 FROM Productos as p
 LEFT JOIN
 Archivos as a1

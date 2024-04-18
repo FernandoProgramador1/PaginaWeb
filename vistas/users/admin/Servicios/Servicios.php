@@ -39,7 +39,7 @@ if (isset($_GET['ins'])) {
             ?>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="data:<?php echo $rows['Tipo'] ?>;base64,<?php echo (base64_encode($rows['Archivo'])) ?>" alt="" class="card-img-top" />
+                        <img src="data:<?php echo $rows['Tipo'] ?>;base64,<?php echo (base64_encode($rows['Archivo'])) ?>" alt="<?php echo $rows['Descripcion'] ?>" class="card-img-top" />
                         <div class="card-body overflow-auto shadow">
                             <h5 class="card-title"><?php echo $rows['NombreServicio'] ?></h5>
                             <div class="d-inline-flex">

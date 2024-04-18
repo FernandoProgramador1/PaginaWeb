@@ -55,7 +55,7 @@ if ((!empty($_GET['actionsist'])) && (isset($_GET['actionsist']))) {
         $sistema->values[] = "" . $_POST['Nombre'] . "";
         $sistema->values[] = "" . $_POST['Descripcion'] . "";
 
-        if($Idfile !== 0){
+        if($Idfile !== "NULL"){
             $sistema->values[] = $Idfile;
         }else{
             $sistema->values[] = $Idfile;
