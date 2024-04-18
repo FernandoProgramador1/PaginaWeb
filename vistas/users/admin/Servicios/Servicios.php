@@ -18,46 +18,43 @@ if (isset($_GET['ins'])) {
 
 ?>
 
-<title>SSETCO | Servicios</title>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Navbar lateral end-->
+<head>
+    <meta charset="UTF-8">
+    <title>Web | Servicios</title>
+</head>
 
-<div class="container shadow p-5 justify-content-center bg-dark-subtle mt-4">
+<body>
+    <div class="carruselImg-container container shadow justify-content-center bg-dark-subtle mt-4">
+        <h1 class="text-center carruselImg-heading">Servicios</h1>
 
-    <!-- Titulo de la vista -->
-    <h1 class="text-center">Servicios</h1>
-    <!-- Titulo de la vista -->
+        <a href="index.php?page=EdicionServicios" class="btn btn-primary service-btn btn-carruselImg btn-lg d-relative">
+            Agregar un nuevo servicio
+        </a>
 
-    <a href="index.php?page=EdicionServicios" class="btn btn-success btn-lg ms-5">
-        Agregar una nueva servicio
-    </a>
-
-    <div class="container mt-3 p-3 bg-white overflow-auto table-scroll rounded" style="max-height:600px;">
-        <div class="row row-cols-1 row-cols-md-5 g-4">
-            <?php
-            foreach ($dtservview as $rows) :
-            ?>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="data:<?php echo $rows['Tipo'] ?>;base64,<?php echo (base64_encode($rows['Archivo'])) ?>" alt="<?php echo $rows['Descripcion'] ?>" class="card-img-top" />
-                        <div class="card-body overflow-auto shadow">
-                            <h5 class="card-title"><?php echo $rows['NombreServicio'] ?></h5>
-                            <div class="d-inline-flex">
-                                <a href="index.php?page=EdicionServicios&IdServicio=<?php echo $rows['IdServicio'] ?>" class="btn btn-success btn-sm">
-                                    Actualizar
-                                </a>
-                            </div>
-                            <div class="d-inline-flex">
-                                <a href="index.php?page=ServiciosAdmin&IdServicio=<?php echo $rows['IdServicio'] ?>&actionserv=delete" class="btn btn-danger btn-sm">
-                                    Eliminar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php
-            endforeach;
-            ?>
+        <div class="container mt-3 p-3 bg-white overflow-auto table-scroll rounded" style="max-height:600px;">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <?php
+                foreach ($dtservview as $rows) {
+                    echo '<div class="col">';
+                    echo '<div class="card service-card carruselImg-card h-100">';
+                    echo '<img src="data:' . $rows['Tipo'] . ';base64,' . base64_encode($rows['Archivo']) . '" alt="' . $rows['Descripcion'] . '" class="card-img-top service-card-img-top" />';
+                    echo '<div class="card-body card-body-bg service-card-body">';
+                    echo '<h5 class="card-title service-card-title">' . $rows['NombreServicio'] . '</h5>';
+                    echo '<div class="button-container service-button-container">';
+                    echo '<a href="index.php?page=EdicionServicios&IdServicio=' . $rows['IdServicio'] . '" class="btn service-btn btn-success btn-success-bg btn-sm">Actualizar</a>';
+                    echo '<a href="index.php?page=ServiciosAdmin&IdServicio=' . $rows['IdServicio'] . '&actionserv=delete" class="btn service-btn btn-danger btn-danger-bg btn-sm">Eliminar</a>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+</html>
