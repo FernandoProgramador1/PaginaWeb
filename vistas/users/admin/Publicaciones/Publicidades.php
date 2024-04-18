@@ -22,10 +22,10 @@ if (isset($_GET['ins'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imágenes de Publicidad</title>
+    <title>Web | Imágenes de Publicidad</title>
 </head>
 
-<body class="carrusel-body">
+<body>
 
     <div class="carruselImg-container container shadow justify-content-center bg-dark-subtle mt-4">
         <h1 class="text-center carruselImg-heading">Imágenes de Publicidad</h1>

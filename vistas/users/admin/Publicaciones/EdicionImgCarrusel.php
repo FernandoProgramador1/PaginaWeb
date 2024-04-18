@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edición Imagen del Carrusel</title>
+    <title>Web | Edición Imagen del Carrusel</title>
 </head>
 
 <body>
@@ -24,8 +24,8 @@
                 <img id="muestra" src="" alt="Aqui se muestra la imagen seleccionada" class="img-thumbnail" style="max-width:400px; max-height:300px;" />
             </div>
             <div class="button-container">
-                <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
-                <a href="index.php?page=ImgCarrusel" class="btn btn-success btn-success-custom">Volver</a>
+                <button type="submit" class="btn btn-primary btn-success-custom">Enviar</button>
+                <a href="index.php?page=ImgCarrusel" class="btn btn-primary btn-success-custom">Volver</a>
             </div>
 
         </form>

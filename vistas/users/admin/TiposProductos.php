@@ -24,7 +24,7 @@ if (isset($_GET['ins'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Productos</title>
+    <title>Web | Tipos de Productos</title>
 </head>
 
 <body class="TiposProductos-body">

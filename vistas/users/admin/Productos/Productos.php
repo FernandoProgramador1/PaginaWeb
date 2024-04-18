@@ -24,11 +24,11 @@ if (isset($_GET['ins'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Productos</title>
+    <title>Web | Agregar Productos</title>
 </head>
 
 
-<body class="carrusel-body">
+<body>
     <div class="carruselImg-container container shadow justify-content-center bg-dark-subtle mt-4">
         <h1 class="text-center carruselImg-heading">Productos</h1>
         <a class="btn btn-primary btn-carruselImg btn-lg d-relative" href="index.php?page=EdicionProductos">Agregar

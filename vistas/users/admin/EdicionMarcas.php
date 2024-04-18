@@ -8,7 +8,7 @@ require_once("modelos/model_marcas.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Marcas</title>
+    <title>Web | Editar Marcas</title>
 </head>
 
 <body class="EdicionMarcas-body">

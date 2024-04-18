@@ -11,7 +11,7 @@ require_once ("modelos/model_productos.php");
     <title>Web | Edición de Productos</title>
 </head>
 
-<body class="body-prod">
+<body>
     <div class="edicionProd-container container">
         <h1 class="text-center edicionProd-heading">Edición de productos</h1>
 
