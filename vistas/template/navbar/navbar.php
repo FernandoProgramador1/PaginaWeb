@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="/recursos/CSS/TiposProductos.css">
     <link rel="stylesheet" type="text/css" href="/recursos/CSS/Vision-Mision-Valores.css">
     <link rel="stylesheet" type="text/css" href="/recursos/CSS/NosotrosAdmin.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/PreguntasFrecuentesAdmin.css">
     <!-- Hojas de Estilos CSS -->
 
     <!-- Referencia Sweet Alert -->
@@ -123,7 +124,9 @@
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=NosotrosAdmin">Edicion de Nosotros</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=PreguntasFrecuentes">Edicion Preguntas Frecuentes</a>
+                </li>
                 <?php
                 if ($_SESSION != null) {
                     if ($_SESSION['loggedin'] == true) {
