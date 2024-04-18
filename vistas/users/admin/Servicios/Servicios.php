@@ -29,7 +29,6 @@ if (isset($_GET['ins'])) {
 <body>
     <div class="carruselImg-container container shadow justify-content-center bg-dark-subtle mt-4">
         <h1 class="text-center carruselImg-heading">Servicios</h1>
-
         <a href="index.php?page=EdicionServicios" class="btn btn-primary service-btn btn-carruselImg btn-lg d-relative">
             Agregar un nuevo servicio
         </a>

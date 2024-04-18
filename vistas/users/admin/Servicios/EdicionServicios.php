@@ -46,11 +46,13 @@ require_once("modelos/model_servicios.php");
             <div class="form-group form-group-custom">
                 <input id="Archivo" name="Archivo" class="form-control form-control-custom form-control-lg" type="file" onchange="myimg()" />
             </div>
-            <div class="form-group form-group-custom">
+            <div class="form-floating form-group-custom">
                 <input id="Nombre" name="Nombre" class="form-control form-control-custom" value="<?php echo $Nombre ?>" type="text" placeholder="Nombre del servicio" required />
+                <label for="Nombre">Nombre del servicio</label>
             </div>
-            <div class="form-group form-group-custom">
-                <textarea id="Descripcion" name="Descripcion" class="form-control form-control-custom" rows="4" placeholder="Inserte la descripción del servicio"><?php echo $Descripcion ?></textarea>
+            <div class="form-floating form-group form-group-custom">
+                <textarea id="Descripcion" name="Descripcion" class="form-control form-control-custom" rows="5" placeholder="Inserte la descripción del servicio" style="resize: none; min-height: 90px"><?php echo $Descripcion ?></textarea>
+                <label for="Nombre">Inserte la descripción del servicio</label>
             </div>
 
             <div style="display: none;">

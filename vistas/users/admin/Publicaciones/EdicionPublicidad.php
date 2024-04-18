@@ -1,9 +1,9 @@
 ﻿<!-- Navbar lateral start-->
 
 <?php
-require_once ("modelos/model_publicaciones.php");
-require_once ("modelos/model_sistemas.php");
-require_once ("modelos/model_servicios.php");
+require_once("modelos/model_publicaciones.php");
+require_once("modelos/model_sistemas.php");
+require_once("modelos/model_servicios.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ require_once ("modelos/model_servicios.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Imágen de Publicidad</title>
+    <title>Web | Agregar Imágen de Publicidad</title>
 </head>
 
 <body>
-    <div class="container edicionCarr-container">
+    <div class="container edicionProd-container">
         <?php
         $Id = "";
         $Clave = "";
@@ -26,9 +26,9 @@ require_once ("modelos/model_servicios.php");
         $IdFile = "";
         // $NServicio = "";
         // $FileServ = "";
-        
+
         if (isset($dtpubwhere)) {
-            foreach ($dtpubwhere as $row):
+            foreach ($dtpubwhere as $row) :
                 $Id = $row["IdPublicacion"];
                 $Clave = $row["Clave"];
                 $Descripcion = $row["DescripcionPublicacion"];
@@ -47,43 +47,42 @@ require_once ("modelos/model_servicios.php");
         ?>
         <form method="post" action="<?php echo $action ?>" enctype="multipart/form-data">
             <h3 class="edicionCarr-heading">Imagen de Publicidad</h3>
-            <div class="form-group form-groupCustom">
-                <input id="Archivo" name="Archivo" class="form-control form-control-lg customForm-control-lg"
-                    type="file" onchange="myimg()" required />
+            <div class="form-group form-group-custom">
+                <input id="Archivo" name="Archivo" class="form-control form-control-custom" type="file" onchange="myimg()" required />
             </div>
-            <h4 class="edicionCarr-heading">Titulo</h4>
-            <div class="form-group form-groupCustom">
-                <input id="Titulo" name="Titulo" class="form-control form-control-lg customForm-control-lg"
-                    type="text" required />
+            <div class="card edicionCarr-card">
+                <img id="muestra" src="data:<?php echo $TpFilePub ?>;base64,<?php echo (base64_encode($FilePub)) ?>" alt="<?php echo !empty($Descripcion) && isset($Descripcion) ? $Descripcion : "Aqui se muestra la imagen seleccionada" ?>" class="img-thumbnail" style="max-width:400px; max-height:300px;" />
             </div>
-            <h4 class="edicionCarr-heading">Descripcion</h4>
-            <div class="form-group form-groupCustom">
-                <textarea id="Descripcion" name="Descripcion" class="form-control form-control-lg customForm-control-lg"
-                    type="text" required></textarea>
+            <div class="form-floating form-group form-group-custom">
+                <input type="text" class="form-control form-control-lg form-control-custom" id="Titulo" name="Titulo" placeholder="Título" required>
+                <label for="Titulo">Título</label>
             </div>
-            <h4 class="edicionCarr-heading">Servicios</h4>
-            <div class="form-group form-groupCustom">
-                <select id="IdServicio" name="IdServicio" class="form-control form-control-lg customForm-control-lg">
+            <div class="form-floating form-group form-group-custom">
+                <textarea id="Descripcion" name="Descripcion" class="form-control form-control-lg form-control-custom" placeholder="Descripción" style="min-height: 80px; resize: none;" required rows="5"></textarea>
+                <label for="Descripcion">Descripción</label>
+            </div>
+            <div class="form-floating form-group form-group-custom">
+                <select id="IdServicio" name="IdServicio" class="form-select form-select-custom" required>
+                    <option value="" disabled selected hidden>Selecciona un servicio</option>
                     <?php
-                    foreach ($dtservicio as $row):
-                        ?>
-                        <option value="<?php echo $row["IdServicio"] ?>"><?php echo $row["Nombre"] ?></option>
-                        <?php
-                    endforeach;
+                    foreach ($dtservicio as $row) {
+                        echo '<option value="' . $row["IdServicio"] . '">' . $row["Nombre"] . '</option>';
+                    }
                     ?>
                 </select>
+                <label for="IdServicio">Servicio</label>
             </div>
-            <h4 class="edicionCarr-heading">Sistemas</h4>
-            <div class="form-group form-groupCustom">
-                <select id="IdSistema" name="IdSistema" class="form-control form-control-lg customForm-control-lg">
+
+            <div class="form-floating form-group form-group-custom">
+                <select id="IdSistema" name="IdSistema" class="form-select form-select-custom" required>
+                    <option value="" disabled selected hidden>Selecciona un sistema</option>
                     <?php
-                    foreach ($dtsistemas as $row):
-                        ?>
-                        <option value="<?php echo $row["IdSistema"] ?>"><?php echo $row["Nombre"] ?></option>
-                        <?php
-                    endforeach;
+                    foreach ($dtsistemas as $row) {
+                        echo '<option value="' . $row["IdSistema"] . '">' . $row["Nombre"] . '</option>';
+                    }
                     ?>
                 </select>
+                <label for="IdSistema">Sistema</label>
             </div>
 
             <div class="z-1n opacity-0">
@@ -91,10 +90,7 @@ require_once ("modelos/model_servicios.php");
                 <input id="IdArchivo" name="IdArchivo" value="<?php echo $IdFile ?>" hidden readonly />
             </div>
 
-            <div class="card edicionCarr-card">
-                <img id="muestra" src="data:<?php echo $TpFilePub ?>;base64,<?php echo (base64_encode($FilePub)) ?>"
-                    alt="<?php echo !empty($Descripcion) && isset($Descripcion) ? $Descripcion : "Aqui se muestra la imagen seleccionada" ?>" class="img-thumbnail" style="max-width:400px; max-height:300px;" />
-            </div>
+
             <div class="button-container">
                 <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
                 <a href="index.php?page=Publicidades" class="btn btn-success btn-success-custom">Volver</a>
@@ -106,7 +102,7 @@ require_once ("modelos/model_servicios.php");
             var input = document.getElementById('Archivo');
             var fileReader = new FileReader();
             fileReader.readAsDataURL(input.files[0]);
-            fileReader.onload = function (e) {
+            fileReader.onload = function(e) {
                 document.getElementById('muestra').src = e.target.result;
             };
         }

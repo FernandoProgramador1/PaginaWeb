@@ -41,6 +41,7 @@
     <link rel="stylesheet" type="text/css" href="/recursos/CSS/Sistemas.css">
     <link rel="stylesheet" type="text/css" href="/recursos/CSS/TiposProductos.css">
     <link rel="stylesheet" type="text/css" href="/recursos/CSS/Vision-Mision-Valores.css">
+    <link rel="stylesheet" type="text/css" href="/recursos/CSS/NosotrosAdmin.css">
     <!-- Hojas de Estilos CSS -->
 
     <!-- Referencia Sweet Alert -->
