@@ -4,7 +4,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 25px;
     margin: 20px auto;
-    width: 100%;
+    width: 90%;
     max-width: 1200px;
 }
 
@@ -49,4 +49,25 @@
 
 .btn-danger-bg {
     background-color: #dc3545;
+}
+
+@media(max-width: 767px) {
+    .btn-carruselImg {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media(min-width: 660px) and (max-width: 766px) {
+    .btn-carruselImg {
+        width: 90%;
+    }
+}
+
+@media(max-width: 400px) {
+    .btn-carruselImg {
+        font-size: 14px;
+    }
 }
