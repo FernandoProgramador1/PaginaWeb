@@ -14,10 +14,8 @@ require_once("modelos/model_sistemas.php");
 
 <body>
     <div class="edicionProd-container container">
-        <!-- Título de la vista -->
         <h1 class="edicionProd-heading text-center">Edición de Preguntas Frecuentes</h1>
 
-        <!-- Formulario para subir preguntas frecuentes -->
         <form method="post" action="index.php?page=FAQAdmin&action=guardar" enctype="multipart/form-data">
 
             <div class="form-group form-group-custom">
