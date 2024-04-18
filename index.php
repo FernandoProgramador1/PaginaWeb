@@ -71,6 +71,15 @@ switch ($page) {
         break;
         //------------------- PRODUCTOS ----------------------
 
+        //------------------- PREGUNTAS FRECUENTES ----------------------
+    case "PreguntasFrecuentes":
+        include_once("vistas/users/admin/PreguntasFrecuentes/PreguntasFrecuentes.php");
+        break;
+    case "PreguntasAdmin":
+        include_once("vistas/users/admin/PreguntasFrecuentes/EdicionPreguntasFrecuentes.php");
+        break;
+        //------------------- PREGUNTAS FRECUENTES ----------------------
+
         //------------------- LOGIN ----------------------
     case "Login":
         include_once("vistas/template/login/login.php");
