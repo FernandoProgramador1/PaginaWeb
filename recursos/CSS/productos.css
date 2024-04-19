@@ -6,6 +6,7 @@
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    width: 90%;
 }
 
 /* Barra de filtros y búsqueda */
@@ -133,6 +134,7 @@
 
     .producto-item {
         flex-direction: column;
+        height: 420px;
     }
 
     .producto-image {
