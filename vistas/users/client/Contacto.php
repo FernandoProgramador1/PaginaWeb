@@ -15,22 +15,38 @@
 
     <div class="contacto-form-container container">
         <form id="contacto-form">
-            <h2>Contacta con nosotros</h2>
-            <div class="contacto-form-group">
-                <label for="name" class="contacto-label">Nombre Completo:</label>
-                <input type="text" id="name" name="name" class="contacto-input" required>
+            <h2>Contacta con Nosotros</h2>
+            <div class="form-floating contacto-form-group">
+                <input id="Nombre" name="Nombre" class="form-control form-control-custom" type="text" placeholder="Nombre Completo" required />
+                <label for="Nombre">Nombre Completo</label>
             </div>
-            <div class="contacto-form-group">
-                <label for="email" class="contacto-label">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" class="contacto-input" required>
+            <div class="form-floating contacto-form-group">
+                <input id="Email" name="Email" class="form-control form-control-custom" type="email" placeholder="Correo Electrónico" required>
+                <label for="Email">Correo Electrónico:</label>
             </div>
-            <div class="contacto-form-group">
-                <label for="subject" class="contacto-label">Asunto:</label>
-                <input type="text" id="subject" name="subject" class="contacto-input" required>
+            <div class="form-floating contacto-form-group">
+                <input id="Tel" name="Tel" class="form-control form-control-custom" type="tel" placeholder="Número de Teléfono" required>
+                <label for="Tel">Teléfono:</label>
             </div>
-            <div class="contacto-form-group">
-                <label for="message" class="contacto-label">Mensaje:</label>
-                <textarea id="message" name="message" class="contacto-textarea" required></textarea>
+            <div class="form-floating form-group form-group-custom">
+                <select id="IdServicio" name="IdServicio" class="form-select form-select-custom" required>
+                    <option value="" disabled selected hidden>Selecciona un motivo</option>
+                    <option value="1">Sugerencias</option>
+                    <option value="2">Cotización</option>
+                    <option value="3">Dudas y Aclaraciones</option>
+                    <option value="4">Otros</option>
+                </select>
+                <label for="IdServicio">Motivo</label>
+            </div>
+
+            <div class="form-floating contacto-form-group">
+                <input id="Asunto" name="Asunto" class="form-control form-control-custom" type="text" placeholder="Asunto" required>
+                <label for="Asunto">Asunto:</label>
+            </div>
+
+            <div class="form-floating contacto-form-group">
+                <textarea id="Msj" name="Msj" class="form-control contacto-textarea" placeholder="Mensaje" required></textarea>
+                <label for="Msj">Mensaje:</label>
             </div>
             <button type="submit" class="contacto-button">Enviar</button>
         </form>

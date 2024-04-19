@@ -3,7 +3,7 @@
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     margin-top: 40px;
 }
@@ -21,22 +21,17 @@
     flex-direction: column;
 }
 
-.contacto-label {
-    font-size: 16px;
-    color: #4A154B;
-    margin-bottom: 10px;
-}
-
-.contacto-input,
 .contacto-textarea {
     padding: 15px;
     border: 2px solid #D3BCC0;
     border-radius: 5px;
     font-size: 16px;
+    resize: none;
+    min-height: 120px !important;
 }
 
 .contacto-textarea {
-    resize: vertical;
+    resize: none;
     min-height: 120px;
 }
 
