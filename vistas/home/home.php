@@ -11,9 +11,6 @@
 </head>
 
 <body>
-    <header>
-        <h1>Encabezado.</h1>
-    </header>
 
     <section id="carruselPrincipal">
         <div id="carruselHome" class="carousel slide" data-bs-ride="true">
