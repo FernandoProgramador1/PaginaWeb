@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web | Detalle Sistema</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="detalleSis-body">
@@ -96,51 +95,67 @@
             </ul>
         </section>
 
-        <section class="sistemaDetalle-gallery custom-section">
+        <section class="sistemaDetalle-gallery custom-section detalleSis">
             <h2 class="detallesHeading">Galería</h2>
             <p>Capturas de pantalla y otras imágenes del software.</p>
+
+            <div class="container text-center my-3">
+                <div class="row mx-auto my-auto justify-content-center">
+                    <div id="recipeCarousel" class="carousel slide detalleSis" data-bs-ride="carousel">
+                        <div class="carousel-inner detalleSis" role="listbox">
+                            <div class="carousel-item active detalleSis">
+                                <div class="col-md-3 detalleSis">
+                                    <div class="card detalleSis">
+                                        <div class="card-img detalleSis">
+                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                        </div>
+                                        <div class="card-img-overlay detalleSis">Slide 1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item detalleSis">
+                                <div class="col-md-3 detalleSis">
+                                    <div class="card detalleSis">
+                                        <div class="card-img detalleSis">
+                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                        </div>
+                                        <div class="card-img-overlay detalleSis">Slide 2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item detalleSis">
+                                <div class="col-md-3 detalleSis">
+                                    <div class="card detalleSis">
+                                        <div class="card-img detalleSis">
+                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                        </div>
+                                        <div class="card-img-overlay detalleSis">Slide 3</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item detalleSis">
+                                <div class="col-md-3 detalleSis">
+                                    <div class="card detalleSis">
+                                        <div class="card-img detalleSis">
+                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                        </div>
+                                        <div class="card-img-overlay detalleSis">Slide 4</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev bg-transparent w-aut detalleSis" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next bg-transparent w-aut detalleSis" href="#recipeCarousel" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
+
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var functionQuestions = document.querySelectorAll('.sistemaDetalle-functions .question');
-            var faqQuestions = document.querySelectorAll('.sistemaDetalle-faq .question');
-
-            functionQuestions.forEach(function(question) {
-                question.addEventListener('click', function() {
-                    var answer = this.nextElementSibling;
-                    var toggleIcon = this.querySelector('.toggle-icon i');
-
-                    if (answer.classList.contains('active')) {
-                        answer.classList.remove('active');
-                        toggleIcon.classList.remove('rotated');
-                    } else {
-
-                        answer.classList.add('active');
-                        toggleIcon.classList.toggle('rotated');
-                    }
-                });
-            });
-
-            faqQuestions.forEach(function(question) {
-                question.addEventListener('click', function() {
-                    var answer = this.nextElementSibling;
-                    var toggleIcon = this.querySelector('.toggle-icon i');
-
-                    if (answer.classList.contains('active')) {
-                        answer.classList.remove('active');
-                        toggleIcon.classList.remove('rotated');
-                    } else {
-
-                        answer.classList.add('active');
-                        toggleIcon.classList.toggle('rotated');
-                    }
-                });
-            });
-        });
-    </script>
-
 </body>
 
 </html>
