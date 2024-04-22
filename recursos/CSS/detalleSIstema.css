@@ -1,7 +1,25 @@
-/* Importación de Google Fonts */
 @font-face {
     font-family: 'Roboto Regular';
     src: url(/recursos/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+.toggle-icon i.rotated {
+    transform: rotate(90deg);
+}
+
+.question {
+    background-color: #f0f0f0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.answer {
+    display: none;
+    padding: 10px;
+}
+
+.answer.active {
+    display: block;
 }
 
 .custom-container {
