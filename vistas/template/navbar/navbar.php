@@ -22,27 +22,28 @@
     <!-- Referencia Font Awesome -->
 
     <!-- Hojas de Estilos CSS -->
-    <link rel="stylesheet" href="/recursos/CSS/General.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Contacto.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/ContactoFooter.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/DetalleSistema.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/EdicionImgCarrusel.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/EdicionMarcas.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/EdicionProd.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/FAQ.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Footer.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Home.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/ImgCarrusel.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Login.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Nav.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Nosotros.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Productos.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Servicios.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Sistemas.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/TiposProductos.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/Vision-Mision-Valores.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/NosotrosAdmin.css">
-    <link rel="stylesheet" type="text/css" href="/recursos/CSS/PreguntasFrecuentesAdmin.css">
+    <link rel="stylesheet" href="recursos/CSS/General.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Contacto.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/ContactoFooter.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/DetalleSistema.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/EdicionImgCarrusel.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/EdicionMarcas.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/EdicionProd.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/FAQ.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Footer.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Home.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/ImgCarrusel.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Login.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Nav.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Nosotros.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Productos.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Servicios.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Sistemas.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/TiposProductos.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Vision-Mision-Valores.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/NosotrosAdmin.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/PreguntasFrecuentesAdmin.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/Privacidad.css">
     <!-- Hojas de Estilos CSS -->
 
     <!-- Referencia Sweet Alert -->
@@ -126,6 +127,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=PreguntasFrecuentes">Edicion Preguntas Frecuentes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=TerminosPrivacidad">Edicion de Información de Privacidad</a>
                 </li>
                 <?php
                 if ($_SESSION != null) {
