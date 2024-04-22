@@ -154,6 +154,10 @@
     display: inline-block;
 }
 
+.navbar-btn-mobile {
+    margin-right: 10px;
+}
+
 @media(min-width: 992px) {
     .navbar-expand-custom {
         -ms-flex-flow: row nowrap;
@@ -214,5 +218,164 @@
     .hori-selector .right:before {
         bottom: -25px;
         left: -25px;
+    }
+}
+
+@media(max-width: 1469px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 20px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 18px;
+    }
+
+    .navbar-logo {
+        padding: 15px;
+        font-size: 12px;
+        color: #fff;
+    }
+}
+
+@media(max-width: 1444px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 18px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 18px;
+    }
+
+    .navbar-logo {
+        padding: 15px;
+        font-size: 12px;
+        color: #fff;
+    }
+}
+
+@media(max-width: 1416px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 18px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 17px;
+    }
+
+    .navbar-logo {
+        padding: 15px;
+        font-size: 12px;
+        color: #fff;
+    }
+}
+
+@media(max-width: 1374px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 16px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 16px;
+    }
+
+    .navbar-logo {
+        padding: 15px;
+        font-size: 12px;
+        color: #fff;
+    }
+}
+
+@media(max-width: 1307px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 15px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 15px;
+    }
+
+    .navbar-logo {
+        padding: 15px;
+        font-size: 12px;
+        color: #fff;
+    }
+}
+
+@media(max-width: 1252px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 14px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 1198px) {
+    #navbarSupportedContent ul li {
+        padding: 12px;
+        margin: 0;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 1170px) {
+    #navbarSupportedContent ul li {
+        padding: 11px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 1126px) {
+    #navbarSupportedContent ul li {
+        padding: 10px;
+        margin: 0;
+    }
+}
+
+@media(max-width: 1100px) {
+    #navbarSupportedContent ul li {
+        padding: 9px;
+        margin: 0;
+    }
+}
+
+@media(max-width: 1086px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 8px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 1032px) {
+    #navbarSupportedContent ul li {
+        margin: 0;
+        padding: 8px;
+    }
+
+    #navbarSupportedContent ul li a {
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 992px) {
+    #navbarSupportedContent ul li a {
+        font-size: 14px;
     }
 }

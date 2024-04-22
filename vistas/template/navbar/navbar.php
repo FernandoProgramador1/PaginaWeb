@@ -54,7 +54,7 @@
 <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
         <a class="navbar-brand navbar-logo" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-btn-mobile" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -97,7 +97,7 @@
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasDarkLabel">Menu para administrar la pagina</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvasDark" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <ul class="navbar-nav me-auto">
@@ -143,22 +143,5 @@
     </div>
     <!-- Menu de admin -->
 </body>
-
-<script>
-    var adminButton = document.querySelector('.admin-btn');
-    var offcanvas = document.getElementById('offcanvasDark');
-
-    if (adminButton) {
-        adminButton.addEventListener('click', function() {
-            adminButton.classList.add('admin-active');
-        });
-    }
-
-    if (offcanvas) {
-        offcanvas.addEventListener('hidden.bs.offcanvas', function() {
-            adminButton.classList.remove('admin-active');
-        });
-    }
-</script>
 
 </html>
