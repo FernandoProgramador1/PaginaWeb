@@ -80,6 +80,12 @@ switch ($page) {
         break;
         //------------------- PREGUNTAS FRECUENTES ----------------------
 
+        //------------------- PRIVACIDAD ----------------------
+    case "TerminosPrivacidad":
+        include_once("vistas/users/admin/Privacidad/Privacidad_Terminos.php");
+        break;
+        //------------------- PRIVACIDAD ----------------------
+
         //------------------- LOGIN ----------------------
     case "Login":
         include_once("vistas/template/login/login.php");
