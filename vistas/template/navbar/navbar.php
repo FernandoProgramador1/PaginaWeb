@@ -121,6 +121,9 @@
                     <a class="nav-link admin-link" href="index.php?page=SistemasAdmin">Edicion de Sistemas</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=FuncionSistemaAdmin">Agregar Funciones de Sistema</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=TiposProductos">Edicion de Tipos de Productos</a>
                 </li>
                 <li class="nav-item">
