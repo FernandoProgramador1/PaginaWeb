@@ -1,0 +1,50 @@
+.edicionProd-container {
+    max-width: 700px;
+}
+
+.function-btn {
+    max-width: 160px;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.function-delete-btn {
+    margin-top: 0;
+}
+
+.function-form {
+    margin-bottom: 0;
+}
+
+.function-input-group {
+    display: flex;
+    align-items: center;
+}
+
+.function-input-group .function-form-group-custom {
+    flex: 1;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .edicionProd-container {
+        max-width: 100%;
+    }
+
+    .function-btn {
+        max-width: 100%;
+    }
+}
+
+@media(max-width: 440px) {
+    .function-label {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 405px) {
+    .function-label {
+        font-size: 10px;
+    }
+}
