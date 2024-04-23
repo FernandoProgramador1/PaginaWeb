@@ -27,6 +27,9 @@ switch ($page) {
     case "SistemasAdmin":
         include_once("vistas/users/admin/Sistemas/Sistemas.php");
         break;
+    case "FuncionSistemaAdmin":
+        include_once("vistas/users/admin/Sistemas/Funciones.php");
+        break;
         //------------------- SERVICIOS ----------------------
 
         //------------------- SERVICIOS ----------------------
