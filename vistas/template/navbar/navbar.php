@@ -45,6 +45,7 @@
     <link rel="stylesheet" type="text/css" href="recursos/CSS/PreguntasFrecuentesAdmin.css">
     <link rel="stylesheet" type="text/css" href="recursos/CSS/Privacidad.css">
     <link rel="stylesheet" type="text/css" href="recursos/CSS/CarruselSistemas.css">
+    <link rel="stylesheet" type="text/css" href="recursos/CSS/FuncionSistema.css">
     <!-- Hojas de Estilos CSS -->
 
     <!-- Referencia Sweet Alert -->
