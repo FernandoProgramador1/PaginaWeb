@@ -57,6 +57,5 @@ require_once('modelos/model_configuraciones.php');
 <script src="recursos/JS/nav.js"></script>
 <script src="recursos/JS/faq.js"></script>
 <script src="recursos/JS/preguntas-funciones.js"></script>
-<script src="recursos/JS/carrusel.js"></script>
 
 <script src="recursos/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
