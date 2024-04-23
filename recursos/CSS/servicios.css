@@ -22,7 +22,7 @@
 
 .service-button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     margin-top: 10px;
@@ -32,10 +32,6 @@
     flex-basis: calc(50% - 5px);
     margin: 0;
     text-align: center;
-}
-
-.service-button-container .service-btn+.service-btn {
-    margin-left: 10px;
 }
 
 .service-button-container .service-btn:last-child {

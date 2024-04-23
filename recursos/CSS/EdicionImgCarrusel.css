@@ -49,6 +49,7 @@
     text-align: center;
     width: 100%;
     max-width: 150px;
+    text-transform: uppercase;
 }
 
 .btn-success-custom:hover {
@@ -60,4 +61,14 @@
     justify-content: center;
     gap: 10px;
     margin-top: 30px;
+}
+
+@media(max-width: 600px) {
+    .btn-success-custom {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+    }
 }

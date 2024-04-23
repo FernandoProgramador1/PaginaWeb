@@ -62,6 +62,7 @@ require_once("modelos/model_sistemas.php");
             <div class="form-group form-group-custom">
                 <img class="img-thumbnail img-thumbnailProd" id="muestra" src="data:<?php echo $TpFileSis ?>;base64,<?php echo (base64_encode($FileSis)) ?>" alt="Imagen seleccionada" />
             </div>
+
             <div class="button-container">
                 <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
                 <a href="index.php?page=SistemasAdmin" class="btn btn-success btn-success-custom">Volver</a>
@@ -79,6 +80,28 @@ require_once("modelos/model_sistemas.php");
                 };
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+    </script>
+
+    <script>
+        function agregarInput() {
+            var container = document.getElementById('inputContainer');
+            var newInputGroup = document.createElement('div');
+            newInputGroup.className = 'input-group function-input-group';
+            newInputGroup.innerHTML = `
+                <div class="form-floating form-group form-group-custom function-form-group-custom">
+                    <input type="text" name="funcion[]" class="form-control form-control-custom function-form-control-custom function-form" value="" required>
+                    <label class="function-label">Agrega Funciones al Sistema</label>
+                </div>
+                <button type="button" onclick="eliminarInput(this)" class="contacto-button function-delete-btn">Eliminar</button>
+            `;
+            container.appendChild(newInputGroup);
+        }
+
+        function eliminarInput(btn) {
+            var container = document.getElementById('inputContainer');
+            var inputGroup = btn.parentElement;
+            container.removeChild(inputGroup);
         }
     </script>
 </body>

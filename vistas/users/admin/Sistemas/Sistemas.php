@@ -43,8 +43,9 @@ if (isset($_GET['ins'])) {
                     echo '<div class="card-body card-body-bg service-card-body">';
                     echo '<h5 class="card-title service-card-title">' . $rows['NombreSistema'] . '</h5>';
                     echo '<div class="button-container service-button-container">';
-                    echo '<a href="index.php?page=EdicionSistemas&IdSistema=' . $rows['IdSistema'] . '" class="btn service-btn btn-success btn-success-bg btn-sm">Actualizar</a>';
-                    echo '<a href="index.php?page=SistemasAdmin&IdSistema=' . $rows['IdSistema'] . '&actionsist=delete" class="btn service-btn btn-danger btn-danger-bg btn-sm">Eliminar</a>';
+                    echo '<a href="index.php?page=EdicionSistemas&IdSistema=' . $rows['IdSistema'] . '" class="btn service-btn btn-success btn-sm">Actualizar</a>';
+                    echo '<a href="index.php?page=SistemasAdmin&IdSistema=' . $rows['IdSistema'] . '&actionsist=delete" class="btn service-btn btn-danger btn-sm">Eliminar</a>';
+                    echo '<a href="index.php?page=FuncionSistemaAdmin&IdSistema=' . $rows['IdSistema'] . '" class="btn service-btn btn-primary btn-sm">Agregar Función</a>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';

@@ -16,13 +16,13 @@
         <div id="carruselHome" class="carousel slide" data-bs-ride="true">
             <div class="carousel-inner">
                 <div class="carousel-item active carruselImg">
-                    <img src="https://placehold.co/600x400" alt="PlaceholderImg">
+                    <img src="https://placehold.co/1920x700" alt="PlaceholderImg">
                 </div>
                 <div class="carousel-item carruselImg">
-                    <img src="https://placehold.co/600x400" alt="PlaceholderImg">
+                    <img src="https://placehold.co/1920x700" alt="PlaceholderImg">
                 </div>
                 <div class="carousel-item carruselImg">
-                    <img src="https://placehold.co/600x400" alt="PlaceholderImg">
+                    <img src="https://placehold.co/1920x700" alt="PlaceholderImg">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carruselHome" data-bs-slide="prev">

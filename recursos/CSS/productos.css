@@ -130,15 +130,18 @@
 
     .productos-grid {
         grid-template-columns: 1fr;
+        width: 90%;
+        margin: 0 auto;
     }
 
     .producto-item {
         flex-direction: column;
-        height: 420px;
     }
 
     .producto-image {
-        width: 100%;
+        width: 50%;
+        margin: 0 auto;
+        border: 0;
     }
 
     .producto-info {
