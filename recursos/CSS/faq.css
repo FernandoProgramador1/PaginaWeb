@@ -4,6 +4,16 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.edicionFAQ-container {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    margin-top: 50px;
+    width: 90%;
+    max-width: 900px;
+}
+
 .faq-item {
     border: 1px solid #ccc;
     border-radius: 8px;

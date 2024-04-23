@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="edicionProd-container container">
+    <div class="edicionFAQ-container container">
         <h1 class="edicionProd-heading text-center">Lista de Preguntas Frecuentes</h1>
         <a href="index.php?page=PreguntasAdmin" class="btn btn-primary service-btn btn-carruselImg btn-lg d-relative">
             Agregar nueva pregunta
