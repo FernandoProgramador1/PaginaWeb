@@ -65,7 +65,7 @@
                     <div class="left"></div>
                     <div class="right"></div>
                 </div>
-                <li class="nav-item <?= !isset($_GET['page']) || $_GET['page'] == '' || !in_array($_GET['page'], ['Productos', 'Contacto', 'Nosotros', 'Sistemas', 'DetalleSistema', 'PreguntasFrecuentes']) ? 'active' : ''; ?>">
+                <li class="nav-item <?= !isset($_GET['page']) || $_GET['page'] == '' || !in_array($_GET['page'], ['Productos', 'Contacto', 'Nosotros', 'Servicios', 'Sistemas', 'DetalleSistema', 'PreguntasFrecuentes']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="index.php?page="><i class="fa fa-home nav-icon"></i>Inicio</a>
                 </li>
                 <li class="nav-item <?= isset($_GET['page']) && $_GET['page'] == 'Productos' ? 'active' : ''; ?>">
@@ -77,8 +77,8 @@
                 <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Nosotros') echo 'active'; ?>">
                     <a class="nav-link" href="index.php?page=Nosotros"><i class="fa fa-users nav-icon"></i>Nosotros</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-cogs nav-icon"></i>Servicios</a>
+                <li class="nav-item <?php if (isset($_GET['page']) && $_GET['page'] == 'Servicios') echo 'active'; ?>">
+                    <a class="nav-link" href="index.php?page=Servicios"> <i class="fa fa-cogs nav-icon"></i></i>Servicios</a>
                 </li>
                 <li class="nav-item <?php if (isset($_GET['page']) && ($_GET['page'] == 'Sistemas' || $_GET['page'] == 'DetalleSistema')) echo 'active'; ?>">
                     <a class="nav-link" href="index.php?page=Sistemas"><i class="fa fa-desktop nav-icon"></i>Sistemas</a>
