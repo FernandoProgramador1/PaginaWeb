@@ -58,10 +58,15 @@
         align-items: center;
         display: flex;
         text-align: center;
-        margin: 0 auto;
-        height: 57px;
-        font-size: 12px;
-        width: 30%;
+        margin-bottom: 20px;
+        height: 40px;
+        font-size: 15px;
+        width: 100%;
+        border-radius: 5px !important;
+    }
+
+    .function-input-group .function-form-group-custom {
+        flex: 1 0 100%;
     }
 }
 
