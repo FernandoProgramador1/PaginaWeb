@@ -20,7 +20,7 @@ switch ($page) {
 
         //------------------- ADMIN ----------------------
 
-        //------------------- SERVICIOS ----------------------
+        //------------------- SISTEMAS ----------------------
     case "EdicionSistemas":
         include_once("vistas/users/admin/Sistemas/EdicionSistemas.php");
         break;
@@ -30,7 +30,7 @@ switch ($page) {
     case "FuncionSistemaAdmin":
         include_once("vistas/users/admin/Sistemas/Funciones.php");
         break;
-        //------------------- SERVICIOS ----------------------
+        //------------------- SISTEMAS ----------------------
 
         //------------------- SERVICIOS ----------------------
     case "EdicionServicios":
@@ -115,6 +115,12 @@ switch ($page) {
         include_once("vistas/users/client/DetalleSistema.php");
         break;
         //------------------- SISTEMAS ----------------------
+
+        //------------------- SERVICIOS ----------------------
+    case "Servicios":
+        include_once("vistas/users/client/Servicios.php");
+        break;
+        //------------------- SERVICIOS ----------------------
 
         //------------------- CONTACTO ----------------------
     case "Contacto":
