@@ -107,39 +107,66 @@
                                 <div class="col-md-3 detalleSis">
                                     <div class="card detalleSis">
                                         <div class="card-img detalleSis">
-                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                            <div class="img-container">
+                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
+                                                <div class="card-img-overlay detalleSis">
+                                                    <div class="overlay-content">
+                                                        <p>Slide 1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-img-overlay detalleSis">Slide 1</div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="carousel-item detalleSis">
                                 <div class="col-md-3 detalleSis">
                                     <div class="card detalleSis">
                                         <div class="card-img detalleSis">
-                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                            <div class="img-container">
+                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
+                                                <div class="card-img-overlay detalleSis">
+                                                    <div class="overlay-content">
+                                                        <p>Slide 2</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-img-overlay detalleSis">Slide 2</div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="carousel-item detalleSis">
                                 <div class="col-md-3 detalleSis">
                                     <div class="card detalleSis">
                                         <div class="card-img detalleSis">
-                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                            <div class="img-container">
+                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
+                                                <div class="card-img-overlay detalleSis">
+                                                    <div class="overlay-content">
+                                                        <p>Slide 3</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-img-overlay detalleSis">Slide 3</div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="carousel-item detalleSis">
                                 <div class="col-md-3 detalleSis">
                                     <div class="card detalleSis">
                                         <div class="card-img detalleSis">
-                                            <img src="https://placehold.co/700x500" class="img-fluid detalleSis">
+                                            <div class="img-container">
+                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
+                                                <div class="card-img-overlay detalleSis">
+                                                    <div class="overlay-content">
+                                                        <p> Slide 4 </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-img-overlay detalleSis">Slide 4</div>
                                     </div>
                                 </div>
                             </div>
@@ -158,20 +185,21 @@
     </div>
 
     <script>
-        let items = document.querySelectorAll('.carousel .carousel-item')
-
-        items.forEach((el) => {
-            const minPerSlide = 4
-            let next = el.nextElementSibling
-            for (var i = 1; i < minPerSlide; i++) {
-                if (!next) {
-                    next = items[0]
+        let items = document.querySelectorAll('.carousel .carousel-item');
+        if (items.length > 1) {
+            items.forEach((el) => {
+                const minPerSlide = 4;
+                let next = el.nextElementSibling;
+                for (var i = 1; i < minPerSlide; i++) {
+                    if (!next) {
+                        next = items[0];
+                    }
+                    let cloneChild = next.cloneNode(true);
+                    el.appendChild(cloneChild.children[0]);
+                    next = next.nextElementSibling;
                 }
-                let cloneChild = next.cloneNode(true)
-                el.appendChild(cloneChild.children[0])
-                next = next.nextElementSibling
-            }
-        })
+            });
+        }
     </script>
 </body>
 
