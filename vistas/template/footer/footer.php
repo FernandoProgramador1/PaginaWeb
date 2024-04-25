@@ -70,17 +70,6 @@ include_once('modelos/model_sistemas.php');
 
             $Address = implode(", ", $Dir);
             ?>
-            <!-- <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
-                <div class="information">
-                    <h6 class="footer-heading text-uppercase fw-bold">Información</h6>
-                    <ul class="list-unstyled footer-link mt-4">
-                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 1</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 2</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 3</a></li>
-                        <li class=""><a href="#" class="fw-semibold">Ejemplo 4</a></li>
-                    </ul>
-                </div>
-            </div> -->
             <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
                 <div class="resources">
                     <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
@@ -197,6 +186,5 @@ include_once('modelos/model_sistemas.php');
 <script type="text/javascript" src="recursos/JS/faq.js"></script>
 <script type="text/javascript" src="recursos/JS/preguntas-funciones.js"></script>
 <script type="text/javascript" src="recursos/JS/modal.js"></script>
-<script type="text/javascript" src="recursos/JS/servicios.js"></script>
 
 <script src="recursos/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
