@@ -24,6 +24,7 @@ Create Table Sistemas(
     IdSistema int(10) NOT NULL AUTO_INCREMENT,
     Nombre varchar(150) NOT NULL,
     Descripcion varchar(350) NOT NULL,
+    Requisitos  text,
     IdArchivo int(10),
     PRIMARY KEY (IdSistema),
     CONSTRAINT fk_Sistemas_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
@@ -69,7 +70,6 @@ Create Table Preguntas(
     Pregunta    varchar(150) NOT NULL,
     Respuesta   LONGTEXT NOT NULL,
     IdRelacion  int(10),
-    IdTipoRelacion  int(10),
     PRIMARY KEY (IdPregunta)
 );
 
@@ -82,6 +82,15 @@ Create Table Productos(
     CONSTRAINT fk_Productos_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
 );
 
+Create Table Funciones(
+    IdFuncion   int(10) NOT NULL AUTO_INCREMENT,
+    Funcion     varchar(200) NOT NULL,
+    Descripcion text,
+    IdSistema   int(10) NOT NULL,
+    PRIMARY KEY (IdFuncion),
+    CONSTRAINT fk_Funciones_Sistemas FOREIGN KEY (IdSistema) REFERENCES Sistemas(IdSistema)
+);
+
 INSERT INTO Roles(IdRol,Rol) VALUES(NULL,'Admin');
 INSERT INTO Usuarios(IdUsuario,Nombre,Correo,Contra,IdRol) VALUES(NULL,'AdminWeb', '','AdminWeb2024', '1');
 
@@ -91,7 +100,7 @@ FROM Servicios as s
 LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;
 
 Create View view_sistemas as
-SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.IdArchivo, a.Archivo, a.MimeType as Tipo
+SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.Requisitos, s.IdArchivo, a.Archivo, a.MimeType as Tipo
 FROM Sistemas as s
 LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;
 
@@ -113,6 +122,20 @@ FROM Productos as p
 LEFT JOIN
 Archivos as a1
 ON p.IdArchivo = a1.IdArchivo;
+
+Create View view_preguntas as
+SELECT p.IdPregunta, p.Pregunta, p.Respuesta, p.IdRelacion, s.Nombre as NombreSistema
+FROM Preguntas as p
+LEFT JOIN
+Sistemas as s 
+ON p.IdRelacion = s.IdSistema;
+
+Create Or Replace View view_funciones as
+SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.Requisitos, s.IdArchivo, a.Archivo, a.MimeType as Tipo,
+    f.IdFuncion, f.Funcion, f.Descripcion as DetFuncion
+FROM Funciones as f
+LEFT JOIN Sistemas as s ON f.IdSistema = s.IdSistema
+LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;
 
 
 -- Create Table Conocenos (

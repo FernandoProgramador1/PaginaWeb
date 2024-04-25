@@ -3,6 +3,7 @@
 require_once("recursos/config/db.php");
 require_once("controladores/controller_sistemas.php");
 require_once("modelos/model_archivos.php");
+require_once("modelos/model_funciones.php");
 
 $sistema = new Sistemas();
 $sistema->setTable("Sistemas");
@@ -12,6 +13,7 @@ $sistema->setKey('IdSistema');
 
 $sistema->setColumns('Nombre');
 $sistema->setColumns('Descripcion');
+$sistema->setColumns('Requisitos');
 $sistema->setColumns('IdArchivo');
 
 if ((!empty($_GET['IdSistema'])) && (isset($_GET['IdSistema']))) {
@@ -22,13 +24,16 @@ if ((!empty($_GET['IdSistema'])) && (isset($_GET['IdSistema']))) {
     $IdSistema = $_POST['IdSistema'];
     $dtsistemawhere = $sistema->getWhere($IdSistema);
     $dtviewsistema = $sistema->getWhereview($IdSistema);
+} else if ((!empty($_GET['IdDetSis'])) && (isset($_GET['IdDetSis']))) {
+    $filesGallery = new GallerySistems();
+    $gallery = $filesGallery->ObtenerGaleria($_GET['IdDetSis']);
 } else {
     $IdSistema = null;
     $dtsistemawhere = null;
     $dtviewsistema = null;
-    $dtsistemas = $sistema->getAll();
     $dtsisviews = $sistema->getView();
 }
+$dtsistemas = $sistema->getAll();
 
 $dir_doc = "recursos/Archivos/";
 
@@ -40,9 +45,14 @@ if ((!empty($_GET['actionsist'])) && (isset($_GET['actionsist']))) {
 
         $sistema->values[] = "'" . $_POST['Nombre'] . "'";
         $sistema->values[] = "'" . $_POST['Descripcion'] . "'";
+        $sistema->values[] = "'" . $_POST['Requisitos'] . "'";
         $sistema->values[] = $Idfile;
 
         $sistema->insertSistema();
+        $Id = $sistema->lastId();
+
+        $filesCarga = new GallerySistems();
+        $filesCarga->MoverArchivos($_FILES['Gallery'], $Id);
 
         echo '<script>location.replace("index.php?page=SistemasAdmin&ins=Ok");</script>';
 
@@ -54,8 +64,9 @@ if ((!empty($_GET['actionsist'])) && (isset($_GET['actionsist']))) {
 
         $sistema->values[] = "" . $_POST['Nombre'] . "";
         $sistema->values[] = "" . $_POST['Descripcion'] . "";
+        $sistema->values[] = "" . $_POST['Requisitos'] . "";
 
-        if($Idfile !== "NULL"){
+        if($Idfile !== "NULL" || (!empty($Idfile) && isset($Idfile))){
             $sistema->values[] = $Idfile;
         }else{
             $sistema->values[] = $Idfile;
@@ -63,10 +74,23 @@ if ((!empty($_GET['actionsist'])) && (isset($_GET['actionsist']))) {
 
         $sistema->updateSistema($IdSistema);
         
+        $filesCarga = new GallerySistems();
+        $filesCarga->MoverArchivos($_FILES['Gallery'], $IdSistema);
+
         echo '<script>location.replace("index.php?page=SistemasAdmin&upd=Ok");</script>';
 
     } elseif ($actionsist === 'delete') {
+        foreach ($dtsistemawhere as $rowid):
+            $IdArchivoSist = $rowid['IdArchivo'];
+        endforeach;
+
+        $filesGallery = new GallerySistems();
+        $filesGallery->DeleteGallery($IdSistema);
+
         $sistema->deleteSistema($IdSistema);
+        if (isset($IdArchivoSist)) {
+            $archivo->deleteArchivo($IdArchivoSist);
+        }
         echo '<script>location.replace("index.php?page=SistemasAdmin&del=Ok");</script>';
     }
 }

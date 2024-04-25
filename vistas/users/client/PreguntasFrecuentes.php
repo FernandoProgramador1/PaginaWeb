@@ -1,3 +1,7 @@
+<?php
+    include_once('modelos/model_preguntas.php');
+?> 
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,16 +18,22 @@
 
     <div class="faq-container">
         <h2>Preguntas Frecuentes</h2>
+        <?php
+        foreach($dtpregunta as $row):
+        ?>
         <details class="faq-item">
             <summary class="faq-question">
                 <span class="faq-icon">▶</span>
-                <span class="faq-title">¿Cuál es tu pregunta aquí?</span>
+                <span class="faq-title"><?php echo $row['Pregunta']?></span>
             </summary>
             <div class="faq-answer">
-                <p>La respuesta a la pregunta va aquí.</p>
+                <p><?php echo $row['Respuesta']?></p>
             </div>
         </details>
-        <details class="faq-item">
+        <?php
+        endforeach;
+        ?>
+        <!-- <details class="faq-item">
             <summary class="faq-question">
                 <span class="faq-icon">▶</span>
                 <span class="faq-title">Otra pregunta frecuente</span>
@@ -31,7 +41,7 @@
             <div class="faq-answer">
                 <p>Otra respuesta aquí.</p>
             </div>
-        </details>
+        </details> -->
         <!-- Agrega más preguntas de la misma manera -->
     </div>
 

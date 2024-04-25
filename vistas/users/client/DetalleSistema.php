@@ -1,3 +1,9 @@
+<?php
+require_once ('modelos/model_funciones.php');
+require_once ('modelos/model_preguntas.php');
+require_once ('modelos/model_sistemas.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,8 +14,31 @@
 </head>
 
 <body class="detalleSis-body">
+
+    <?php
+    $Id = "";
+    $Nombre = "";
+    $Descripcion = "";
+    $Requisitos = "";
+    $TpFileSis = "";
+    $FileSis = "";
+    $IdFile = "";
+
+    if (isset($dtfuncview)) {
+        foreach ($dtfuncview as $row):
+            $Id = $row["IdSistema"];
+            $Nombre = $row["NombreSistema"];
+            $Descripcion = $row["Descripcion"];
+            $Requisitos = $row["Requisitos"];
+            $TpFileSis = $row["Tipo"];
+            $FileSis = $row["Archivo"];
+            $IdFile = $row["IdArchivo"];
+        endforeach;
+    }
+    ?>
+
     <header>
-        <h1>Nombre del Sistema</h1>
+        <h1><?php echo $Nombre ?></h1>
     </header>
 
     <div class="container custom-container">
@@ -17,26 +46,34 @@
 
             <div class="texto-container">
                 <h2 class="detallesHeading">Detalles</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, ex, aut autem earum quos laborum asperiores obcaecati qui ut incidunt, nulla iure odit. Reiciendis nobis modi animi aspernatur itaque ducimus!</p>
+                <p><?php echo $Descripcion ?></p>
             </div>
             <div class="logoSistema-container">
-                <img src="recursos\img\ASPEL-ICONO-VERT_COI-1.webp" alt="Logo del sistema" class="logoSistema">
+                <img src="data:<?php echo $TpFileSis ?>;base64,<?php echo (base64_encode($FileSis)) ?>"
+                    alt="Logo del sistema" class="logoSistema">
             </div>
         </section>
 
         <section class="sistemaDetalle-functions custom-section">
             <h2 class="detallesHeading">Funciones</h2>
             <ul class="detalleList">
-                <li>
-                    <div class="question">
-                        <span class="function-name">Función 1</span>
-                        <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
-                    </div>
-                    <div class="answer">
-                        Información detallada sobre la Función 1.
-                    </div>
-                </li>
-                <li>
+                <?php
+                foreach ($dtfuncview as $row):
+                    ?>
+                    <li>
+                        <div class="question">
+                            <span class="function-name"><?php echo $row['Funcion'] ?></span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                        <div class="answer">
+                            <?php echo $row['DetFuncion'] ?>
+                        </div>
+                    </li>
+                    <?php
+                endforeach;
+                ?>
+
+                <!-- <li>
                     <div class="question">
                         <span class="function-name">Función 2</span>
                         <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
@@ -44,37 +81,34 @@
                     <div class="answer">
                         Información detallada sobre la Función 2.
                     </div>
-                </li>
-                <li>
-                    <div class="question">
-                        <span class="function-name">Función 3</span>
-                        <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
-                    </div>
-                    <div class="answer">
-                        Información detallada sobre la Función 3.
-                    </div>
-                </li>
+                </li>  -->
             </ul>
         </section>
 
         <section class="sistemaDetalle-requirements custom-section">
             <h2 class="detallesHeading">Requisitos del Sistema</h2>
-            <p>Detalles sobre los requisitos de hardware y software.</p>
+            <p><?php echo $Requisitos ?></p>
         </section>
 
         <section class="sistemaDetalle-faq custom-section">
             <h2 class="detallesHeading">Preguntas Frecuentes</h2>
             <ul class="detalleList">
-                <li>
-                    <div class="question">
-                        ¿Pregunta 1?
-                        <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
-                    </div>
-                    <div class="answer">
-                        Respuesta a la Pregunta 1.
-                    </div>
-                </li>
-                <li>
+                <?php
+                foreach ($dtpregview as $row):
+                    ?>
+                    <li>
+                        <div class="question">
+                            <?php echo $row['Pregunta'] ?>
+                            <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
+                        </div>
+                        <div class="answer">
+                            <?php echo $row['Respuesta'] ?>
+                        </div>
+                    </li>
+                    <?php
+                endforeach;
+                ?>
+                <!-- <li>
                     <div class="question">
                         ¿Pregunta 2?
                         <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
@@ -82,16 +116,7 @@
                     <div class="answer">
                         Respuesta a la Pregunta 2.
                     </div>
-                </li>
-                <li>
-                    <div class="question">
-                        ¿Pregunta 3?
-                        <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
-                    </div>
-                    <div class="answer">
-                        Respuesta a la Pregunta 3.
-                    </div>
-                </li>
+                </li> -->
             </ul>
         </section>
 
@@ -120,40 +145,32 @@
                                 </div>
                             </div>
 
-                            <div class="carousel-item detalleSis">
-                                <div class="col-md-3 detalleSis">
-                                    <div class="card detalleSis">
-                                        <div class="card-img detalleSis">
-                                            <div class="img-container">
-                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
-                                                <div class="card-img-overlay detalleSis">
-                                                    <div class="overlay-content">
-                                                        <p>Slide 2</p>
+                            <?php
+                            $imgs = array_chunk($gallery, 4);
+                            for ($i = 0; $i < count($imgs); $i++) {
+                                $cuenta = 0;
+                                foreach ($imgs[$i] as $row):
+                                    ?>
+                                    <div class="carousel-item <?php echo ($cuenta == 0 ? "active" : "") ?> detalleSis">
+
+                                        <div class="col-md-3 detalleSis">
+                                            <div class="card detalleSis">
+                                                <div class="card-img detalleSis">
+                                                    <div class="img-container">
+
+                                                        <img src="<?php echo $row ?>" class="img-fluid detalleSis">
                                                     </div>
+                                                    <div class="card-img-overlay detalleSis"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-item detalleSis">
-                                <div class="col-md-3 detalleSis">
-                                    <div class="card detalleSis">
-                                        <div class="card-img detalleSis">
-                                            <div class="img-container">
-                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
-                                                <div class="card-img-overlay detalleSis">
-                                                    <div class="overlay-content">
-                                                        <p>Slide 3</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                                    <?php
+                                    $cuenta++;
+                                endforeach;
+                            }
+                            ?>
+                            <!-- 
                             <div class="carousel-item detalleSis">
                                 <div class="col-md-3 detalleSis">
                                     <div class="card detalleSis">
@@ -169,12 +186,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <a class="carousel-control-prev bg-transparent w-aut detalleSis" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <a class="carousel-control-prev bg-transparent w-aut detalleSis" href="#recipeCarousel"
+                            role="button" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         </a>
-                        <a class="carousel-control-next bg-transparent w-aut detalleSis" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <a class="carousel-control-next bg-transparent w-aut detalleSis" href="#recipeCarousel"
+                            role="button" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         </a>
                     </div>

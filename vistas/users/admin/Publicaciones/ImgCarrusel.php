@@ -1,5 +1,5 @@
 <?php
-// require_once("modelos/model_carrusel.php");
+require_once("modelos/model_publicaciones.php");
 
 if (isset($_GET['ins'])) {
     if ($_GET['ins'] == "Ok") {
@@ -32,26 +32,36 @@ if (isset($_GET['ins'])) {
         <div class="container mt-3 p-3 bg-white overflow-auto table-scroll rounded" style="max-height:600px;">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <!-- Tarjeta 1 -->
+                <?php
+                foreach($dtpublicaciones as $row):
+                    if($row['Clave'] == "Carrusel"){
+                ?>
                 <div class="col">
                     <div class="card carruselImg-card h-100">
-                        <img src="https://via.placeholder.com/400x300" alt="Imagen Carrusel" class="card-img-top" />
+                        <img src="data:<?php echo $row['TipoArchivoPub'] ?>;base64,<?php echo (base64_encode($row['ArchivoPub'])) ?>" alt="<?php echo $row['Titulo'] ?>" class="card-img-top" />
                         <div class="card-body card-body-bg">
+                        <!-- <h5 class="card-title"><?php //echo $row['Titulo'] ?></h5> -->
+                        <!-- <p class="overflow-hidden"><?php //echo $row['DescripcionPublicacion'] ?></p> -->
                             <div class="d-inline-flex">
-                                <a href="#" class="btn btn-success btn-success-bg btn-sm">
+                                <a href="index.php?page=EdicionImgCarrusel&IdPublicacion=<?php echo $row['IdPublicacion'] ?>" class="btn btn-success btn-success-bg btn-sm">
                                     Actualizar
                                 </a>
                             </div>
                             <div class="d-inline-flex">
-                                <a href="#" class="btn btn-danger btn-danger-bg btn-sm">
+                                <a href="index.php?page=ImgCarruselAdmin&actionpub=delete&IdPublicacion=<?php echo $row['IdPublicacion'] ?>" class="btn btn-danger btn-danger-bg btn-sm">
                                     Eliminar
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php
+                    }
+                endforeach;
+                ?>
 
                 <!-- Tarjeta 2 -->
-                <div class="col">
+                <!-- <div class="col">
                     <div class="card carruselImg-card h-100">
                         <img src="https://via.placeholder.com/400x300" alt="Imagen Carrusel" class="card-img-top" />
                         <div class="card-body card-body-bg">
@@ -67,10 +77,10 @@ if (isset($_GET['ins'])) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Tarjeta 3 -->
-                <div class="col">
+                <!-- <div class="col">
                     <div class="card carruselImg-card h-100">
                         <img src="https://via.placeholder.com/400x300" alt="Imagen Carrusel" class="card-img-top" />
                         <div class="card-body card-body-bg">
@@ -86,9 +96,8 @@ if (isset($_GET['ins'])) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
-
         </div>
     </div>
 </body>

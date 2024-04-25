@@ -1,3 +1,7 @@
+<?php
+require_once('modelos/model_contact.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +18,7 @@
     </header>
 
     <div class="contacto-form-container container">
-        <form id="contacto-form">
+        <form id="contacto-form" action="index.php?page=Contacto" method="post">
             <h2>Contacta con Nosotros</h2>
             <div class="form-floating contacto-form-group">
                 <input id="Nombre" name="Nombre" class="form-control form-control-custom" type="text" placeholder="Nombre Completo" required />
@@ -25,18 +29,18 @@
                 <label for="Email">Correo Electrónico:</label>
             </div>
             <div class="form-floating contacto-form-group">
-                <input id="Tel" name="Tel" class="form-control form-control-custom" type="tel" placeholder="Número de Teléfono" required>
+                <input id="Tel" name="Telefono" class="form-control form-control-custom" type="tel" placeholder="Número de Teléfono" required>
                 <label for="Tel">Teléfono:</label>
             </div>
             <div class="form-floating form-group form-group-custom">
-                <select id="IdServicio" name="IdServicio" class="form-select form-select-custom" required>
+                <select id="IdAsunto" name="IdAsunto" class="form-select form-select-custom" required>
                     <option value="" disabled selected hidden>Selecciona un motivo</option>
                     <option value="1">Sugerencias</option>
                     <option value="2">Cotización</option>
                     <option value="3">Dudas y Aclaraciones</option>
                     <option value="4">Otros</option>
                 </select>
-                <label for="IdServicio">Motivo</label>
+                <label for="IdAsunto">Motivo</label>
             </div>
 
             <div class="form-floating contacto-form-group">

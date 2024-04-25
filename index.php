@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once("recursos/config/db.php");
-require_once("vistas/template/navbar/navbar.php");
-require_once("controladores/controller_login.php");
+require_once ("recursos/config/db.php");
+require_once ("vistas/template/navbar/navbar.php");
+require_once ("controladores/controller_login.php");
 
 if ((!empty($_GET['page'])) || (isset($_GET['page']))) {
     $page = $_GET['page'];
@@ -18,11 +18,11 @@ if (!empty($_GET['p']) && is_numeric($_GET['p'])) {
 
 switch ($page) {
 
-        //------------------- ADMIN ----------------------
+    //------------------- ADMIN ----------------------
 
         //------------------- SISTEMAS ----------------------
     case "EdicionSistemas":
-        include_once("vistas/users/admin/Sistemas/EdicionSistemas.php");
+        include_once ("vistas/users/admin/Sistemas/EdicionSistemas.php");
         break;
     case "SistemasAdmin":
         include_once("vistas/users/admin/Sistemas/Sistemas.php");
@@ -32,56 +32,56 @@ switch ($page) {
         break;
         //------------------- SISTEMAS ----------------------
 
-        //------------------- SERVICIOS ----------------------
+    //------------------- SERVICIOS ----------------------
     case "EdicionServicios":
-        include_once("vistas/users/admin/Servicios/EdicionServicios.php");
+        include_once ("vistas/users/admin/Servicios/EdicionServicios.php");
         break;
     case "ServiciosAdmin":
-        include_once("vistas/users/admin/Servicios/Servicios.php");
+        include_once ("vistas/users/admin/Servicios/Servicios.php");
         break;
-        //------------------- SERVICIOS ----------------------
+    //------------------- SERVICIOS ----------------------
 
-        //------------------- PUBLICACIONES ----------------------
-    case "ImgCarrusel":
-        include_once("vistas/users/admin/Publicaciones/ImgCarrusel.php");
+    //------------------- PUBLICACIONES ----------------------
+    case "ImgCarruselAdmin":
+        include_once ("vistas/users/admin/Publicaciones/ImgCarrusel.php");
         break;
-    case "Publicidades":
-        include_once("vistas/users/admin/Publicaciones/Publicidades.php");
+    case "PublicidadesAdmin":
+        include_once ("vistas/users/admin/Publicaciones/Publicidades.php");
         break;
     case "EdicionImgCarrusel":
-        include_once("vistas/users/admin/Publicaciones/EdicionImgCarrusel.php");
+        include_once ("vistas/users/admin/Publicaciones/EdicionImgCarrusel.php");
         break;
     case "EdicionPublicidad":
-        include_once("vistas/users/admin/Publicaciones/EdicionPublicidad.php");
+        include_once ("vistas/users/admin/Publicaciones/EdicionPublicidad.php");
         break;
-        //------------------- PUBLICACIONES ----------------------
+    //------------------- PUBLICACIONES ----------------------
 
-        //------------------- CONFIGURABLES ----------------------
+    //------------------- CONFIGURABLES ----------------------
     case "InfoContacto":
-        include("vistas/users/admin/Configuraciones/EdicionFooter.php");
+        include ("vistas/users/admin/Configuraciones/EdicionFooter.php");
         break;
     case "NosotrosAdmin":
-        include_once("vistas/users/admin/Configuraciones/NosotrosAdmin.php");
+        include_once ("vistas/users/admin/Configuraciones/NosotrosAdmin.php");
         break;
-        //------------------- CONFIGURABLES ----------------------
+    //------------------- CONFIGURABLES ----------------------
 
-        //------------------- PRODUCTOS ----------------------
+    //------------------- PRODUCTOS ----------------------
     case "EdicionProductos":
-        include_once("vistas/users/admin/Productos/EdicionProductos.php");
+        include_once ("vistas/users/admin/Productos/EdicionProductos.php");
         break;
     case "ProductosAdmin":
-        include_once("vistas/users/admin/Productos/Productos.php");
+        include_once ("vistas/users/admin/Productos/Productos.php");
         break;
-        //------------------- PRODUCTOS ----------------------
+    //------------------- PRODUCTOS ----------------------
 
-        //------------------- PREGUNTAS FRECUENTES ----------------------
-    case "PreguntasFrecuentes":
-        include_once("vistas/users/admin/PreguntasFrecuentes/PreguntasFrecuentes.php");
-        break;
+    //------------------- PREGUNTAS FRECUENTES ----------------------
     case "PreguntasAdmin":
-        include_once("vistas/users/admin/PreguntasFrecuentes/EdicionPreguntasFrecuentes.php");
+        include_once ("vistas/users/admin/PreguntasFrecuentes/PreguntasFrecuentes.php");
         break;
-        //------------------- PREGUNTAS FRECUENTES ----------------------
+    case "EdicionPreguntas":
+        include_once ("vistas/users/admin/PreguntasFrecuentes/EdicionPreguntasFrecuentes.php");
+        break;
+    //------------------- PREGUNTAS FRECUENTES ----------------------
 
         //------------------- PRIVACIDAD ----------------------
     case "TerminosPrivacidad":
@@ -91,30 +91,30 @@ switch ($page) {
 
         //------------------- LOGIN ----------------------
     case "Login":
-        include_once("vistas/template/login/login.php");
+        include_once ("vistas/template/login/login.php");
         break;
-        //------------------- LOGIN ----------------------
+    //------------------- LOGIN ----------------------
 
-        //------------------- ADMIN ----------------------
+    //------------------- ADMIN ----------------------
 
-        /*------------------------------------------------------------------------------------------------------------------------------------*/
+    /*------------------------------------------------------------------------------------------------------------------------------------*/
 
-        //------------------- CLIENTE ----------------------
+    //------------------- CLIENTE ----------------------
 
-        //------------------- PRODUCTOS ----------------------
+    //------------------- PRODUCTOS ----------------------
     case "Productos":
-        include_once("vistas/users/client/Productos.php");
+        include_once ("vistas/users/client/Productos.php");
         break;
-        //------------------- PRODUCTOS ----------------------
+    //------------------- PRODUCTOS ----------------------
 
-        //------------------- SISTEMAS ----------------------
+    //------------------- SISTEMAS ----------------------
     case "Sistemas":
-        include_once("vistas/users/client/Sistemas.php");
+        include_once ("vistas/users/client/Sistemas.php");
         break;
     case "DetalleSistema":
-        include_once("vistas/users/client/DetalleSistema.php");
+        include_once ("vistas/users/client/DetalleSistema.php");
         break;
-        //------------------- SISTEMAS ----------------------
+    //------------------- SISTEMAS ----------------------
 
         //------------------- SERVICIOS ----------------------
     case "Servicios":
@@ -124,31 +124,31 @@ switch ($page) {
 
         //------------------- CONTACTO ----------------------
     case "Contacto":
-        include_once("vistas/users/client/Contacto.php");
+        include_once ("vistas/users/client/Contacto.php");
         break;
-        //------------------- CONTACTO ----------------------
+    //------------------- CONTACTO ----------------------
 
-        //------------------- NOSOTROS ----------------------
+    //------------------- NOSOTROS ----------------------
     case "Nosotros":
-        include_once("vistas/users/client/Nosotros.php");
+        include_once ("vistas/users/client/Nosotros.php");
         break;
-        //------------------- NOSOTROS ----------------------
+    //------------------- NOSOTROS ----------------------
 
-        //------------------- PREGUNTAS ----------------------
+    //------------------- PREGUNTAS ----------------------
     case "PreguntasFrecuentes":
-        include_once("vistas/users/client/PreguntasFrecuentes.php");
+        include_once ("vistas/users/client/PreguntasFrecuentes.php");
         break;
-        //------------------- PREGUNTAS ----------------------
+    //------------------- PREGUNTAS ----------------------
 
-        //------------------- HOME ----------------------
+    //------------------- HOME ----------------------
 
     default:
-        include_once('vistas/home/Home.php');
+        include_once ('vistas/home/Home.php');
         break;
-        //------------------- HOME ----------------------
+    //------------------- HOME ----------------------
 
-        //------------------- CLIENTE ----------------------
+    //------------------- CLIENTE ----------------------
 
 }
 
-require_once("vistas/template/footer/footer.php");
+require_once ("vistas/template/footer/footer.php");

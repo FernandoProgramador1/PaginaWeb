@@ -19,6 +19,7 @@ require_once("modelos/model_sistemas.php");
         $Id = "";
         $Nombre = "";
         $Descripcion = "";
+        $Requisitos = "";
         $TpFileSis = "";
         $FileSis = "";
         $IdFile = "";
@@ -28,6 +29,7 @@ require_once("modelos/model_sistemas.php");
                 $Id = $row["IdSistema"];
                 $Nombre = $row["NombreSistema"];
                 $Descripcion = $row["Descripcion"];
+                $Requisitos = $row["Requisitos"];
                 $TpFileSis = $row["Tipo"];
                 $FileSis = $row["Archivo"];
                 $IdFile = $row["IdArchivo"];
@@ -52,6 +54,14 @@ require_once("modelos/model_sistemas.php");
             <div class="form-floating form-group form-group-custom">
                 <textarea id="Descripcion" name="Descripcion" class="form-control form-control-custom" rows="5" placeholder="Inserte la descripción del sistema" style="resize: none; min-height: 90px"><?php echo $Descripcion ?></textarea>
                 <label for="Descripcion">Descripción del sistema</label>
+            </div>
+            <div class="form-floating form-group form-group-custom">
+                <textarea id="Requisitos" name="Requisitos" class="form-control form-control-custom" rows="5" placeholder="Inserte los requisitos del sistema" style="resize: none; min-height: 90px"><?php echo $Requisitos ?></textarea>
+                <label for="Requisitos">Requisitos del sistema</label>
+            </div>
+
+            <div class="form-group form-group-custom">
+                <input id="Gallery" name="Gallery[]" class="form-control form-control-custom form-control-lg" type="file" multiple />
             </div>
 
             <div style="display: none;">

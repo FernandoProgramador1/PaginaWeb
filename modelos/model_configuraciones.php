@@ -11,8 +11,9 @@ $config->setKey('CampoKey');
 
 $config->setColumns('Descripcion');
 
-$Contacto = array('Direccion', 'CodigoPostal', 'Ciudad','Estado','Telefono', 'Correo');
-$Nosotros = array('Mision','Vision','Valores','Somos');
+$Contacto = array('Direccion', 'CodigoPostal', 'Ciudad','Estado','Telefono', 'Correo', 'Facebook', 'Instagram', 'Youtube', 'Whatsapp', 'CorreoEnvios');
+$Nosotros = array('Mision','Vision','Valores','Somos', 'Empresa');
+$Rules = array('Aviso', 'Terminos');
 if ((!empty($_GET['CampoKey'])) && (isset($_GET['CampoKey']))) {
     $CampoKey = $_GET['CampoKey'];
     $dtcontactowhere = $config->getWhere($CampoKey);
@@ -36,6 +37,11 @@ if ((!empty($_GET['actioncon'])) && (isset($_GET['actioncon']))) {
         $Values[] = "" . $_POST['Estado'] . "";
         $Values[] = "" . $_POST['Telefono'] . "";
         $Values[] = "" . $_POST['Correo'] . "";
+        $Values[] = "" . $_POST['Facebook'] . "";
+        $Values[] = "" . $_POST['Instagram'] . "";
+        $Values[] = "" . $_POST['Youtube'] . "";
+        $Values[] = "" . $_POST['Whatsapp'] . "";
+        $Values[] = "" . $_POST['CorreoEnvios'] . "";
 
         for($i=0;$i < count($Contacto); $i++){
             $exist = $config->getWhere($Contacto[$i]);
@@ -73,5 +79,25 @@ if ((!empty($_GET['actioncon'])) && (isset($_GET['actioncon']))) {
         }
 
         echo '<script>location.replace("index.php?page=NosotrosAdmin");</script>';
+    }else if($actioncon === 'rules'){
+
+        $Values[] = "" . $_POST['Aviso'] . "";
+        $Values[] = "" . $_POST['Terminos'] . "";
+
+        for($i=0;$i < count($Rules); $i++){
+            $exist = $config->getWhere($Rules[$i]);
+            if($Rules[$i] === $exist[0]["CampoKey"]){
+                $val = $config->column[0] ."='". $Values[$i] ."'";
+                $config->updateConfiguracion($Rules[$i], $val);
+            }else{
+                $config->values[] = "'" . $Rules[$i] . "'";
+                $config->values[] = "'" . $Values[$i] . "'";
+                $config->insertConfiguracion();
+                $config->values = array();
+            }
+            $exist = array();
+        }
+
+        echo '<script>location.replace("index.php?page=TerminosPrivacidad");</script>';
     }
 }

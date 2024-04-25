@@ -116,8 +116,8 @@ class Publicacion extends Conectar
             // echo $sql;
             $this->db->query($sql);
         } catch (Exception $e) {
-            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: '. ($e->getTrace())[0]["function"] . '\n\tTipo: '. explode(" ",($e->getTrace())[0]["args"][0])[0] . '");</script>';
-        }finally{
+            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
+        } finally {
             echo '<script>location.replace("index.php?page=' . $_GET['page'] . '");</script>';
         }
     }
@@ -127,8 +127,16 @@ class Publicacion extends Conectar
         try {
             $this->id = $value;     //ATRAPA EL ID QUE SE USARA PARA IDENTIFICAR CUAL SE CAMBIARA
             $this->val = array();   //SE CREA UN ARRAY DONDE SE COMBINARAN LOS DEMAS
-            for ($index = 0; $index < count($this->values); $index++) {     //SE INICIA EL CICLO DONDE SE LEE LA CANTIDAD DE VALORES
-                $this->val[$index] = $this->column[$index] . "=" . $this->values[$index];     //SE CONCATENAN LOS ARRAY PARA ALMACENARLOS EN OTRO ARRAY
+            for ($i = 0; $i <= count($this->values); $i++) {     //SE INICIA EL CICLO DONDE SE LEE LA CANTIDAD DE VALORES
+                // $var = $this->values[$i];
+                if (key_exists($i, $this->values)) {
+                    if ($this->values[$i] !== "NULL") {
+                        $this->val[$i] = $this->column[$i] . "=" . $this->values[$i];     //SE CONCATENAN LOS ARRAY PARA ALMACENARLOS EN OTRO ARRAY
+
+                    } else {
+                        unset($this->values[$i]);
+                    }
+                }
             }
             // print_r($this->id);
             // print_r($this->val);     //SE IMPRIME EL ARRAY DONDE SE UNIERON LOS OTROS ARRAY, PARA VER COMO QUEDA
@@ -138,8 +146,8 @@ class Publicacion extends Conectar
             // echo $sql;
             $this->db->query($sql);
         } catch (Exception $e) {
-            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: '. ($e->getTrace())[0]["function"] . '\n\tTipo: '. explode(" ",($e->getTrace())[0]["args"][0])[0] . '");</script>';
-        }finally{
+            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
+        } finally {
             echo '<script>location.replace("index.php?page=' . $_GET['page'] . '");</script>';
         }
     }

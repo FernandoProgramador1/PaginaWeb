@@ -1,11 +1,77 @@
 <?php
-require_once('modelos/model_configuraciones.php');
+require_once ('modelos/model_configuraciones.php');
+include_once ('modelos/model_sistemas.php');
 ?>
 
 <footer class="footer footer-fondo">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
+            <?php
+            $Direccion = "";
+            $CodigoPostal = "";
+            $Ciudad = "";
+            $Estado = "";
+            $Telefono = "";
+            $Correo = "";
+            $Facebook = "";
+            $Instagram = "";
+            $Youtube = "";
+            $Whatsapp = "";
+            $CorreoEnvios = "";
+
+            foreach ($dtcontactos as $row):
+                switch ($row["CampoKey"]) {
+                    case "Direccion":
+                        $Direccion = $row["Descripcion"];
+                        break;
+                    case "CodigoPostal":
+                        $CodigoPostal = $row["Descripcion"];
+                        break;
+                    case "Ciudad":
+                        $Ciudad = $row["Descripcion"];
+                        break;
+                    case "Estado":
+                        $Estado = $row["Descripcion"];
+                        break;
+                    case "Telefono":
+                        $Telefono = $row["Descripcion"];
+                        break;
+                    case "Correo":
+                        $Correo = $row["Descripcion"];
+                        break;
+                    case "Facebook":
+                        $Facebook = $row["Descripcion"] ?? "";
+                        break;
+                    case "Instagram":
+                        $Instagram = $row["Descripcion"] ?? "";
+                        break;
+                    case "Youtube":
+                        $Youtube = $row["Descripcion"] ?? "";
+                        break;
+                    case "Whatsapp":
+                        $Whatsapp = $row["Descripcion"] ?? "";
+                        break;
+                    case "CorreoEnvios":
+                        $CorreoEnvios = $row["Descripcion"] ?? "";
+                        break;
+
+                }
+            endforeach;
+
+            $Address = "";
+            $Dir = array();
+            if (!empty($Direccion))
+                $Dir[] = $Direccion;
+            if (!empty($Estado))
+                $Dir[] = $Estado;
+            if (!empty($Ciudad))
+                $Dir[] = $Ciudad;
+            if (!empty($CodigoPostal))
+                $Dir[] = $CodigoPostal;
+
+            $Address = implode(", ", $Dir);
+            ?>
+            <!-- <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
                 <div class="information">
                     <h6 class="footer-heading text-uppercase fw-bold">Información</h6>
                     <ul class="list-unstyled footer-link mt-4">
@@ -15,15 +81,22 @@ require_once('modelos/model_configuraciones.php');
                         <li class=""><a href="#" class="fw-semibold">Ejemplo 4</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
                 <div class="resources">
                     <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
                     <ul class="list-unstyled footer-link mt-4">
-                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 1</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 2</a></li>
-                        <li class="mb-1"><a href="#" class="fw-semibold">Ejemplo 3</a></li>
-                        <li class=""><a href="#" class="fw-semibold">Ejemplo 4</a></li>
+                        <?php
+                        $sistemasFooter = array_chunk($dtsistemas, 4);
+                        foreach ($sistemasFooter[0] as $row):
+                            ?>
+                            <li class="mb-1"><a
+                                    href="index.php?page=DetalleSistema&IdSistema=<?php echo $row['IdSistema'] ?>"
+                                    class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
+                            <?php
+                        endforeach;
+                        ?>
+                        <li class=""><a href="index.php?page=Sistemas" class="fw-semibold">Ver mas..</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,18 +104,57 @@ require_once('modelos/model_configuraciones.php');
                 <div class="social">
                     <h6 class="footer-heading text-uppercase text-white fw-bold">Redes</h6>
                     <ul class="list-inline my-3">
-                        <li class="list-inline-item"><a href="#" class="btn-sm btn btn-primary mb-2"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="text-danger btn-sm btn btn-light mb-2"><i class="fab fa-whatsapp"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="btn-sm btn btn-primary mb-2"><i class="fab fa-youtube"></i></a></li>
+                        <?php
+                        if (!empty($Facebook)) { ?>
+                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>"
+                                    class="btn-sm btn btn-primary mb-2">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a></li>
+                            <?php
+                        }
+                        if (!empty($Whatsapp)) { ?>
+                            <li class="list-inline-item"><a href="<?php echo $Whatsapp ?>" class="text-danger btn-sm btn btn-light mb-2">
+
+                                    <i class="fab fa-whatsapp"></i>
+                                </a></li>
+                            <?php
+                        }
+                        if (!empty($Youtube)) { ?>
+                            <li class="list-inline-item"><a href="<?php echo $Youtube ?>" class="btn-sm btn btn-primary mb-2">
+
+                                    <i class="fab fa-youtube"></i>
+                                </a></li>
+                            <?php
+                        }
+                        ?>
+
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 mt-4 col-lg-4 text-center text-sm-start">
                 <div class="contact footer-link">
                     <h6 class="footer-heading text-uppercase fw-bold">Contáctanos</h6>
-                    <address class="mt-4 m-0 mb-1"><i class="fas fa-map-marker-alt fw-semibold"></i> New South Block , Phase 8B , 160055</address>
-                    <a href="tel:+" class="mb-1 fw-semibold"><i class="fas fa-phone"></i> 909090XXXX</a>
-                    <a href="mailto:" class="mb-1 fw-semibold"><i class="fas fa-envelope"></i> xyzdemomail@gmail.com</a>
+                    <address class="mt-4 m-0 mb-1">
+                        <?php if (!empty($Address)) { ?>
+                            <i class="fas fa-map-marker-alt fw-semibold"></i>
+                        <?php }
+                        echo $Address
+                            ?>
+                    </address>
+                    <a href="tel:+" class="mb-1 fw-semibold">
+                        <?php if (!empty($Telefono)) { ?>
+                            <i class="fas fa-phone"></i>
+                        <?php }
+                        echo $Telefono
+                            ?>
+                    </a>
+                    <a href="mailto:" class="mb-1 fw-semibold">
+                        <?php if (!empty($Correo)) { ?>
+                            <i class="fas fa-envelope"></i>
+                        <?php }
+                        echo $Correo
+                            ?>
+                    </a>
                 </div>
             </div>
         </div>
@@ -57,5 +169,6 @@ require_once('modelos/model_configuraciones.php');
 <script src="recursos/JS/nav.js"></script>
 <script src="recursos/JS/faq.js"></script>
 <script src="recursos/JS/preguntas-funciones.js"></script>
+<!-- <script src="recursos/JS/carrusel.js"></script> -->
 
 <script src="recursos/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

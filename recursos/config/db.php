@@ -60,18 +60,41 @@ class Conectar
     public function comprobarTablas($tExistentes, $conection)
     {
         $Tablas = $this->Tablas();
+        $Alters = $this->Alters();
+        
         $exist = array();
-        for($j = 0; $j < count($tExistentes); $j++){
-            $exist[] = $tExistentes[$j]["Tables_in_paginaweb"];
-        }
+        $exist = array_column($tExistentes, "Tables_in_paginaweb");
 
         for($i = 0; $i < count($Tablas); $i++){
             $tab = strtolower($Tablas[$i][0]);
-            $exs = in_array(strtolower($Tablas[$i][0]),$exist);
-            if(!in_array(strtolower($Tablas[$i][0]),$exist)){
+            // $exs = in_array(strtolower($Tablas[$i][0]),$exist);
+            if(!in_array($tab, $exist)){
                 $conection->query($Tablas[$i][1]);
+
+                $var = array_key_exists($tab, $Alters);
+                if(array_key_exists($tab, $Alters)){
+                    for($k = 0; $k < count($Alters); $k++){
+                        if(in_array(strtolower($Alters[$k][0]), $exist)){
+                            
+                        }
+                    }
+                }
             }
         }
+
+        for($k = 0; $k < count($Alters); $k++){
+            $variable = in_array(strtolower($Alters[$k][0]), $exist);
+
+            if(in_array(strtolower($Alters[$k][0]), $exist)){
+                try{
+                    $conection->query($Alters[$k][1]);
+                }
+                catch (Exception $e){
+                    // echo '<script>alert("Alter ya aplicado");</script>';
+                }
+            }
+        }
+
         $exist = array();
     }
 
@@ -157,7 +180,6 @@ class Conectar
             Pregunta    varchar(150) NOT NULL,
             Respuesta   LONGTEXT NOT NULL,
             IdRelacion  int(10),
-            IdTipoRelacion  int(10),
             PRIMARY KEY (IdPregunta)
         );"];
 
@@ -171,6 +193,26 @@ class Conectar
             CONSTRAINT fk_Productos_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
         );"];
 
+        $tablas[] = [0 => "Productos",
+        1 => "Create Table Productos(
+            IdProducto  int(10) NOT NULL AUTO_INCREMENT,
+            NombreProducto  varchar(150) NOT NULL,
+            Descripcion     LONGTEXT NOT NULL,
+            IdArchivo int(10),
+            PRIMARY KEY (IdProducto),
+            CONSTRAINT fk_Productos_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
+        );"];
+
+        $tablas[] = [0 => "Funciones",
+        1 => "Create Table Funciones(
+            IdFuncion   int(10) NOT NULL AUTO_INCREMENT,
+            Funcion     varchar(200) NOT NULL,
+            Descripcion text,
+            IdSistema   int(10) NOT NULL,
+            PRIMARY KEY (IdFuncion),
+            CONSTRAINT fk_Funciones_Sistemas FOREIGN KEY (IdSistema) REFERENCES Sistemas(IdSistema)
+        );"];
+
         $tablas[] = [0 => "view_servicios",
         1 => "Create View view_servicios as
             SELECT s.IdServicio, s.Nombre as NombreServicio, s.Descripcion, s.IdArchivo, a.Archivo, a.MimeType as Tipo
@@ -179,7 +221,7 @@ class Conectar
 
         $tablas[] = [0 => "view_sistemas",
         1 => "Create View view_sistemas as
-            SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, a.Archivo, a.MimeType as Tipo
+            SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.IdArchivo, a.Archivo, a.MimeType as Tipo
             FROM Sistemas as s
             LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;"];
 
@@ -205,7 +247,61 @@ class Conectar
             ON p.IdArchivo = a1.IdArchivo;"
             ];
 
+        $tablas[] = [0 => "view_preguntas",
+        1 => "Create View view_preguntas as
+            SELECT p.IdPregunta, p.Pregunta, p.Respuesta, p.IdRelacion, s.Nombre as NombreSistema
+            FROM Preguntas as p
+            LEFT JOIN
+            Sistemas as s 
+            ON p.IdRelacion = s.IdSistema;"
+            ];
+            
+        $tablas[] = [0 => "view_preguntas",
+        1 => "Create View view_preguntas as
+            SELECT p.IdPregunta, p.Pregunta, p.Respuesta, p.IdRelacion, s.Nombre as NombreSistema
+            FROM Preguntas as p
+            LEFT JOIN
+            Sistemas as s 
+            ON p.IdRelacion = s.IdSistema;"
+            ];
+
+        $tablas[] = [0 => "view_funciones",
+        1 => "Create Or Replace View view_funciones as
+            SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.Requisitos, s.IdArchivo, a.Archivo, a.MimeType as Tipo,
+                f.IdFuncion, f.Funcion, f.Descripcion as DetFuncion
+            FROM Funciones as f
+            LEFT JOIN Sistemas as s ON f.IdSistema = s.IdSistema
+            LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;"
+            ];
+
+        
         return $tablas;
+    }
+
+    public function Alters(){
+        $alters = array();
+
+        $alters[] = [0 => "sistemas",
+        1 => "ALTER TABLE sistemas ADD Requisitos text;"];
+
+        $alters[] = [0 => "sistemas",
+        1 => "Create OR REPLACE View view_sistemas as
+        SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.Requisitos, s.IdArchivo, a.Archivo, a.MimeType as Tipo
+        FROM Sistemas as s
+        LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;"];
+
+        $alters[] = [0 => "publicaciones",
+        1 => "Create Or Replace View view_Publicaciones as
+        SELECT p.IdPublicacion, p.CampoKey as Clave, p.Descripcion as DescripcionPublicacion,
+        a.MimeType as TipoArchivoPub, a.Archivo as ArchivoPub, p.IdArchivo, P.Titulo,
+        s2.IdSistema, s2.Nombre as NombreSistema, a2.Archivo as ArchivoSistema, a2.MimeType as TipoArchivoSistema
+        FROM Publicaciones as p
+        LEFT JOIN Sistemas as s2 ON p.IdSistema = s2.IdSistema
+        LEFT JOIN Archivos as a2 ON s2.IdArchivo = a2.IdArchivo
+        LEFT JOIN Archivos as a ON p.IdArchivo = a.IdArchivo;
+        "];
+
+        return $alters;
     }
 }
 

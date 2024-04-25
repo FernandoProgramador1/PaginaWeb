@@ -26,8 +26,14 @@ if ((!empty($_GET['IdProducto'])) && (isset($_GET['IdProducto']))) {
 } else {
     $IdProducto = null;
     $dtproductowhere = null;
-    $dtproductos = $productos->getAll();
-    $dtprodsview = $productos->getView();
+    
+    if (!empty($_GET['page']) && $_GET['page'] == "Productos") {
+        $dtprodsview = !empty($_POST['filter']) ? $productos->getWhereFilter($_POST['filter']) : $productos->getView();
+        $filter = $_POST['filter'] ?? "";
+    } else {
+        $dtprodsview = $productos->getView();
+    }    // $dtproductos = $productos->getAll();
+    // $dtprodsview = $productos->getView();
 }
 
 $dir_doc = "recursos/Archivos/";
@@ -67,7 +73,16 @@ if ((!empty($_GET['actionprod'])) && (isset($_GET['actionprod']))) {
 
 
     } elseif ($action === 'delete') {
+
+        foreach ($dtproductowhere as $temp):
+            $IdArchvioProd = $temp["IdArchivo"];
+        endforeach;
+
         $productos->deleteProducto($IdProducto);
+
+        if (isset($IdArchvioProd)) {
+            $archivo->deleteArchivo($IdArchvioProd);
+        }
         echo '<script>location.replace("index.php?page=ProductosAdmin&del=Ok");</script>';
     }
 }

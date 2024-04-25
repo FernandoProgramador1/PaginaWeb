@@ -13,7 +13,7 @@ $publicacion->setKey('IdPublicacion');
 $publicacion->setColumns('CampoKey');
 $publicacion->setColumns('Titulo');
 $publicacion->setColumns('Descripcion');
-$publicacion->setColumns('IdServicio');
+// $publicacion->setColumns('IdServicio');
 $publicacion->setColumns('IdSistema');
 $publicacion->setColumns('IdArchivo');
 
@@ -22,12 +22,15 @@ $fch_r = date('Y-m-d'); //OBTIENE LA FECHA ACTUAL
 if ((!empty($_GET['IdPublicacion'])) && (isset($_GET['IdPublicacion']))) {
     $IdPublicacion = $_GET['IdPublicacion'];
     $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
+}else if ((!empty($_POST['IdPublicacion'])) && (isset($_POST['IdPublicacion']))) {
+    $IdPublicacion = $_POST['IdPublicacion'];
+    $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
 } else {
     $IdPublicacion = null;
     $dtpubwhere = null;
 }
 
-$dtpub = $publicacion->getView();
+$dtpublicaciones = $publicacion->getView();
 
 // DEFINE LA ACCION A REALIZAR: INSERT, UPDATE Y DELETE
 if ((!empty($_GET['actionpub'])) && (isset($_GET['actionpub']))) {
@@ -35,15 +38,15 @@ if ((!empty($_GET['actionpub'])) && (isset($_GET['actionpub']))) {
     if ($actionpub === 'insert') {
         // COMPROBAMOS QUE TODOS LOS ARCHIVOS HAYAN SIDO CORRECTOS
         $publicacion->values[] = "'" . $_POST['CampoKey'] . "'";
-        $publicacion->values[] = "'" . $_POST['Titulo'] . "'";
-        $publicacion->values[] = "'" . $_POST['Descripcion'] . "'";
-        $publicacion->values[] = "'" . $_POST['IdServicio'] . "'";
-        $publicacion->values[] = "'" . $_POST['IdSistema'] . "'";
+        $publicacion->values[] = "'" . $_POST['Titulo'] . "'" ?? "";
+        $publicacion->values[] = "'" . $_POST['Descripcion'] . "'" ?? "";
+        // $publicacion->values[] = "'" . $_POST['IdServicio'] . "'";
+        $publicacion->values[] = "" . $_POST['IdSistema'] . "" ?? "NULL";
         $publicacion->values[] = $Idfile;
 
         $publicacion->insertPub();
 
-        echo '<script>location.replace("index.php?page=' . $_GET['view'] . '&ins=Ok");</script>';
+        echo '<script>location.replace("index.php?page='. $_GET['page'] .'&ins=Ok");</script>';
 
     } else if ($actionpub === 'update') {
 
@@ -54,18 +57,18 @@ if ((!empty($_GET['actionpub'])) && (isset($_GET['actionpub']))) {
         $publicacion->values[] = "'" . $_POST['CampoKey'] . "'";
         $publicacion->values[] = "'" . $_POST['Titulo'] . "'";
         $publicacion->values[] = "'" . $_POST['Descripcion'] . "'";
-        $publicacion->values[] = "'" . $_POST['IdServicio'] . "'";
-        $publicacion->values[] = "'" . $_POST['IdSistema'] . "'";
- 
-        if ($Idfile !== "NULL") {
-            $servicio->values[] = $Idfile;
+        // $publicacion->values[] = "'" . $_POST['IdServicio'] . "'";
+        $publicacion->values[] = "" . $_POST['IdSistema'] . "" ?? "NULL";
+
+        if ($Idfile !== "NULL" || (!empty($Idfile) && isset($Idfile))) {
+            $publicacion->values[] = $Idfile;
         } else {
             $publicacion->values[] = $IdArchivoPub;
         }
 
         $publicacion->updatePub($IdPublicacion);
 
-        echo '<script>location.replace("index.php?page=' . $_GET['view'] . '&upd=Ok");</script>';
+        echo '<script>location.replace("index.php?page='. $_GET['page'] .'&upd=Ok");</script>';
 
     } else if ($actionpub === 'delete') {
         foreach ($dtpubwhere as $row):
@@ -74,13 +77,10 @@ if ((!empty($_GET['actionpub'])) && (isset($_GET['actionpub']))) {
 
         $publicacion->deletePub($IdPublicacion);
 
-        if ($Idarchdel != 0) {
+        if (isset($Idarchdel)) {
             $archivo->deleteArchivo($Idarchdel);
         }
 
-        echo '<script>location.replace("index.php?page=' . $_GET['view'] . '&del=Ok");</script>';
+        echo '<script>location.replace("index.php?page='. $_GET['page'] .'&del=Ok");</script>';
     }
 }
-
-
-?>

@@ -66,6 +66,31 @@ class Productos extends Conectar
         return $this->field;
     }
 
+    public function getWhereFilter($value)
+    {
+        try {
+            for ($i = 0; $i < (count($this->column) - 1); $i++) {
+                $this->val[] = $this->column[$i] . " LIKE '%" . $value . "%'";
+            }
+
+            $where = implode(" AND ", $this->val);
+
+            $this->id = $value;
+            $sql = "SELECT * FROM {$this->view} WHERE {$where}";
+            // echo $sql;
+            $result = $this->db->query($sql);
+            $this->field = array();
+            while ($row = $result->fetch_assoc()) {
+                $this->field[] = $row;
+            }
+            return $this->field;
+        } catch (Exception $e) {
+            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
+        }
+    }
+
+
+
     public function getView()
     {
         $sql = "SELECT * FROM {$this->view}";

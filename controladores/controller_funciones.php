@@ -1,12 +1,12 @@
 <?php
 
-class Servicios extends Conectar
+class Funciones extends Conectar
 {
     private $table;
     private $view;
     private $id;
     private $lastid;
-    private $colview;
+    private $columnfk;
     public $values = array();
 
     public function __construct()
@@ -37,14 +37,13 @@ class Servicios extends Conectar
         $this->column[] = $c;
     }
 
-    public function setColumnsView($cf)
-    {
-        $this->colview[] = $cf;
-    }
-
     public function setKey($k)
     {
         $this->pkey = $k;
+    }
+
+    public function setFk($fk){
+        $this->columnfk = $fk;
     }
 
     public function getAll()
@@ -72,27 +71,17 @@ class Servicios extends Conectar
         return $this->field;
     }
 
-    public function getWhereFilter($value)
+    public function getWhereFK($value)
     {
-        try {
-            for ($i = 0; $i < (count($this->colview) - 1); $i++) {
-                $this->val[] = $this->colview[$i] . " LIKE '%" . $value . "%'";
-            }
-
-            $where = implode(" AND ", $this->val);
-
-            $this->id = $value;
-            $sql = "SELECT * FROM {$this->view} WHERE {$where}";
-            // echo $sql;
-            $result = $this->db->query($sql);
-            $this->field = array();
-            while ($row = $result->fetch_assoc()) {
-                $this->field[] = $row;
-            }
-            return $this->field;
-        } catch (Exception $e) {
-            echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
+        $this->id = $value;
+        $sql = "SELECT * FROM {$this->table} WHERE {$this->columnfk}={$this->id}";
+        // echo $sql;
+        $result = $this->db->query($sql);
+        $this->field = array();
+        while ($row = $result->fetch_assoc()) {
+            $this->field[] = $row;
         }
+        return $this->field;
     }
 
     public function getView()
@@ -120,7 +109,20 @@ class Servicios extends Conectar
         return $this->field;
     }
 
-    public function insertServicio()
+    public function getWhereVS($value)
+    {
+        $this->id = $value;
+        $sql = "SELECT * FROM {$this->view} WHERE {$this->columnfk}={$this->id}";
+
+        $result = $this->db->query($sql);
+        $this->field = array();
+        while ($row = $result->fetch_assoc()) {
+            $this->field[] = $row;
+        }
+        return $this->field;
+    }
+    
+    public function insertFuncion()
     {
         try {
             $this->col = implode(",", $this->column);
@@ -133,13 +135,10 @@ class Servicios extends Conectar
             $this->db->query($sql);
         } catch (Exception $e) {
             echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
-        } finally {
-            echo '<script>location.replace("index.php?page=ServiciosAdmin");</script>';
         }
-
     }
 
-    public function updateServicio($value)
+    public function updateFuncion($value)
     {
         try {
             $this->id = $value;     //ATRAPA EL ID QUE SE USARA PARA IDENTIFICAR CUAL SE CAMBIARA
@@ -154,20 +153,16 @@ class Servicios extends Conectar
             $this->db->query($sql);
         } catch (Exception $e) {
             echo '<script>alert("Ocurrio un error en el proceso:\n' . '\tFuncion: ' . ($e->getTrace())[0]["function"] . '\n\tTipo: ' . explode(" ", ($e->getTrace())[0]["args"][0])[0] . '");</script>';
-        } finally {
-            echo '<script>location.replace("index.php?page=ServiciosAdmin");</script>';
         }
 
     }
 
-
-    public function deleteServicio($value)
+    public function deleteFuncion($value)
     {
         $this->id = $value;
         $sql = "DELETE FROM {$this->table} WHERE {$this->pkey}={$this->id}";
         $this->db->query($sql);
     }
-
 }
 
 ?>

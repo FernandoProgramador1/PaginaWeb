@@ -107,10 +107,10 @@
                     <a class="nav-link admin-link" href="index.php?page=InfoContacto">Edicion de Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=ImgCarrusel">Edicion de Imágenes del Carrusel</a>
+                    <a class="nav-link admin-link" href="index.php?page=ImgCarruselAdmin">Edicion de Imágenes del Carrusel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=Publicidades">Edicion de Imágenes de Publicidad</a>
+                    <a class="nav-link admin-link" href="index.php?page=PublicidadesAdmin">Edicion de Imágenes de Publicidad</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=ProductosAdmin">Edicion de Productos</a>
@@ -121,12 +121,9 @@
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=SistemasAdmin">Edicion de Sistemas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=FuncionSistemaAdmin">Agregar Funciones de Sistema</a>
-                </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=TiposProductos">Edicion de Tipos de Productos</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=NosotrosAdmin">Edicion de Nosotros</a>
                 </li>

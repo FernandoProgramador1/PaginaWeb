@@ -2,7 +2,7 @@
 // require_once("modelos/model_mision.php");
 // require_once("modelos/model_vision.php");
 // require_once("modelos/model_valores.php");
-// require_once("modelos/model_quienessomos.php");
+require_once("modelos/model_configuraciones.php");
 ?>
 
 
@@ -17,6 +17,30 @@
 
 <body>
 
+<?php
+
+$Somos = "";
+$Mision = "";
+$Vision = "";
+$Valores = "";
+
+foreach ($dtcontactos as $row):
+    switch ($row["CampoKey"]) {
+        case "Somos":
+            $Somos = $row["Descripcion"];
+            break;
+        case "Mision":
+            $Mision = $row["Descripcion"];
+            break;
+        case "Vision":
+            $Vision = $row["Descripcion"];
+            break;
+        case "Valores":
+            $Valores = $row["Descripcion"];
+            break;
+    }
+endforeach;
+?>
     <header>
         <h1>Sobre Nosostros</h1>
     </header>
@@ -26,16 +50,15 @@
         <div id="nosotros-info" class="container">
             <div class="columna">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus distinctio modi nobis esse voluptates nam deserunt eum eius veritatis et? Ipsa ratione velit,
-                    distinctio reprehenderit error harum porro odio veniam?
+                    <?php echo $Somos ?>
                 </p>
             </div>
-            <div class="columna">
+            <!-- <div class="columna">
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, esse animi dolore iste vitae commodi blanditiis ab nam reprehenderit voluptatem assumenda porro.
                     Sit maxime minima numquam placeat ipsa, aut quibusdam.
                 </p>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -49,8 +72,7 @@
         <div class="vmv-section vision">
             <h2>VISIÓN</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam soluta eius voluptatibus illo ea doloribus, dolor ab a ipsum nostrum adipisci repellendus reiciendis ut eaque laudantium
-                ratione velit similique repudiandae.
+                <?php echo $Vision ?>
             </p>
             <div class="icon-container">
                 <img src="recursos\img\icons\mission.svg" alt="Visión">
@@ -59,8 +81,7 @@
         <div class="vmv-section mision">
             <h2>MISIÓN</h2>
             <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus explicabo consequuntur neque voluptas id illum laborum reiciendis laudantium, debitis,
-                sit deserunt aspernatur cumque ullam soluta odit quae illo exercitationem optio!
+                <?php echo $Mision ?>
             </p>
             <div class="icon-container">
                 <img src="recursos\img\icons\vision.svg">
@@ -70,8 +91,7 @@
         <div class="vmv-section valores">
             <h2>VALORES</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed magnam, ducimus voluptas placeat doloribus, molestiae dolorum pariatur quisquam distinctio itaque cum. Soluta,
-                quos modi repellat voluptatem hic eaque obcaecati ratione.
+                <?php echo $Valores ?>
             </p>
             <div class="icon-container">
                 <img src="recursos\img\icons\valores.svg" alt="Valores">

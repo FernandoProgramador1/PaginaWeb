@@ -1,3 +1,7 @@
+<?php
+require_once('modelos/model_configuraciones.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,17 +11,37 @@
 </head>
 
 <body>
+
+    <?php
+    $Aviso = "";
+    $Terminos = "";
+
+    foreach ($dtcontactos as $row):
+        switch ($row["CampoKey"]) {
+            case "Aviso":
+                $Aviso = $row["Descripcion"] ?? "";
+                break;
+            case "Terminos":
+                $Terminos = $row["Descripcion"] ?? "";
+                break;
+        }
+    endforeach;
+    ?>
     <div class="privacy-container container mt-4">
         <div class="form-container">
             <h1 class="edicionProd-heading">Agregar Aviso de Privacidad y Términos y Condiciones</h1>
-            <form action="tu_ruta_de_guardado.php" method="post">
+            <form action="index.php?page=TerminosPrivacidad&actioncon=rules" method="post" class="was-validated" >
                 <div class="form-floating form-group form-group-custom">
-                    <textarea id="privacy-policy" name="privacy_policy" class="form-control form-control-custom privacy-textarea" required placeholder="Aviso de Privacidad: "></textarea>
+                    <textarea id="privacy-policy" name="Aviso"
+                        class="form-control form-control-custom privacy-textarea" required
+                        placeholder="Aviso de Privacidad: "><?php echo $Aviso ?></textarea>
                     <label for="privacy-policy">Aviso de Privacidad:</label>
                 </div>
 
                 <div class="form-floating form-group form-group-custom">
-                    <textarea id="terms-conditions" name="terms_conditions" class="form-control form-control-custom privacy-textarea" required placeholder="Términos y Condiciones"></textarea>
+                    <textarea id="terms-conditions" name="Terminos"
+                        class="form-control form-control-custom privacy-textarea" required
+                        placeholder="Términos y Condiciones"><?php echo $Terminos ?></textarea>
                     <label for="terms-conditions">Términos y Condiciones: </label>
                 </div>
 

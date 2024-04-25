@@ -1,3 +1,9 @@
+<?php
+require_once ("modelos/model_preguntas.php");
+require_once ("modelos/model_sistemas.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,14 +20,19 @@
         <a href="index.php?page=PreguntasAdmin" class="btn btn-primary service-btn btn-carruselImg btn-lg d-relative">
             Agregar nueva pregunta
         </a>
+        <form id="form-filter" action="index.php?page=PreguntasAdmin">
         <div class="form-floating form-group form-group-custom mb-3">
-            <select id="filter" name="filter" class="form-select form-select-custom" onchange="filterFAQs()">
-                <option value="" hidden selected disabled>Todas las categorías</option>
-                <option value="categoria1">Categoría 1</option>
-                <option value="categoria2">Categoría 2</option>
+            <select id="filter" name="filter" class="form-select form-select-custom" onchange="filterFAQs(), filter('form-filter')">
+                <option value="" selected>Todas las categorías</option>
+                <?php
+                foreach ($dtsistemas as $row) {
+                    echo '<option value="' . $row["IdSistema"] . '">' . $row["Nombre"] . '</option>';
+                }
+                ?>
             </select>
-            <label for="filter">Filtrar por categoría</label>
+            <label for="filter">Filtrar por Referencia</label>
         </div>
+        </form>
 
         <div class="table-responsive">
 
@@ -31,21 +42,27 @@
                         <th class="faq-th">ID</th>
                         <th class="faq-th">Pregunta</th>
                         <th class="faq-th">Respuesta</th>
-                        <th class="faq-th">Categoría</th>
+                        <th class="faq-th">Referencia</th>
                         <th class="faq-th">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-category="categoria1">
-                        <td>1</td>
-                        <td>¿Qué es Lorem Ipsum?</td>
-                        <td>Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.</td>
-                        <td>Categoria1</td>
-                        <td>
-                            <button class="btn btn-faq btn-primary btn-sm me-2">Actualizar</button>
-                            <button class="btn btn-faq btn-danger btn-sm">Eliminar</button>
-                        </td>
-                    </tr>
+                    <?php
+                    foreach ($dtpregview as $row):
+                        ?>
+                        <tr data-category="categoria1">
+                            <td><?php echo $row['IdPregunta'] ?></td>
+                            <td><?php echo $row['Pregunta'] ?></td>
+                            <td><?php echo $row['Respuesta'] ?></td>
+                            <td><?php echo $row['NombreSistema'] ?></td>
+                            <td>
+                                <a href="index.php?page=EdicionPreguntas&IdPregunta=<?php echo $row['IdPregunta'] ?>" class="btn btn-faq btn-primary btn-sm me-2">Actualizar</a>
+                                <a href="index.php?page=PreguntasAdmin&IdPregunta=<?php echo $row['IdPregunta'] ?>" class="btn btn-faq btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+                        <?php
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
         </div>

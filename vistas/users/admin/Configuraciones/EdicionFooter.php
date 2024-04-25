@@ -21,26 +21,45 @@ require_once('modelos/model_configuraciones.php');
         $Estado = "";
         $Telefono = "";
         $Correo = "";
+        $Facebook = "";
+        $Instagram = "";
+        $Whatsapp = "";
+        $CorreoEnvios = "";
 
         foreach ($dtcontactos as $row) :
             switch ($row["CampoKey"]) {
                 case "Direccion":
-                    $Direccion = $row["Descripcion"];
+                    $Direccion = $row["Descripcion"] ?? "";
                     break;
                 case "CodigoPostal":
-                    $CodigoPostal = $row["Descripcion"];
+                    $CodigoPostal = $row["Descripcion"] ?? "";
                     break;
                 case "Ciudad":
-                    $Ciudad = $row["Descripcion"];
+                    $Ciudad = $row["Descripcion"] ?? "";
                     break;
                 case "Estado":
-                    $Estado = $row["Descripcion"];
+                    $Estado = $row["Descripcion"] ?? "";
                     break;
                 case "Telefono":
-                    $Telefono = $row["Descripcion"];
+                    $Telefono = $row["Descripcion"] ?? "";
                     break;
                 case "Correo":
-                    $Correo = $row["Descripcion"];
+                    $Correo = $row["Descripcion"] ?? "";
+                    break;
+                case "Facebook":
+                    $Facebook = $row["Descripcion"] ?? "";
+                    break;
+                case "Instagram":
+                    $Instagram = $row["Descripcion"] ?? "";
+                    break;
+                case "Youtube":
+                    $Youtube = $row["Descripcion"] ?? "";
+                    break;
+                case "Whatsapp":
+                    $Whatsapp = $row["Descripcion"] ?? "";
+                    break;
+                case "CorreoEnvios":
+                    $CorreoEnvios = $row["Descripcion"] ?? "";
                     break;
             }
         endforeach;
@@ -70,6 +89,26 @@ require_once('modelos/model_configuraciones.php');
             <div class="contacto-form-group">
                 <label for="phone" class="contactoFooter-label">Teléfono:</label>
                 <input type="tel" id="phone" name="Telefono" value="<?php echo $Telefono ?>" class="contactoFooter-input" required>
+            </div>
+            <div class="contacto-form-group">
+                <label for="face" class="contactoFooter-label">Facebook:</label>
+                <input type="text" id="face" name="Facebook" value="<?php echo $Facebook ?>" class="contactoFooter-input">
+            </div>
+            <div class="contacto-form-group">
+                <label for="insta" class="contactoFooter-label">Instagram:</label>
+                <input type="text" id="insta" name="Instagram" value="<?php echo $Instagram ?>" class="contactoFooter-input">
+            </div>
+            <div class="contacto-form-group">
+                <label for="whats" class="contactoFooter-label">Whatsapp:</label>
+                <input type="text" id="whats" name="Whatsapp" value="<?php echo $Whatsapp ?>" class="contactoFooter-input">
+            </div>
+            <div class="contacto-form-group">
+                <label for="youtube" class="contactoFooter-label">Youtube:</label>
+                <input type="text" id="youtube" name="Youtube" value="<?php echo $Youtube ?>" class="contactoFooter-input">
+            </div>
+            <div class="contacto-form-group">
+                <label for="emailsend" class="contactoFooter-label">Correo para el contacto del cliente:</label>
+                <input type="text" id="emailsend" name="CorreoEnvios" value="<?php echo $CorreoEnvios ?>" class="contactoFooter-input" required>
             </div>
             <button type="submit" class="contactoFooter-button">Enviar</button>
         </form>

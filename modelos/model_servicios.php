@@ -15,6 +15,9 @@ $servicio->setColumns('Nombre');
 $servicio->setColumns('Descripcion');
 $servicio->setColumns('IdArchivo');
 
+$servicio->setColumnsView('NombreServicio');
+$servicio->setColumnsView('Descripcion');
+
 if ((!empty($_GET['IdServicio'])) && (isset($_GET['IdServicio']))) {
     $IdServicio = $_GET['IdServicio'];
     $dtserviciowhere = $servicio->getWhere($IdServicio);
@@ -27,8 +30,15 @@ if ((!empty($_GET['IdServicio'])) && (isset($_GET['IdServicio']))) {
     $IdServicio = null;
     $dtserviciowhere = null;
     $dtviewservicio = null;
-    $dtservicio = $servicio->getAll();
-    $dtservview = $servicio->getView();
+
+    if (!empty($_GET['page']) && $_GET['page'] == "Servicios") {
+        $dtservview = !empty($_POST['filter']) ? $servicio->getWhereFilter($_POST['filter']) : $servicio->getView();
+        $filter = $_POST['filter'] ?? "";
+    } else {
+        $dtservview = $servicio->getView();
+    }    // $dtproductos = $productos->getAll();
+
+    // $dtservicio = $servicio->getAll();
 }
 
 
@@ -66,7 +76,16 @@ if ((!empty($_GET['actionserv'])) && (isset($_GET['actionserv']))) {
         echo '<script>location.replace("index.php?page=ServiciosAdmin&upd=Ok");</script>';
 
     } elseif ($actionserv === 'delete') {
+        foreach ($dtserviciowhere as $rowid):
+            $IdArchivoServ = $rowid['IdArchivo'];
+        endforeach;
+
         $servicio->deleteServicio($IdServicio);
+
+        if (isset($IdArchivoServ)) {
+            $archivo->deleteArchivo($IdArchivoServ);
+        }
+
         echo '<script>location.replace("index.php?page=ServiciosAdmin&del=Ok");</script>';
     }
 }

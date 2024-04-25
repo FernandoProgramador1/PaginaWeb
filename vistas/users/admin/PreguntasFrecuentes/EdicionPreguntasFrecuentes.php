@@ -1,4 +1,5 @@
 <?php
+require_once("modelos/model_preguntas.php");
 require_once("modelos/model_sistemas.php");
 ?>
 
@@ -16,22 +17,46 @@ require_once("modelos/model_sistemas.php");
     <div class="edicionProd-container container">
         <h1 class="edicionProd-heading text-center">Edición de Preguntas Frecuentes</h1>
 
-        <form method="post" action="index.php?page=FAQAdmin&action=guardar" enctype="multipart/form-data">
+        <?php
+        $Id = "";
+        $Pregunta = "";
+        $Respuesta = "";
+        $IdRelacion = "";
+        $NombreSistema = "";
+
+        if (isset($dtviewproducto)) {
+            foreach ($dtviewproducto as $row) :
+                $Id = $row["IdPregunta"];
+                $Pregunta = $row["Pregunta"];
+                $Respuesta = $row["Respuesta"];
+                $IdRelacion = $row["IdRelacion"];
+                $NombreSistema = $row["NombreSistema"];
+            endforeach;
+        }
+
+        $actionP = "";
+        $actionP = (!empty($Id) && isset($Id)) ? "update" : "insert";
+
+        $action = "index.php?page=PreguntasAdmin&actionpreg=$actionP";
+        ?>
+
+        <form method="post" action="<?php echo $action ?>">
 
             <div class="form-group form-group-custom">
                 <div class="form-floating form-group-custom">
-                    <textarea id="Pregunta" name="Pregunta" class="form-control form-control-custom" rows="4" placeholder="Escribe la pregunta" style="resize: none; min-height: 60px" required></textarea>
+                    <input id="Pregunta" name="Pregunta" class="form-control form-control-custom" value="<?php echo $Pregunta ?>" rows="4" placeholder="Escribe la pregunta" style="resize: none; min-height: 60px" maxlength="148" required />
                     <label for="Pregunta">Pregunta</label>
                 </div>
                 <div class="form-floating form-group-custom">
-                    <textarea id="Respuesta" name="Respuesta" class="form-control form-control-custom" rows="6" placeholder="Escribe la respuesta" style="resize: none; min-height: 90px" required></textarea>
+                    <textarea id="Respuesta" name="Respuesta" class="form-control form-control-custom" value="<?php echo $Respuesta ?>" rows="6" placeholder="Escribe la respuesta" style="resize: none; min-height: 90px" required></textarea>
                     <label for="Respuesta">Respuesta</label>
                 </div>
             </div>
 
             <div class="form-floating form-group form-group-custom">
-                <select id="IdSistema" name="IdSistema" class="form-select form-select-custom">
-                    <option value="" disabled selected hidden>Selecciona un sistema</option>
+                <select id="IdRelacion" name="IdRelacion" class="form-select form-select-custom" value="<?php echo $IdRelacion ?>">
+                    <option value="" hidden selected disabled >Selecciona un sistema</option>
+                    <option value="NULL">General</option>
                     <?php
                     foreach ($dtsistemas as $row) {
                         echo '<option value="' . $row["IdSistema"] . '">' . $row["Nombre"] . '</option>';
@@ -47,7 +72,7 @@ require_once("modelos/model_sistemas.php");
 
             <div class="button-container">
                 <button type="submit" class="btn btn-success btn-success-custom">Enviar</button>
-                <a href="index.php?page=PreguntasFrecuentes" class="btn btn-success btn-success-custom">Volver</a>
+                <a href="index.php?page=PreguntasAdmin" class="btn btn-success btn-success-custom">Volver</a>
             </div>
         </form>
     </div>

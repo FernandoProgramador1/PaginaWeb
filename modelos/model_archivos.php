@@ -92,6 +92,7 @@ if ((!empty($_GET['actionfile'])) && (isset($_GET['actionfile']))) {
                 unlink($rtfile);
             }
         }
+        $Idfile = $IdArchivo;
     }
 }
 

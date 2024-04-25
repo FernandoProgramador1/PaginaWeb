@@ -1,3 +1,7 @@
+<?php
+    include_once("modelos/model_sistemas.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,74 +21,22 @@
             <h2>Nuestros Sistemas</h2>
         </div>
         <div id="sistemasContainer" class="container">
+            <?php
+                foreach($dtsisviews as $row):
+            ?>
             <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
+                <a href="index.php?page=DetalleSistema&IdDetSis=<?php echo $row['IdSistema'] ?>">
+                    <img src="data:<?php echo $row['Tipo'] ?>;base64,<?php echo (base64_encode($row['Archivo'])) ?>" alt="<?php echo $row['NombreSistema'] ?>"/>
                 </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
+                <h3><?php echo $row['NombreSistema'] ?></h3>
+                <p><?php echo $row['Descripcion'] ?></p>
+                <a href="index.php?page=DetalleSistema&IdDetSis=<?php echo $row['IdSistema'] ?>" class="btn sistema-btn">Ver detalles</a>
             </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <div class="sistema">
-                <a href="index.php?page=DetalleSistema">
-                    <img src="recursos/img/ASPEL-ICONO-VERT_COI-1.webp" alt="iconoPrueba">
-                </a>
-                <h3>Sistema Ejemplo</h3>
-                <p>Descripción breve del sistema y sus características.</p>
-                <a href="index.php?page=DetalleSistema" class="btn sistema-btn">Ver detalles</a>
-            </div>
-            <!-- Agrega más sistemas aquí -->
+            <?php
+        endforeach;
+        ?>
         </div>
     </section>
 
 </body>
-
 </html>

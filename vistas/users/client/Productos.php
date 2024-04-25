@@ -1,7 +1,6 @@
 <?php
-require_once("modelos/model_servicios.php");
-// require_once("modelos/model_tipoproducto.php");
-// require_once("modelos/model_marcas.php");
+require_once("modelos/model_productos.php");
+// require_once("modelos/model_servicios.php");
 
 $productsPerPage = 12; // Número de productos por página
 
@@ -28,15 +27,34 @@ $endIndex = $startIndex + $productsPerPage;
 <body class="prod-body">
     <div class="productos-container">
         <!-- Barra de búsqueda y filtros -->
-        <div class="productos-filter-bar">
-            <input type="text" class="producto-input" placeholder="Buscar producto...">
-            <button class="producto-button">Buscar</button>
-        </div>
+        <form action="index.php?page=Productos" method="post">
+
+            <div class="productos-filter-bar">
+                <input name="filter" type="text" class="producto-input" value="<?php echo $filter ?>"
+                    placeholder="Buscar producto..." />
+                <button class="producto-button">Buscar</button>
+            </div>
+        </form>
 
         <!-- Grid de productos -->
         <div class="productos-grid">
             <!-- Ejemplo de producto -->
-            <div class="producto-item">
+            <?php
+            foreach ($dtprodsview as $rows):
+                ?>
+                <div class="producto-item">
+                    <img src="data:<?php echo $rows['Tipo'] ?>;base64,<?php echo (base64_encode($rows['Archivo'])) ?>" alt="<?php echo $rows['Descripcion'] ?>" class="producto-image">
+                    <div class="producto-info">
+                        <h2 class="producto-title"><?php echo $rows['NombreProducto'] ?></h2>
+                        <p class="producto-description"><?php echo $rows['Descripcion'] ?></p>
+                        <!-- <p class="producto-price">Precio: $XX.XX</p> -->
+                    </div>
+                </div>
+                <?php
+            endforeach;
+
+            ?>
+            <!-- <div class="producto-item">
                 <img src="recursos\img\ASPEL-ICONO-VERT_COI-1.webp" alt="Producto" class="producto-image">
                 <div class="producto-info">
                     <h2 class="producto-title">Nombre del Producto</h2>
@@ -75,15 +93,7 @@ $endIndex = $startIndex + $productsPerPage;
                     <p class="producto-description">Descripción corta del producto...</p>
                     <p class="producto-price">Precio: $XX.XX</p>
                 </div>
-            </div>
-            <div class="producto-item">
-                <img src="recursos\img\ASPEL-ICONO-VERT_COI-1.webp" alt="Producto" class="producto-image">
-                <div class="producto-info">
-                    <h2 class="producto-title">Nombre del Producto</h2>
-                    <p class="producto-description">Descripción corta del producto...</p>
-                    <p class="producto-price">Precio: $XX.XX</p>
-                </div>
-            </div>
+            </div> -->
             <!-- Repetir la estructura anterior para cada producto -->
         </div>
     </div>
