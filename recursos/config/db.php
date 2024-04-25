@@ -247,15 +247,6 @@ class Conectar
             ON p.IdRelacion = s.IdSistema;"
             ];
             
-        $tablas[] = [0 => "view_preguntas",
-        1 => "Create View view_preguntas as
-            SELECT p.IdPregunta, p.Pregunta, p.Respuesta, p.IdRelacion, s.Nombre as NombreSistema
-            FROM Preguntas as p
-            LEFT JOIN
-            Sistemas as s 
-            ON p.IdRelacion = s.IdSistema;"
-            ];
-
         $tablas[] = [0 => "view_funciones",
         1 => "Create Or Replace View view_funciones as
             SELECT s.IdSistema, s.Nombre as NombreSistema, s.Descripcion, s.Requisitos, s.IdArchivo, a.Archivo, a.MimeType as Tipo,
