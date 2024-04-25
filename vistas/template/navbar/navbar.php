@@ -114,6 +114,9 @@
                     <a class="nav-link admin-link" href="index.php?page=PublicidadesAdmin">Edicion de Imágenes de Publicidad</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link admin-link" href="index.php?page=EdicionLogo">Edicion de Logo de Empresa</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=ProductosAdmin">Edicion de Productos</a>
                 </li>
                 <li class="nav-item">
