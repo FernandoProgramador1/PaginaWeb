@@ -2,9 +2,10 @@
     margin-right: 10px;
 }
 
-.navbar-logo {
-    padding: 15px;
-    color: #fff;
+.navbar-logo img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 2px;
 }
 
 .navbar-mainbg {
