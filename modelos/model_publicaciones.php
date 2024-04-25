@@ -30,6 +30,8 @@ if ((!empty($_GET['IdPublicacion'])) && (isset($_GET['IdPublicacion']))) {
     $dtpubwhere = null;
 }
 
+$dtlogo = $publicacion->getWhereClave('Logo');
+
 $dtpublicaciones = $publicacion->getView();
 
 // DEFINE LA ACCION A REALIZAR: INSERT, UPDATE Y DELETE

@@ -2,7 +2,7 @@
 // require_once('modelos/model_configuraciones.php');
 // require_once("modelos/model_sistemas.php");
 
-// require_once('modelos/model_publicaciones.php');
+require_once('modelos/model_publicaciones.php');
 ?>
 
 
@@ -56,7 +56,20 @@
 
 <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+    <?php
+        $Clave = "Logo";
+        $TpFilePub = "";
+        $FilePub = "";
+
+        if (isset($dtlogo)) {
+            foreach ($dtlogo as $row) :
+                $Clave = $row["Clave"];
+                $TpFilePub = $row["TipoArchivoPub"];
+                $FilePub = $row["ArchivoPub"];
+            endforeach;
+        }
+?>
+        <a class="navbar-brand navbar-logo" href="#"><img src="data:<?php echo $TpFilePub ?>;base64,<?php echo (base64_encode($FilePub)) ?>" alt="<?= $Clave ?>"/></a>
         <button class="navbar-toggler navbar-btn-mobile" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white"></i>
         </button>

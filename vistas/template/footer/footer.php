@@ -1,6 +1,6 @@
 <?php
-require_once('modelos/model_configuraciones.php');
-include_once('modelos/model_sistemas.php');
+require_once ('modelos/model_configuraciones.php');
+include_once ('modelos/model_sistemas.php');
 ?>
 
 <footer class="footer footer-fondo">
@@ -19,7 +19,7 @@ include_once('modelos/model_sistemas.php');
             $Whatsapp = "";
             $CorreoEnvios = "";
 
-            foreach ($dtcontactos as $row) :
+            foreach ($dtcontactos as $row):
                 switch ($row["CampoKey"]) {
                     case "Direccion":
                         $Direccion = $row["Descripcion"];
@@ -75,14 +75,20 @@ include_once('modelos/model_sistemas.php');
                     <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
                     <ul class="list-unstyled footer-link mt-4">
                         <?php
-                        $sistemasFooter = array_chunk($dtsistemas, 4);
-                        foreach ($sistemasFooter[0] as $row) :
+                        if (!empty($dtsistemas) && isset($dtsistemas)) {
+                            $sistemasFooter = array_chunk($dtsistemas, 4);
+                            foreach ($sistemasFooter[0] as $row):
+                                ?>
+                                <li class="mb-1"><a
+                                        href="index.php?page=DetalleSistema&IdSistema=<?php echo $row['IdSistema'] ?>"
+                                        class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
+                                <?php
+                            endforeach;
+                            ?>
+                            <li class=""><a href="index.php?page=Sistemas" class="fw-semibold">Ver mas..</a></li>
+                            <?php
+                        }
                         ?>
-                            <li class="mb-1"><a href="index.php?page=DetalleSistema&IdSistema=<?php echo $row['IdSistema'] ?>" class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
-                        <?php
-                        endforeach;
-                        ?>
-                        <li class=""><a href="index.php?page=Sistemas" class="fw-semibold">Ver mas..</a></li>
                     </ul>
                 </div>
             </div>
@@ -92,24 +98,27 @@ include_once('modelos/model_sistemas.php');
                     <ul class="list-inline my-3">
                         <?php
                         if (!empty($Facebook)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>" class="btn-sm btn btn-primary mb-2">
+                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>"
+                                    class="btn-sm btn btn-primary mb-2">
                                     <i class="fab fa-facebook-f"></i>
                                 </a></li>
-                        <?php
+                            <?php
                         }
                         if (!empty($Whatsapp)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Whatsapp ?>" class="text-danger btn-sm btn btn-light mb-2">
+                            <li class="list-inline-item"><a href="<?php echo $Whatsapp ?>"
+                                    class="text-danger btn-sm btn btn-light mb-2">
 
                                     <i class="fab fa-whatsapp"></i>
                                 </a></li>
-                        <?php
+                            <?php
                         }
                         if (!empty($Youtube)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Youtube ?>" class="btn-sm btn btn-primary mb-2">
+                            <li class="list-inline-item"><a href="<?php echo $Youtube ?>"
+                                    class="btn-sm btn btn-primary mb-2">
 
                                     <i class="fab fa-youtube"></i>
                                 </a></li>
-                        <?php
+                            <?php
                         }
                         ?>
 
@@ -124,21 +133,21 @@ include_once('modelos/model_sistemas.php');
                             <i class="fas fa-map-marker-alt fw-semibold"></i>
                         <?php }
                         echo $Address
-                        ?>
+                            ?>
                     </address>
                     <a href="tel:+" class="mb-1 fw-semibold">
                         <?php if (!empty($Telefono)) { ?>
                             <i class="fas fa-phone"></i>
                         <?php }
                         echo $Telefono
-                        ?>
+                            ?>
                     </a>
                     <a href="mailto:" class="mb-1 fw-semibold">
                         <?php if (!empty($Correo)) { ?>
                             <i class="fas fa-envelope"></i>
                         <?php }
                         echo $Correo
-                        ?>
+                            ?>
                     </a>
                 </div>
             </div>
@@ -152,13 +161,28 @@ include_once('modelos/model_sistemas.php');
                     </ul>
                 </div>
             </div>
+            <?php
+            $Aviso = "";
+            $Terminos = "";
+
+            foreach ($dtcontactos as $row):
+                switch ($row["CampoKey"]) {
+                    case "Aviso":
+                        $Aviso = $row["Descripcion"] ?? "";
+                        break;
+                    case "Terminos":
+                        $Terminos = $row["Descripcion"] ?? "";
+                        break;
+                }
+            endforeach;
+            ?>
             <!-- Modal de Términos y Condiciones -->
             <div id="terms-modal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="terms-content">
                         <h2 class="text-black text-center fw-bold mb-3">Términos y Condiciones</h2>
-                        <p class="text-black">Aquí van los términos y condiciones...</p>
+                        <p class="text-black"><?= $Terminos ?></p>
                     </div>
                 </div>
             </div>
@@ -168,7 +192,7 @@ include_once('modelos/model_sistemas.php');
                     <span class="close">&times;</span>
                     <div id="privacy-content">
                         <h2 class="text-black text-center fw-bold mb-3">Aviso de Privacidad</h2>
-                        <p class="text-black">Aquí va el aviso de privacidad...</p>
+                        <p class="text-black"><?= $Aviso ?></p>
                     </div>
                 </div>
             </div>

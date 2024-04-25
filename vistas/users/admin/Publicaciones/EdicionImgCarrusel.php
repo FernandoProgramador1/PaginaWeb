@@ -25,16 +25,15 @@ require_once("modelos/model_publicaciones.php");
         $FilePub = "";
         $IdFile = "";
 
-        if (isset($dtviewproducto)) {
-            foreach ($dtviewproducto as $row):
+        if (isset($dtpubwhere)) {
+            foreach ($dtpubwhere as $row):
                 $Id = $row["IdPublicacion"];
-                $CampoKey = $row["CampoKey"];
+                $Clave = $row["Clave"];
                 $Titulo = $row["Titulo"];
-                $Descripcion = $row["Descripcion"];
+                $Descripcion = $row["DescripcionPublicacion"];
                 $IdSistema = $row["IdSistema"];
-                // $IdServicio = $row["IdServicio"];
-                $TpFileProd = $row["Tipo"];
-                $FileProd = $row["Archivo"];
+                $TpFilePub = $row["TipoArchivoPub"];
+                $FilePub = $row["ArchivoPub"];
                 $IdFile = $row["IdArchivo"];
             endforeach;
         }
@@ -65,7 +64,7 @@ require_once("modelos/model_publicaciones.php");
             </div>
             <div class="button-container">
                 <button type="submit" class="btn btn-primary btn-success-custom">Enviar</button>
-                <a href="index.php?page=EdicionImgCarrusel" class="btn btn-primary btn-success-custom">Volver</a>
+                <a href="index.php?page=ImgCarruselAdmin" class="btn btn-primary btn-success-custom">Volver</a>
             </div>
         </form>
     </div>

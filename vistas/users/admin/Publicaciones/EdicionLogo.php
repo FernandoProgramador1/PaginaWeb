@@ -15,7 +15,7 @@ require_once("modelos/model_publicaciones.php");
     <div class="container edicionCarr-container">
         <?php
         $Id = "";
-        $Clave = "Carrusel";
+        $Clave = "Logo";
         $Titulo = "NULL";
         $Descripcion = "";
         $IdSistema = "NULL";
@@ -23,16 +23,15 @@ require_once("modelos/model_publicaciones.php");
         $FilePub = "";
         $IdFile = "";
 
-        if (isset($dtviewproducto)) {
-            foreach ($dtviewproducto as $row) :
+        if (isset($dtlogo)) {
+            foreach ($dtlogo as $row) :
                 $Id = $row["IdPublicacion"];
-                $CampoKey = $row["CampoKey"];
+                $Clave = $row["Clave"];
                 $Titulo = $row["Titulo"];
-                $Descripcion = $row["Descripcion"];
+                $Descripcion = $row["DescripcionPublicacion"];
                 $IdSistema = $row["IdSistema"];
-                // $IdServicio = $row["IdServicio"];
-                $TpFileProd = $row["Tipo"];
-                $FileProd = $row["Archivo"];
+                $TpFilePub = $row["TipoArchivoPub"];
+                $FilePub = $row["ArchivoPub"];
                 $IdFile = $row["IdArchivo"];
             endforeach;
         }
@@ -42,7 +41,7 @@ require_once("modelos/model_publicaciones.php");
         $actionP = (!empty($Id) && isset($Id)) ? "update" : "insert";
         $actionF = (!empty($IdFile) && isset($IdFile)) ? "update" : "insert";
 
-        $action = "index.php?page=ImgCarruselAdmin&actionpub=$actionP&actionfile=$actionF";
+        $action = "index.php?page=EdicionLogo&actionpub=$actionP&actionfile=$actionF";
         ?>
         <form method="post" action="<?php echo $action ?>" enctype="multipart/form-data">
             <h3 class="edicionCarr-heading">Logo de Empresa</h3>
@@ -62,7 +61,6 @@ require_once("modelos/model_publicaciones.php");
             </div>
             <div class="button-container">
                 <button type="submit" class="btn btn-primary btn-success-custom">Enviar</button>
-                <a href="index.php?page=EdicionImgCarrusel" class="btn btn-primary btn-success-custom">Volver</a>
             </div>
         </form>
     </div>
