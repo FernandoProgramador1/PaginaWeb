@@ -4,6 +4,7 @@ require_once("recursos/config/db.php");
 require_once("vistas/template/navbar/navbar.php");
 require_once("controladores/controller_login.php");
 
+
 if ((!empty($_GET['page'])) || (isset($_GET['page']))) {
     $page = $_GET['page'];
 } else {
@@ -14,6 +15,39 @@ if (!empty($_GET['p']) && is_numeric($_GET['p'])) {
     $currentPage = intval($_GET['p']);
 } else {
     $currentPage = 1;
+}
+
+if (requiresAuthentication($page)) {
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        echo "<script>alert('Acceso denegado'); window.history.back();</script>";
+        exit;
+    }
+}
+
+function requiresAuthentication($page)
+{
+    // Lista de páginas que requieren autenticación
+    $adminPages = [
+        'EdicionSistemas',
+        'SistemasAdmin',
+        'FuncionSistemaAdmin',
+        'EdicionServicios',
+        'ServiciosAdmin',
+        'ImgCarruselAdmin',
+        'PublicidadesAdmin',
+        'EdicionImgCarrusel',
+        'EdicionPublicidad',
+        'EdicionLogo',
+        'InfoContacto',
+        'NosotrosAdmin',
+        'EdicionProductos',
+        'ProductosAdmin',
+        'PreguntasAdmin',
+        'EdicionPreguntas',
+        'TerminosPrivacidad',
+    ];
+
+    return in_array($page, $adminPages);
 }
 
 switch ($page) {
