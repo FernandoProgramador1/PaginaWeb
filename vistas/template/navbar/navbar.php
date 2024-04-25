@@ -56,7 +56,7 @@ require_once('modelos/model_publicaciones.php');
 
 <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <?php
+        <?php
         $Clave = "Logo";
         $TpFilePub = "";
         $FilePub = "";
@@ -68,11 +68,17 @@ require_once('modelos/model_publicaciones.php');
                 $FilePub = $row["ArchivoPub"];
             endforeach;
         }
-?>
-        <a class="navbar-brand navbar-logo" href="#"><img src="data:<?php echo $TpFilePub ?>;base64,<?php echo (base64_encode($FilePub)) ?>" alt="<?= $Clave ?>"/></a>
+        ?>
+        <!-- LOGO -->
+        <a class="navbar-brand navbar-logo" href="#">
+            <img src="data:<?php echo $TpFilePub ?>;base64,<?php echo (base64_encode($FilePub)) ?>" alt="<?= $Clave ?>" />
+        </a>
+
+        <!-- Botón para dispositivos móviles -->
         <button class="navbar-toggler navbar-btn-mobile" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector">
