@@ -1,6 +1,6 @@
 <?php
-require_once ('modelos/model_configuraciones.php');
-include_once ('modelos/model_sistemas.php');
+require_once('modelos/model_configuraciones.php');
+include_once('modelos/model_sistemas.php');
 ?>
 
 <footer class="footer footer-fondo">
@@ -19,7 +19,7 @@ include_once ('modelos/model_sistemas.php');
             $Whatsapp = "";
             $CorreoEnvios = "";
 
-            foreach ($dtcontactos as $row):
+            foreach ($dtcontactos as $row) :
                 switch ($row["CampoKey"]) {
                     case "Direccion":
                         $Direccion = $row["Descripcion"];
@@ -54,7 +54,6 @@ include_once ('modelos/model_sistemas.php');
                     case "CorreoEnvios":
                         $CorreoEnvios = $row["Descripcion"] ?? "";
                         break;
-
                 }
             endforeach;
 
@@ -88,12 +87,10 @@ include_once ('modelos/model_sistemas.php');
                     <ul class="list-unstyled footer-link mt-4">
                         <?php
                         $sistemasFooter = array_chunk($dtsistemas, 4);
-                        foreach ($sistemasFooter[0] as $row):
-                            ?>
-                            <li class="mb-1"><a
-                                    href="index.php?page=DetalleSistema&IdSistema=<?php echo $row['IdSistema'] ?>"
-                                    class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
-                            <?php
+                        foreach ($sistemasFooter[0] as $row) :
+                        ?>
+                            <li class="mb-1"><a href="index.php?page=DetalleSistema&IdSistema=<?php echo $row['IdSistema'] ?>" class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
+                        <?php
                         endforeach;
                         ?>
                         <li class=""><a href="index.php?page=Sistemas" class="fw-semibold">Ver mas..</a></li>
@@ -106,25 +103,24 @@ include_once ('modelos/model_sistemas.php');
                     <ul class="list-inline my-3">
                         <?php
                         if (!empty($Facebook)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>"
-                                    class="btn-sm btn btn-primary mb-2">
+                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>" class="btn-sm btn btn-primary mb-2">
                                     <i class="fab fa-facebook-f"></i>
                                 </a></li>
-                            <?php
+                        <?php
                         }
                         if (!empty($Whatsapp)) { ?>
                             <li class="list-inline-item"><a href="<?php echo $Whatsapp ?>" class="text-danger btn-sm btn btn-light mb-2">
 
                                     <i class="fab fa-whatsapp"></i>
                                 </a></li>
-                            <?php
+                        <?php
                         }
                         if (!empty($Youtube)) { ?>
                             <li class="list-inline-item"><a href="<?php echo $Youtube ?>" class="btn-sm btn btn-primary mb-2">
 
                                     <i class="fab fa-youtube"></i>
                                 </a></li>
-                            <?php
+                        <?php
                         }
                         ?>
 
@@ -139,22 +135,52 @@ include_once ('modelos/model_sistemas.php');
                             <i class="fas fa-map-marker-alt fw-semibold"></i>
                         <?php }
                         echo $Address
-                            ?>
+                        ?>
                     </address>
                     <a href="tel:+" class="mb-1 fw-semibold">
                         <?php if (!empty($Telefono)) { ?>
                             <i class="fas fa-phone"></i>
                         <?php }
                         echo $Telefono
-                            ?>
+                        ?>
                     </a>
                     <a href="mailto:" class="mb-1 fw-semibold">
                         <?php if (!empty($Correo)) { ?>
                             <i class="fas fa-envelope"></i>
                         <?php }
                         echo $Correo
-                            ?>
+                        ?>
                     </a>
+                </div>
+            </div>
+            <!-- Privacidad -->
+            <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
+                <div class="resources">
+                    <h6 class="footer-heading text-uppercase fw-bold">Privacidad</h6>
+                    <ul class="list-unstyled footer-link mt-4">
+                        <li class="#"><a href="#" class="fw-semibold" id="terms-link">Términos y Condiciones</a></li>
+                        <li class="#"><a href="#" class="fw-semibold" id="privacy-link">Aviso de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Modal de Términos y Condiciones -->
+            <div id="terms-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="terms-content">
+                        <h2 class="text-black text-center fw-bold mb-3">Términos y Condiciones</h2>
+                        <p class="text-black">Aquí van los términos y condiciones...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal de Aviso de Privacidad -->
+            <div id="privacy-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="privacy-content">
+                        <h2 class="text-black text-center fw-bold mb-3">Aviso de Privacidad</h2>
+                        <p class="text-black">Aquí va el aviso de privacidad...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,10 +191,12 @@ include_once ('modelos/model_sistemas.php');
 <script src="recursos/lib/jquery/dist/jquery.min.js"></script>
 <script src="recursos/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="recursos/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-<script src="recursos/JS/site.js"></script>
-<script src="recursos/JS/nav.js"></script>
-<script src="recursos/JS/faq.js"></script>
-<script src="recursos/JS/preguntas-funciones.js"></script>
-<!-- <script src="recursos/JS/carrusel.js"></script> -->
+
+<script type="text/javascript" src="recursos/JS/site.js"></script>
+<script type="text/javascript" src="recursos/JS/nav.js"></script>
+<script type="text/javascript" src="recursos/JS/faq.js"></script>
+<script type="text/javascript" src="recursos/JS/preguntas-funciones.js"></script>
+<script type="text/javascript" src="recursos/JS/modal.js"></script>
+<script type="text/javascript" src="recursos/JS/servicios.js"></script>
 
 <script src="recursos/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
