@@ -127,13 +127,14 @@ class Conectar
 
         $tablas[] = [0 => "Sistemas",
             1 => "Create Table Sistemas(
-            IdSistema int(10) NOT NULL AUTO_INCREMENT,
-            Nombre varchar(150) NOT NULL,
-            Descripcion varchar(350) NOT NULL,
-            IdArchivo int(10),
-            PRIMARY KEY (IdSistema),
-            CONSTRAINT fk_Sistemas_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
-        );"];
+                IdSistema int(10) NOT NULL AUTO_INCREMENT,
+                Nombre varchar(150) NOT NULL,
+                Descripcion varchar(350) NOT NULL,
+                Requisitos  text,
+                IdArchivo int(10),
+                PRIMARY KEY (IdSistema),
+                CONSTRAINT fk_Sistemas_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
+            );"];
 
         $tablas[] = [0 => "Publicaciones",
         1 => "Create Table Publicaciones (
@@ -181,16 +182,6 @@ class Conectar
             Respuesta   LONGTEXT NOT NULL,
             IdRelacion  int(10),
             PRIMARY KEY (IdPregunta)
-        );"];
-
-        $tablas[] = [0 => "Productos",
-        1 => "Create Table Productos(
-            IdProducto  int(10) NOT NULL AUTO_INCREMENT,
-            NombreProducto  varchar(150) NOT NULL,
-            Descripcion     LONGTEXT NOT NULL,
-            IdArchivo int(10),
-            PRIMARY KEY (IdProducto),
-            CONSTRAINT fk_Productos_Archivos FOREIGN KEY (IdArchivo) REFERENCES Archivos(IdArchivo)
         );"];
 
         $tablas[] = [0 => "Productos",
@@ -273,7 +264,6 @@ class Conectar
             LEFT JOIN Sistemas as s ON f.IdSistema = s.IdSistema
             LEFT JOIN Archivos as a ON s.IdArchivo = a.IdArchivo;"
             ];
-
         
         return $tablas;
     }
