@@ -23,7 +23,7 @@ include_once("modelos/model_sistemas.php");
                         if ($row['Clave'] == "Carrusel") {
                     ?>
                             <div class="carousel-item <?php echo ($count == 0 ? "active" : "") ?> carruselImg">
-                                <img src="data:<?php echo $row['TipoArchivoPub'] ?>;base64,<?php echo (base64_encode($row['ArchivoPub'])) ?>" alt="<?php echo $row['Clave'] . $row['IdPublicacion'] ?>">
+                                <img class="img-fluid" src="data:<?php echo $row['TipoArchivoPub'] ?>;base64,<?php echo (base64_encode($row['ArchivoPub'])) ?>" alt="<?php echo $row['Clave'] . $row['IdPublicacion'] ?>">
                             </div>
                     <?php
                             $count++;
@@ -43,82 +43,88 @@ include_once("modelos/model_sistemas.php");
             </div>
         </section>
 
-        <section id="carruselSecundario" class="container-fluid">
-            <div id="carruselSoftware" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                <div class="carousel-inner p-3">
-                    <?php
-                    $lista = array_chunk($dtsisviews, 4);
-                    for ($i = 0; $i < count($lista); $i++) {
-                        $active = $i == 0 ? "active" : "";
-                    ?>
-                        <div class="carousel-item <?php echo $active ?>">
-                            <div class="d-flex">
-                                <?php
-                                foreach ($lista[$i] as $row) :
-                                    $Id = (!empty($row["IdSistema"]) ? $row["IdSistema"] : "");
-                                    $Nombre = (!empty($row["NombreSistema"]) ? $row["NombreSistema"] : "");
-                                    $TpFileSis = (!empty($row["Tipo"]) ? $row["Tipo"] : "");
-                                    $FileSis = (!empty($row["Archivo"]) ? $row["Archivo"] : "");
-                                ?>
-                                    <img src="data:<?php echo $TpFileSis ?>;base64,<?php echo (base64_encode($FileSis)) ?>" alt="<?php echo $Nombre ?>">
-                                <?php
-                                endforeach;
-                                ?>
+        <header class="contacto-header mb-5 mt-5" style="margin: 0;">
+            <h1>Sistemas</h1>
+        </header>
 
+        <div class="container-fluid">
+            <section id="carruselSecundario" class="container-fluid mb-5">
+                <div id="carruselSoftware" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                    <div class="carousel-inner p-3">
+                        <?php
+                        $lista = array_chunk($dtsisviews, 4);
+                        for ($i = 0; $i < count($lista); $i++) {
+                            $active = $i == 0 ? "active" : "";
+                        ?>
+                            <div class="carousel-item <?php echo $active ?>">
+                                <div class="d-flex">
+                                    <?php
+                                    foreach ($lista[$i] as $row) :
+                                        $Id = (!empty($row["IdSistema"]) ? $row["IdSistema"] : "");
+                                        $Nombre = (!empty($row["NombreSistema"]) ? $row["NombreSistema"] : "");
+                                        $TpFileSis = (!empty($row["Tipo"]) ? $row["Tipo"] : "");
+                                        $FileSis = (!empty($row["Archivo"]) ? $row["Archivo"] : "");
+                                    ?>
+                                        <img src="data:<?php echo $TpFileSis ?>;base64,<?php echo (base64_encode($FileSis)) ?>" alt="<?php echo $Nombre ?>">
+                                    <?php
+                                    endforeach;
+                                    ?>
+
+                                </div>
                             </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carruselSoftware" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carruselSoftware" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </section>
+
+            <section id="gallerySection" class="container">
+                <h2>Galería de Flyers, Avisos, etc.</h2>
+                <div class="publicacion-grid-container">
+                    <!-- Ejemplo de imagen de flyer -->
+                    <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
+                        <img src="https://via.placeholder.com/350x350" alt="Flyer 1">
+                        <div class="publicacion-grid-item-content">
+                            <h3>Flyer 1</h3>
+                            <p class="descripcion-publi">
+
+                                Morbi lacus augue, pellentesque non mollis vitae, bibendum non metus. Ut nec laoreet nisi, a porta mauris. Nulla nulla sem, placerat quis augue at, pulvinar finibus.</p>
                         </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carruselSoftware" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carruselSoftware" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-
-        <section id="gallerySection" class="container">
-            <h2>Galería de Flyers, Avisos, etc.</h2>
-            <div class="publicacion-grid-container">
-                <!-- Ejemplo de imagen de flyer -->
-                <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
-                    <img src="https://via.placeholder.com/350x350" alt="Flyer 1">
-                    <div class="publicacion-grid-item-content">
-                        <h3>Flyer 1</h3>
-                        <p class="descripcion-publi">
-
-                            Morbi lacus augue, pellentesque non mollis vitae, bibendum non metus. Ut nec laoreet nisi, a porta mauris. Nulla nulla sem, placerat quis augue at, pulvinar finibus.</p>
+                    </div>
+                    <!-- Ejemplo de imagen de aviso -->
+                    <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
+                        <img src="https://via.placeholder.com/350x350" alt="Aviso 1">
+                        <div class="publicacion-grid-item-content">
+                            <h3>Aviso 1</h3>
+                            <p>Descripción del aviso 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula vel nunc semper lacinia.</p>
+                        </div>
+                    </div>
+                    <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
+                        <img src="https://via.placeholder.com/350x350" alt="Aviso 2">
+                        <div class="publicacion-grid-item-content">
+                            <h3>Aviso 2</h3>
+                            <p>Descripción del aviso 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula vel nunc semper lacinia.</p>
+                        </div>
+                    </div>
+                    <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
+                        <img src="https://via.placeholder.com/350x350" alt="Aviso 3">
+                        <div class="publicacion-grid-item-content">
+                            <h3>Aviso 3</h3>
+                            <p>Descripción del aviso 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula vel nunc semper lacinia.</p>
+                        </div>
                     </div>
                 </div>
-                <!-- Ejemplo de imagen de aviso -->
-                <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
-                    <img src="https://via.placeholder.com/350x350" alt="Aviso 1">
-                    <div class="publicacion-grid-item-content">
-                        <h3>Aviso 1</h3>
-                        <p>Descripción del aviso 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula vel nunc semper lacinia.</p>
-                    </div>
-                </div>
-                <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
-                    <img src="https://via.placeholder.com/350x350" alt="Aviso 2">
-                    <div class="publicacion-grid-item-content">
-                        <h3>Aviso 2</h3>
-                        <p>Descripción del aviso 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula vel nunc semper lacinia.</p>
-                    </div>
-                </div>
-                <div class="publicacion-grid-item" onclick="openModal('https://via.placeholder.com/350x350')">
-                    <img src="https://via.placeholder.com/350x350" alt="Aviso 3">
-                    <div class="publicacion-grid-item-content">
-                        <h3>Aviso 3</h3>
-                        <p>Descripción del aviso 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula vel nunc semper lacinia.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
         <!-- Modal -->
         <div id="publiModal" class="publi-modal">
             <div class="publi-modal-content">
