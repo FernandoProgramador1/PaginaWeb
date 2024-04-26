@@ -17,12 +17,12 @@ require_once ("modelos/model_sistemas.php");
 <body>
     <div class="edicionFAQ-container container">
         <h1 class="edicionProd-heading text-center">Lista de Preguntas Frecuentes</h1>
-        <a href="index.php?page=PreguntasAdmin" class="btn btn-primary service-btn btn-carruselImg btn-lg d-relative">
+        <a href="index.php?page=EdicionPreguntas" class="btn btn-primary service-btn btn-carruselImg btn-lg d-relative">
             Agregar nueva pregunta
         </a>
-        <form id="form-filter" action="index.php?page=PreguntasAdmin">
+        <form id="form-filter" action="index.php?page=PreguntasAdmin" method="post">
         <div class="form-floating form-group form-group-custom mb-3">
-            <select id="filter" name="filter" class="form-select form-select-custom" onchange="filterFAQs(), filter('form-filter')">
+            <select id="filter" name="filter" class="form-select form-select-custom" onchange="filterFAQs('form-filter')">
                 <option value="" selected>Todas las categorías</option>
                 <?php
                 foreach ($dtsistemas as $row) {
@@ -68,5 +68,10 @@ require_once ("modelos/model_sistemas.php");
         </div>
     </div>
 </body>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            valSel('filter',<?= $filterId ?>);
+        });
+        </script>
 
 </html>

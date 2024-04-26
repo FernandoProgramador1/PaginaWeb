@@ -26,6 +26,7 @@ if ((!empty($_GET['IdSistema'])) && (isset($_GET['IdSistema']))) {
     $dtviewsistema = $sistema->getWhereview($IdSistema);
 } else if ((!empty($_GET['IdDetSis'])) && (isset($_GET['IdDetSis']))) {
     $filesGallery = new GallerySistems();
+    $dtfuncview = (empty($dtfuncview)) ? $sistema->getWhereview($_GET['IdDetSis']) : $dtfuncview;
     $gallery = $filesGallery->ObtenerGaleria($_GET['IdDetSis']);
 } else {
     $IdSistema = null;

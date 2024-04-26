@@ -73,7 +73,7 @@ class Productos extends Conectar
                 $this->val[] = $this->column[$i] . " LIKE '%" . $value . "%'";
             }
 
-            $where = implode(" AND ", $this->val);
+            $where = implode(" OR ", $this->val);
 
             $this->id = $value;
             $sql = "SELECT * FROM {$this->view} WHERE {$where}";

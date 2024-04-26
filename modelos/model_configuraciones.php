@@ -45,7 +45,7 @@ if ((!empty($_GET['actioncon'])) && (isset($_GET['actioncon']))) {
 
         for($i=0;$i < count($Contacto); $i++){
             $exist = $config->getWhere($Contacto[$i]);
-            if($Contacto[$i] === $exist[0]["CampoKey"]){
+            if(!empty($exist) && $Contacto[$i] === $exist[0]["CampoKey"]){
                 $val = $config->column[0] ."='". $Values[$i] ."'";
                 $config->updateConfiguracion($Contacto[$i], $val);
             }else{
@@ -66,7 +66,7 @@ if ((!empty($_GET['actioncon'])) && (isset($_GET['actioncon']))) {
 
         for($i=0;$i < count($Nosotros); $i++){
             $exist = $config->getWhere($Nosotros[$i]);
-            if($Nosotros[$i] === $exist[0]["CampoKey"]){
+            if(!empty($exist) && $Nosotros[$i] === $exist[0]["CampoKey"]){
                 $val = $config->column[0] ."='". $Values[$i] ."'";
                 $config->updateConfiguracion($Nosotros[$i], $val);
             }else{
@@ -86,7 +86,7 @@ if ((!empty($_GET['actioncon'])) && (isset($_GET['actioncon']))) {
 
         for($i=0;$i < count($Rules); $i++){
             $exist = $config->getWhere($Rules[$i]);
-            if($Rules[$i] === $exist[0]["CampoKey"]){
+            if(!empty($exist) && $Rules[$i] === $exist[0]["CampoKey"]){
                 $val = $config->column[0] ."='". $Values[$i] ."'";
                 $config->updateConfiguracion($Rules[$i], $val);
             }else{

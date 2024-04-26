@@ -22,15 +22,15 @@ require_once("modelos/model_sistemas.php");
         $Pregunta = "";
         $Respuesta = "";
         $IdRelacion = "";
-        $NombreSistema = "";
+        // $NombreSistema = "";
 
-        if (isset($dtviewproducto)) {
-            foreach ($dtviewproducto as $row) :
+        if (isset($dtpregwhere)) {
+            foreach ($dtpregwhere as $row) :
                 $Id = $row["IdPregunta"];
                 $Pregunta = $row["Pregunta"];
                 $Respuesta = $row["Respuesta"];
                 $IdRelacion = $row["IdRelacion"];
-                $NombreSistema = $row["NombreSistema"];
+                // $NombreSistema = $row["NombreSistema"];
             endforeach;
         }
 
@@ -48,7 +48,7 @@ require_once("modelos/model_sistemas.php");
                     <label for="Pregunta">Pregunta</label>
                 </div>
                 <div class="form-floating form-group-custom">
-                    <textarea id="Respuesta" name="Respuesta" class="form-control form-control-custom" value="<?php echo $Respuesta ?>" rows="6" placeholder="Escribe la respuesta" style="resize: none; min-height: 90px" required></textarea>
+                    <textarea id="Respuesta" name="Respuesta" class="form-control form-control-custom" value="<?php echo $Respuesta ?>" rows="6" placeholder="Escribe la respuesta" style="resize: none; min-height: 90px" required><?php echo $Respuesta ?></textarea>
                     <label for="Respuesta">Respuesta</label>
                 </div>
             </div>
@@ -67,7 +67,7 @@ require_once("modelos/model_sistemas.php");
             </div>
 
             <div style="display: none;">
-                <input id="IdFAQ" name="IdFAQ" value="" hidden readonly />
+                <input id="IdPregunta" name="IdPregunta" value="<?php echo $Id ?>" hidden readonly />
             </div>
 
             <div class="button-container">

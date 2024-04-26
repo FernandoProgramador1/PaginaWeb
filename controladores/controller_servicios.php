@@ -75,11 +75,11 @@ class Servicios extends Conectar
     public function getWhereFilter($value)
     {
         try {
-            for ($i = 0; $i < (count($this->colview) - 1); $i++) {
+            for ($i = 0; $i < count($this->colview); $i++) {
                 $this->val[] = $this->colview[$i] . " LIKE '%" . $value . "%'";
             }
 
-            $where = implode(" AND ", $this->val);
+            $where = implode(" OR ", $this->val);
 
             $this->id = $value;
             $sql = "SELECT * FROM {$this->view} WHERE {$where}";

@@ -40,7 +40,7 @@ require_once("modelos/model_servicios.php");
         $actionS = (!empty($Id) && isset($Id)) ? "update" : "insert";
         $actionF = (!empty($IdFile) && isset($IdFile)) ? "update" : "insert";
 
-        $action = "index.php?page=EdicionServicios&actionserv=$actionS&actionfile=$actionF";
+        $action = "index.php?page=ServiciosAdmin&actionserv=$actionS&actionfile=$actionF";
         ?>
         <form method="post" action="<?php echo $action ?>" enctype="multipart/form-data">
             <div class="form-group form-group-custom">

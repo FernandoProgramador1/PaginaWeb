@@ -6,8 +6,8 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-function filter(x){
-    const form = getElementById(x);
+function filterFAQs(x){
+    const form = document.getElementById(x);
     if(form != null) {
         form.submit();
     }

@@ -24,7 +24,7 @@ require_once ('modelos/model_sistemas.php');
     $FileSis = "";
     $IdFile = "";
 
-    if (isset($dtfuncview)) {
+    if (!empty($dtfuncview) && isset($dtfuncview)) {
         foreach ($dtfuncview as $row):
             $Id = $row["IdSistema"];
             $Nombre = $row["NombreSistema"];
@@ -59,29 +59,21 @@ require_once ('modelos/model_sistemas.php');
             <ul class="detalleList">
                 <?php
                 foreach ($dtfuncview as $row):
-                    ?>
-                    <li>
-                        <div class="question">
-                            <span class="function-name"><?php echo $row['Funcion'] ?></span>
-                            <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
-                        </div>
-                        <div class="answer">
-                            <?php echo $row['DetFuncion'] ?>
-                        </div>
-                    </li>
-                    <?php
+                    if (!empty($row['Funcion']) && isset($row['Funcion'])) {
+                        ?>
+                        <li>
+                            <div class="question">
+                                <span class="function-name"><?= $row['Funcion'] ?></span>
+                                <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
+                            </div>
+                            <div class="answer">
+                                <?= $row['DetFuncion'] ?>
+                            </div>
+                        </li>
+                        <?php
+                    }
                 endforeach;
                 ?>
-
-                <!-- <li>
-                    <div class="question">
-                        <span class="function-name">Función 2</span>
-                        <span class="toggle-icon"><i class="fas fa-chevron-right"></i></span>
-                    </div>
-                    <div class="answer">
-                        Información detallada sobre la Función 2.
-                    </div>
-                </li>  -->
             </ul>
         </section>
 
@@ -98,66 +90,39 @@ require_once ('modelos/model_sistemas.php');
                     ?>
                     <li>
                         <div class="question">
-                            <?php echo $row['Pregunta'] ?>
+                            <?= $row['Pregunta'] ?? "" ?>
                             <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
                         </div>
                         <div class="answer">
-                            <?php echo $row['Respuesta'] ?>
+                            <?= $row['Respuesta'] ?? "" ?>
                         </div>
                     </li>
                     <?php
                 endforeach;
                 ?>
-                <!-- <li>
-                    <div class="question">
-                        ¿Pregunta 2?
-                        <span class="toggle-icon"><i class="fa-solid fa-chevron-right"></i></span>
-                    </div>
-                    <div class="answer">
-                        Respuesta a la Pregunta 2.
-                    </div>
-                </li> -->
             </ul>
         </section>
 
         <section class="sistemaDetalle-gallery custom-section detalleSis">
             <h2 class="detallesHeading">Galería</h2>
-            <p>Capturas de pantalla y otras imágenes del software.</p>
+            <p class="mb-5">Capturas de pantalla y otras imágenes del software.</p>
 
             <div class="container text-center my-3">
                 <div class="row mx-auto my-auto justify-content-center">
                     <div id="recipeCarousel" class="carousel slide detalleSis" data-bs-ride="carousel">
                         <div class="carousel-inner detalleSis" role="listbox">
-                            <div class="carousel-item active detalleSis">
-                                <div class="col-md-3 detalleSis">
-                                    <div class="card detalleSis">
-                                        <div class="card-img detalleSis">
-                                            <div class="img-container">
-                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
-                                                <div class="card-img-overlay detalleSis">
-                                                    <div class="overlay-content">
-                                                        <p>Slide 1</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <?php
-                            $imgs = array_chunk($gallery, 4);
-                            for ($i = 0; $i < count($imgs); $i++) {
+                            if (!empty($gallery) && isset($gallery)) {
+                                // $imgs = array_chunk($gallery, 4);
                                 $cuenta = 0;
-                                foreach ($imgs[$i] as $row):
+                                foreach ($gallery as $row):
+                                    $class = "carousel-item " . ($cuenta == 0 ? "active " : "") . "detalleSis";
                                     ?>
-                                    <div class="carousel-item <?php echo ($cuenta == 0 ? "active" : "") ?> detalleSis">
-
+                                    <div class="<?= $class ?>">
                                         <div class="col-md-3 detalleSis">
                                             <div class="card detalleSis">
                                                 <div class="card-img detalleSis">
                                                     <div class="img-container">
-
                                                         <img src="<?php echo $row ?>" class="img-fluid detalleSis">
                                                     </div>
                                                     <div class="card-img-overlay detalleSis"></div>
@@ -169,24 +134,8 @@ require_once ('modelos/model_sistemas.php');
                                     $cuenta++;
                                 endforeach;
                             }
+                            // }
                             ?>
-                            <!-- 
-                            <div class="carousel-item detalleSis">
-                                <div class="col-md-3 detalleSis">
-                                    <div class="card detalleSis">
-                                        <div class="card-img detalleSis">
-                                            <div class="img-container">
-                                                <img src="https://placehold.co/266x190" class="img-sistema detalleSis">
-                                                <div class="card-img-overlay detalleSis">
-                                                    <div class="overlay-content">
-                                                        <p> Slide 4 </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                         <a class="carousel-control-prev bg-transparent w-aut detalleSis" href="#recipeCarousel"
                             role="button" data-bs-slide="prev">

@@ -24,6 +24,7 @@ require_once('modelos/model_configuraciones.php');
         $Facebook = "";
         $Instagram = "";
         $Whatsapp = "";
+        $Youtube = "";
         $CorreoEnvios = "";
 
         foreach ($dtcontactos as $row) :

@@ -25,8 +25,9 @@ if ((!empty($_GET['IdPregunta'])) && (isset($_GET['IdPregunta']))) {
     $IdPregunta = $_POST['IdPregunta'];
     $dtpregwhere = $preguntas->getWhere($IdPregunta);
     $dtviewpreg = $preguntas->getWhereview($IdPregunta);
-}else if ((!empty($_GET['filter'])) && (isset($_GET['filter']))) {
-    $dtpregview = $preguntas->getWhereVS($_GET['filter']);
+}else if ((!empty($_POST['filter'])) && (isset($_POST['filter']))) {
+    $filterId = $_POST['filter'];
+    $dtpregview = $preguntas->getWhereVS($_POST['filter']);
 }else if ((!empty($_GET['IdDetSis'])) && (isset($_GET['IdDetSis']))) {
     $dtpregview = $preguntas->getWhereVS($_GET['IdDetSis']);
 } else {
@@ -48,7 +49,7 @@ if ((!empty($_GET['actionpreg'])) && (isset($_GET['actionpreg']))) {
 
         $preguntas->values[] = "'" . $_POST['Pregunta'] . "'";
         $preguntas->values[] = "'" . $_POST['Respuesta'] . "'";
-        $preguntas->values[] = "'" . $_POST['IdRelacion'] . "'";
+        $preguntas->values[] = "'" . ($_POST['IdRelacion'] ?? "") . "'";
 
         $preguntas->insertPregunta();
 
@@ -58,7 +59,7 @@ if ((!empty($_GET['actionpreg'])) && (isset($_GET['actionpreg']))) {
 
         $preguntas->values[] = "" . $_POST['Pregunta'] . "";
         $preguntas->values[] = "" . $_POST['Respuesta'] . "";
-        $preguntas->values[] = "" . $_POST['IdRelacion'] . "";
+        $preguntas->values[] = "" . ($_POST['IdRelacion'] ?? "") . "";
 
         $preguntas->updatePregunta($IdPregunta);
 

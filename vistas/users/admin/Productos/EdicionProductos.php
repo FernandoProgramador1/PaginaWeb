@@ -48,7 +48,7 @@ require_once("modelos/model_productos.php");
                 <img id="muestra" src="data:<?php echo $TpFileSer ?>;base64,<?php echo (base64_encode($FileSer)) ?>" alt="Imagen seleccionada" class="img-thumbnail img-thumbnailProd" />
             </div>
             <div class="form-floating form-group form-group-custom">
-                <input type="text" class="form-control form-control-custom" id="NombreProducto" placeholder="Nombre del producto" value="<?php echo $Nombre ?>" required>
+                <input type="text" name="NombreProducto" class="form-control form-control-custom" id="NombreProducto" placeholder="Nombre del producto" value="<?php echo $Nombre ?>" required>
                 <label for="NombreProducto">Nombre del Producto</label>
             </div>
 

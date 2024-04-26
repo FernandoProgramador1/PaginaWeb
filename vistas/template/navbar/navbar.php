@@ -151,7 +151,7 @@ require_once('modelos/model_publicaciones.php');
                     <a class="nav-link admin-link" href="index.php?page=NosotrosAdmin">Edicion de Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link admin-link" href="index.php?page=PreguntasFrecuentes">Edicion Preguntas Frecuentes</a>
+                    <a class="nav-link admin-link" href="index.php?page=PreguntasAdmin">Edicion Preguntas Frecuentes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link admin-link" href="index.php?page=TerminosPrivacidad">Edicion de Información de Privacidad</a>

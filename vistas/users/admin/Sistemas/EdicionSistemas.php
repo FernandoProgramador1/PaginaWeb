@@ -41,7 +41,7 @@ require_once("modelos/model_sistemas.php");
         $actionS = (!empty($Id) && isset($Id)) ? "update" : "insert";
         $actionF = (!empty($IdFile) && isset($IdFile)) ? "update" : "insert";
 
-        $action = "index.php?page=EdicionSistemas&actionsist=$actionS&actionfile=$actionF";
+        $action = "index.php?page=SistemasAdmin&actionsist=$actionS&actionfile=$actionF";
         ?>
         <form method="post" action="<?php echo $action ?>" enctype="multipart/form-data">
             <div class="form-group form-group-custom">

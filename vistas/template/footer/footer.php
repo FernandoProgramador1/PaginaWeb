@@ -3,6 +3,8 @@ require_once ('modelos/model_configuraciones.php');
 include_once ('modelos/model_sistemas.php');
 ?>
 
+</div>
+
 <footer class="footer footer-fondo">
     <div class="container">
         <div class="row">
@@ -72,24 +74,24 @@ include_once ('modelos/model_sistemas.php');
             ?>
             <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
                 <div class="resources">
+                <?php if (!empty($dtsistemas) && isset($dtsistemas)) { ?>
                     <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
                     <ul class="list-unstyled footer-link mt-4">
                         <?php
-                        if (!empty($dtsistemas) && isset($dtsistemas)) {
                             $sistemasFooter = array_chunk($dtsistemas, 4);
                             foreach ($sistemasFooter[0] as $row):
                                 ?>
                                 <li class="mb-1"><a
-                                        href="index.php?page=DetalleSistema&IdSistema=<?php echo $row['IdSistema'] ?>"
+                                        href="index.php?page=DetalleSistema&IdDetSis=<?php echo $row['IdSistema'] ?>"
                                         class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
                                 <?php
                             endforeach;
                             ?>
                             <li class=""><a href="index.php?page=Sistemas" class="fw-semibold">Ver mas..</a></li>
-                            <?php
+                    </ul>
+                    <?php
                         }
                         ?>
-                    </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 mt-4 col-lg-2 text-center text-sm-start">
@@ -99,7 +101,7 @@ include_once ('modelos/model_sistemas.php');
                         <?php
                         if (!empty($Facebook)) { ?>
                             <li class="list-inline-item"><a href="<?php echo $Facebook ?>"
-                                    class="btn-sm btn btn-primary mb-2">
+                                    class="btn-sm btn btn-primary mb-2" target="_blank">
                                     <i class="fab fa-facebook-f"></i>
                                 </a></li>
                             <?php

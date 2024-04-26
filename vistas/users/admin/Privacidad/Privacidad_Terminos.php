@@ -16,16 +16,18 @@ require_once('modelos/model_configuraciones.php');
     $Aviso = "";
     $Terminos = "";
 
-    foreach ($dtcontactos as $row):
-        switch ($row["CampoKey"]) {
-            case "Aviso":
-                $Aviso = $row["Descripcion"] ?? "";
-                break;
-            case "Terminos":
-                $Terminos = $row["Descripcion"] ?? "";
-                break;
-        }
-    endforeach;
+    if (!empty($dtcontactos)) {
+        foreach ($dtcontactos as $row):
+            switch ($row["CampoKey"]) {
+                case "Aviso":
+                    $Aviso = $row["Descripcion"] ?? "";
+                    break;
+                case "Terminos":
+                    $Terminos = $row["Descripcion"] ?? "";
+                    break;
+            }
+        endforeach;
+    }
     ?>
     <div class="privacy-container container mt-4">
         <div class="form-container">
