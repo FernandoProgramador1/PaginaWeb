@@ -19,14 +19,22 @@ $publicacion->setColumns('IdArchivo');
 
 $fch_r = date('Y-m-d'); //OBTIENE LA FECHA ACTUAL
 
-if ((!empty($_GET['IdPublicacion'])) && (isset($_GET['IdPublicacion']))) {
-    $IdPublicacion = $_GET['IdPublicacion'];
+// if ((!empty($_GET['IdPublicacion'])) && (isset($_GET['IdPublicacion']))) {
+//     $IdPublicacion = $_GET['IdPublicacion'];
+//     $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
+// }else if ((!empty($_POST['IdPublicacion'])) && (isset($_POST['IdPublicacion']))) {
+//     $IdPublicacion = $_POST['IdPublicacion'];
+//     $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
+// } else {
+//     $IdPublicacion = null;
+//     $dtpubwhere = null;
+// }
+
+$IdPublicacion = $_GET['IdPublicacion'] ?? $_POST['IdPublicacion'] ?? null;
+
+if(isset($IdPublicacion)){
     $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
-}else if ((!empty($_POST['IdPublicacion'])) && (isset($_POST['IdPublicacion']))) {
-    $IdPublicacion = $_POST['IdPublicacion'];
-    $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
-} else {
-    $IdPublicacion = null;
+}else{
     $dtpubwhere = null;
 }
 
