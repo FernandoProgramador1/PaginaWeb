@@ -41,9 +41,9 @@ class Conectar
         );
 
         if ($Existe->num_rows == 0) {
-            $Test->query("SET GLOBAL  max_allowed_packet=100*1024*1024;");
             $Test->query("Create Database If Not Exists " . $this->dbname . ";");
         }
+        $Test->query("SET GLOBAL  max_allowed_packet=100*1024*1024;");
         // $Test->query("use " . $this->dbname . ";");
     }
 

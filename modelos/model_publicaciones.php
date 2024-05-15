@@ -32,7 +32,7 @@ $fch_r = date('Y-m-d'); //OBTIENE LA FECHA ACTUAL
 
 $IdPublicacion = $_GET['IdPublicacion'] ?? $_POST['IdPublicacion'] ?? null;
 
-if(isset($IdPublicacion)){
+if(isset($IdPublicacion) && !empty($IdPublicacion)){
     $dtpubwhere = $publicacion->getWhereview($IdPublicacion);
 }else{
     $dtpubwhere = null;
