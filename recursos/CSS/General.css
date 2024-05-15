@@ -9,3 +9,9 @@
 body {
     background-color: #f4f6f9;
 }
+
+.center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -33,28 +33,30 @@ if (isset($_GET['ins'])) {
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <!-- Tarjeta 1 -->
                 <?php
-                foreach($dtpublicaciones as $row):
-                    if($row['Clave'] == "Carrusel"){
+                foreach ($dtpublicaciones as $row) :
+                    if ($row['Clave'] == "Carrusel") {
                 ?>
-                <div class="col">
-                    <div class="card carruselImg-card h-100">
-                        <img src="data:<?php echo $row['TipoArchivoPub'] ?>;base64,<?php echo (base64_encode($row['ArchivoPub'])) ?>" alt="<?php echo $row['Titulo'] ?>" class="card-img-top" />
-                        <div class="card-body card-body-bg">
-                        <!-- <h5 class="card-title"><?php //echo $row['Titulo'] ?></h5> -->
-                        <!-- <p class="overflow-hidden"><?php //echo $row['DescripcionPublicacion'] ?></p> -->
-                            <div class="d-inline-flex">
-                                <a href="index.php?page=EdicionImgCarrusel&IdPublicacion=<?php echo $row['IdPublicacion'] ?>" class="btn btn-success btn-success-bg btn-sm">
-                                    Actualizar
-                                </a>
-                            </div>
-                            <div class="d-inline-flex">
-                                <a href="index.php?page=ImgCarruselAdmin&actionpub=delete&IdPublicacion=<?php echo $row['IdPublicacion'] ?>" class="btn btn-danger btn-danger-bg btn-sm">
-                                    Eliminar
-                                </a>
+                        <div class="col">
+                            <div class="card carruselImg-card h-100">
+                                <img src="data:<?php echo $row['TipoArchivoPub'] ?>;base64,<?php echo (base64_encode($row['ArchivoPub'])) ?>" alt="<?php echo $row['Titulo'] ?>" class="card-img-top edicionCarr-img" />
+                                <div class="card-body card-body-bg center-flex">
+                                    <!-- <h5 class="card-title"><?php //echo $row['Titulo'] 
+                                                                ?></h5> -->
+                                    <!-- <p class="overflow-hidden"><?php //echo $row['DescripcionPublicacion'] 
+                                                                    ?></p> -->
+                                    <div class="d-inline-flex">
+                                        <a href="index.php?page=EdicionImgCarrusel&IdPublicacion=<?php echo $row['IdPublicacion'] ?>" class="btn btn-success btn-success-bg btn-sm">
+                                            Actualizar
+                                        </a>
+                                    </div>
+                                    <div class="d-inline-flex">
+                                        <a href="index.php?page=ImgCarruselAdmin&actionpub=delete&IdPublicacion=<?php echo $row['IdPublicacion'] ?>" class="btn btn-danger btn-danger-bg btn-sm">
+                                            Eliminar
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
                 <?php
                     }
                 endforeach;

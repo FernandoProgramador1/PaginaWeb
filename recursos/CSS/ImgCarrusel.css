@@ -14,6 +14,10 @@
     margin-bottom: 30px;
 }
 
+.edicionCarr-img {
+    min-height: 195px;
+}
+
 .btn-carruselImg {
     background-color: #4A154B;
     color: white;
@@ -27,6 +31,10 @@
 
 .btn-carruselImg:hover {
     background-color: #36103B;
+}
+
+.btn-carruselImg:active, .btn-carruselImg:focus-visible{
+    background-color: #36103B !important;
 }
 
 .carruselImg-card {
@@ -51,12 +59,22 @@
     background-color: #dc3545;
 }
 
+@media(max-width: 998px) {
+    .edicionCarr-img {
+        min-height: 120px;
+    }
+}
+
 @media(max-width: 767px) {
     .btn-carruselImg {
         display: flex;
         justify-content: center;
         width: 100%;
         margin: 0 auto;
+    }
+
+    .edicionCarr-img {
+        min-height: 140px;
     }
 }
 
@@ -69,5 +87,9 @@
 @media(max-width: 400px) {
     .btn-carruselImg {
         font-size: 14px;
+    }
+
+    .edicionCarr-img {
+        min-height: 100px;
     }
 }

@@ -71,17 +71,14 @@ header {
     cursor: pointer;
     border-radius: 10px;
     filter: grayscale(100%);
-    /* Hace que la imagen sea completamente en blanco y negro */
 }
 
 /* Efecto de color y sombra al pasar el mouse */
 #carruselSecundario .carousel-inner .carousel-item img:hover {
     transform: scale(1.05);
     opacity: 1;
-    /* Puede mantener la opacidad completa para enfatizar el color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     filter: grayscale(0%);
-    /* Restaura el color original de la imagen */
 }
 
 @media (max-width: 992px) {
@@ -97,27 +94,31 @@ header {
 }
 
 /* Para pantallas grandes, muestra 4 imágenes */
-#carouselSecundario .carousel-item .d-flex img {
+#carruselSecundario .carousel-item .d-flex {
+    justify-content: space-around;
+}
+
+#carruselSecundario .carousel-item .d-flex img {
     width: 25%;
 }
 
 /* Para pantallas medianas, muestra 3 imágenes */
 @media (max-width: 992px) {
-    #carouselSecundario .carousel-item .d-flex img {
+    #carruselSecundario .carousel-item .d-flex img {
         width: 33.3333%;
     }
 }
 
 /* Para pantallas pequeñas, muestra 2 imágenes */
 @media (max-width: 768px) {
-    #carouselSecundario .carousel-item .d-flex img {
+    #carruselSecundario .carousel-item .d-flex img {
         width: 50%;
     }
 }
 
 /* Para pantallas muy pequeñas, muestra 1 imagen */
 @media (max-width: 576px) {
-    #carouselSecundario .carousel-item .d-flex img {
+    #carruselSecundario .carousel-item .d-flex img {
         width: 100%;
     }
 }
@@ -128,6 +129,7 @@ header {
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
+    padding: 20px;
 }
 
 #gallerySection h2 {
@@ -160,7 +162,6 @@ header {
 
 .publicacion-grid-item img {
     width: 100%;
-    /* Ajuste para cubrir el ancho del contenedor */
     height: auto;
     max-height: 350px;
     object-fit: cover;
@@ -211,7 +212,6 @@ header {
     position: relative;
     margin: auto;
     margin-top: 10%;
-    /* Centrar verticalmente */
 }
 
 .publi-modal-content img {

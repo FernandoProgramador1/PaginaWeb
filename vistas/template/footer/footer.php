@@ -1,6 +1,6 @@
 <?php
-require_once ('modelos/model_configuraciones.php');
-include_once ('modelos/model_sistemas.php');
+require_once('modelos/model_configuraciones.php');
+include_once('modelos/model_sistemas.php');
 ?>
 
 </div>
@@ -21,7 +21,7 @@ include_once ('modelos/model_sistemas.php');
             $Whatsapp = "";
             $CorreoEnvios = "";
 
-            foreach ($dtcontactos as $row):
+            foreach ($dtcontactos as $row) :
                 switch ($row["CampoKey"]) {
                     case "Direccion":
                         $Direccion = $row["Descripcion"];
@@ -72,62 +72,57 @@ include_once ('modelos/model_sistemas.php');
 
             $Address = implode(", ", $Dir);
             ?>
-            <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
+            <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start col-custom">
                 <div class="resources">
-                <?php if (!empty($dtsistemas) && isset($dtsistemas)) { ?>
-                    <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
-                    <ul class="list-unstyled footer-link mt-4">
-                        <?php
+                    <?php if (!empty($dtsistemas) && isset($dtsistemas)) { ?>
+                        <h6 class="footer-heading text-uppercase fw-bold">Sistemas</h6>
+                        <ul class="list-unstyled footer-link mt-4">
+                            <?php
                             $sistemasFooter = array_chunk($dtsistemas, 4);
-                            foreach ($sistemasFooter[0] as $row):
-                                ?>
-                                <li class="mb-1"><a
-                                        href="index.php?page=DetalleSistema&IdDetSis=<?php echo $row['IdSistema'] ?>"
-                                        class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
-                                <?php
+                            foreach ($sistemasFooter[0] as $row) :
+                            ?>
+                                <li class="mb-1"><a href="index.php?page=DetalleSistema&IdDetSis=<?php echo $row['IdSistema'] ?>" class="fw-semibold"><?php echo $row['Nombre'] ?></a></li>
+                            <?php
                             endforeach;
                             ?>
                             <li class=""><a href="index.php?page=Sistemas" class="fw-semibold">Ver mas..</a></li>
-                    </ul>
+                        </ul>
                     <?php
-                        }
-                        ?>
+                    }
+                    ?>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 mt-4 col-lg-2 text-center text-sm-start">
+            <div class="col-sm-6 col-md-4 mt-4 col-lg-2 text-center text-sm-start col-custom">
                 <div class="social">
                     <h6 class="footer-heading text-uppercase text-white fw-bold">Redes</h6>
                     <ul class="list-inline my-3">
                         <?php
                         if (!empty($Facebook)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>"
-                                    class="btn-sm btn btn-primary mb-2" target="_blank">
+                            <li class="list-inline-item"><a href="<?php echo $Facebook ?>" class="btn-sm btn btn-primary mb-2" target="_blank">
                                     <i class="fab fa-facebook-f"></i>
                                 </a></li>
-                            <?php
+                        <?php
                         }
                         if (!empty($Whatsapp)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Whatsapp ?>"
-                                    class="text-danger btn-sm btn btn-light mb-2">
+                            <li class="list-inline-item"><a href="<?php echo $Whatsapp ?>" class="text-danger btn-sm btn btn-light mb-2">
 
                                     <i class="fab fa-whatsapp"></i>
                                 </a></li>
-                            <?php
+                        <?php
                         }
                         if (!empty($Youtube)) { ?>
-                            <li class="list-inline-item"><a href="<?php echo $Youtube ?>"
-                                    class="btn-sm btn btn-primary mb-2">
+                            <li class="list-inline-item"><a href="<?php echo $Youtube ?>" class="btn-sm btn btn-primary mb-2">
 
                                     <i class="fab fa-youtube"></i>
                                 </a></li>
-                            <?php
+                        <?php
                         }
                         ?>
 
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 mt-4 col-lg-4 text-center text-sm-start">
+            <div class="col-sm-6 col-md-6 mt-4 col-lg-4 text-center text-sm-start col-custom col-custom">
                 <div class="contact footer-link">
                     <h6 class="footer-heading text-uppercase fw-bold">Contáctanos</h6>
                     <address class="mt-4 m-0 mb-1">
@@ -135,26 +130,26 @@ include_once ('modelos/model_sistemas.php');
                             <i class="fas fa-map-marker-alt fw-semibold"></i>
                         <?php }
                         echo $Address
-                            ?>
+                        ?>
                     </address>
                     <a href="tel:+" class="mb-1 fw-semibold">
                         <?php if (!empty($Telefono)) { ?>
                             <i class="fas fa-phone"></i>
                         <?php }
                         echo $Telefono
-                            ?>
+                        ?>
                     </a>
                     <a href="mailto:" class="mb-1 fw-semibold">
                         <?php if (!empty($Correo)) { ?>
                             <i class="fas fa-envelope"></i>
                         <?php }
                         echo $Correo
-                            ?>
+                        ?>
                     </a>
                 </div>
             </div>
             <!-- Privacidad -->
-            <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start">
+            <div class="col-sm-6 col-md-4 mt-4 col-lg-3 text-center text-sm-start col-custom">
                 <div class="resources">
                     <h6 class="footer-heading text-uppercase fw-bold">Privacidad</h6>
                     <ul class="list-unstyled footer-link mt-4">
@@ -167,7 +162,7 @@ include_once ('modelos/model_sistemas.php');
             $Aviso = "";
             $Terminos = "";
 
-            foreach ($dtcontactos as $row):
+            foreach ($dtcontactos as $row) :
                 switch ($row["CampoKey"]) {
                     case "Aviso":
                         $Aviso = $row["Descripcion"] ?? "";

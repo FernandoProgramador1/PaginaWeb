@@ -17,30 +17,30 @@ require_once("modelos/model_configuraciones.php");
 
 <body>
 
-<?php
+    <?php
 
-$Somos = "";
-$Mision = "";
-$Vision = "";
-$Valores = "";
+    $Somos = "";
+    $Mision = "";
+    $Vision = "";
+    $Valores = "";
 
-foreach ($dtcontactos as $row):
-    switch ($row["CampoKey"]) {
-        case "Somos":
-            $Somos = $row["Descripcion"];
-            break;
-        case "Mision":
-            $Mision = $row["Descripcion"];
-            break;
-        case "Vision":
-            $Vision = $row["Descripcion"];
-            break;
-        case "Valores":
-            $Valores = $row["Descripcion"];
-            break;
-    }
-endforeach;
-?>
+    foreach ($dtcontactos as $row) :
+        switch ($row["CampoKey"]) {
+            case "Somos":
+                $Somos = $row["Descripcion"];
+                break;
+            case "Mision":
+                $Mision = $row["Descripcion"];
+                break;
+            case "Vision":
+                $Vision = $row["Descripcion"];
+                break;
+            case "Valores":
+                $Valores = $row["Descripcion"];
+                break;
+        }
+    endforeach;
+    ?>
     <header>
         <h1>Sobre Nosostros</h1>
     </header>
@@ -62,7 +62,7 @@ endforeach;
         </div>
     </section>
 
-    <section id="vmv" class="container">
+    <section id="vmv" class="">
         <div class="vmv-header">
             <div class="header-content">
                 <span>#VMV</span>

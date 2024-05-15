@@ -108,7 +108,7 @@ require_once('modelos/model_publicaciones.php');
                 </li>
                 <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) : ?>
                     <!-- Boton para el menu de admin -->
-                    <button id="navbarSupportedContent" class="btn nav-item admin-btn" style="margin-left: 30px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog nav-icon"></i> Menú Admin</button>
+                    <button id="navbarSupportedContent" class="btn nav-item admin-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark"><i class="fas fa-cog nav-icon"></i> Menú Admin</button>
                     <!-- Fin del boton para el menu de admin -->
                 <?php endif; ?>
             </ul>

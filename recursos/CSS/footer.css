@@ -32,3 +32,9 @@
 .footer .btn:hover {
     opacity: 0.8;
 }
+
+@media(min-width: 768px){
+    .col-custom{
+        width: 50%;
+    }
+}
